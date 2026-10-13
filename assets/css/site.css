@@ -4245,3 +4245,190 @@ main {
     opacity: 1;
     visibility: visible;
 }
+/* Four partner logos sit on one row at desktop width. */
+.foot__partners ul {
+    gap: 1.5rem 1.75rem;
+}
+
+.foot__partners img {
+    max-width: 8rem;
+    height: 3.5rem;
+}
+
+/* ---- Home: testimonials, a green band above the experiences --------------------- */
+
+.testimonials {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.testimonials__head {
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+    text-align: center;
+}
+
+.testimonials__head .eyebrow {
+    justify-content: center;
+}
+
+.testimonials__head h2 {
+    margin: 0;
+    color: var(--cream);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+}
+
+.testimonials .quotes {
+    gap: 2.5rem 2.25rem;
+}
+
+.testimonials .quote {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gold);
+}
+
+.testimonials .quote blockquote {
+    margin-bottom: 1.25rem;
+    color: var(--cream);
+    font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+    line-height: 1.6;
+}
+
+.testimonials .quote blockquote p::before { content: "\201C"; }
+.testimonials .quote blockquote p::after { content: "\201D"; }
+
+.testimonials .quote__by {
+    margin: 0;
+    color: var(--gold);
+    font-size: var(--text-sm);
+}
+
+.testimonials .quote__by span {
+    color: var(--cream);
+    opacity: 0.85;
+}
+
+/* One or two testimonials are centred, not stretched across three columns. */
+@media (min-width: 1024px) {
+    .testimonials .quotes--1 {
+        grid-template-columns: minmax(0, 44rem);
+        justify-content: center;
+        text-align: center;
+    }
+
+    .testimonials .quotes--2 {
+        grid-template-columns: repeat(2, minmax(0, 30rem));
+        justify-content: center;
+    }
+}
+/* ---- National park guides, more compact ----------------------------------------- */
+
+.page-park main .container {
+    max-width: calc(66rem + var(--gutter) * 2);
+}
+
+.page-park .tour-head {
+    padding-top: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.page-park .tour-head h1 {
+    max-width: 30ch;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.25rem);
+}
+
+.page-park .tour-head__note {
+    max-width: 40rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.page-park .tour-head__media {
+    margin-top: 1.5rem;
+}
+
+/* A shallower picture at the top, so the guide begins sooner. */
+.page-park .tour-head .ph--21x9,
+.page-park .tour-head .media--21x9 {
+    aspect-ratio: 3 / 1;
+}
+
+.page-park .tour-figures .ph--16x9,
+.page-park .tour-figures .media--16x9 {
+    aspect-ratio: 21 / 9;
+}
+
+.page-park .tour-body {
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.page-park .tour-section {
+    padding-block: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+}
+
+.page-park .tour-section h2 {
+    margin-bottom: 0.875rem;
+    font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+}
+
+.page-park .sub-heading {
+    margin: 1.5rem 0 0.625rem;
+    font-size: 1.0625rem;
+}
+
+.page-park .prose--lead > p:first-child {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+.page-park .table-wrap {
+    margin-block: 1rem;
+}
+
+.page-park .table-wrap table {
+    font-size: 0.8125rem;
+}
+
+.page-park .table-wrap th,
+.page-park .table-wrap td {
+    padding-block: 0.5rem;
+}
+
+.page-park .faq summary {
+    padding-block: 0.75rem;
+}
+
+.page-park .faq__q {
+    font-size: 1rem;
+}
+
+.page-park .related__title {
+    font-size: 1.0625rem;
+}
+/* Accommodation: text only, no pictures. */
+.stays__item {
+    display: block;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.stays {
+    gap: 0;
+    border-top: 1px solid var(--line);
+}
+
+/* ---- Cropping keeps the subject in view ------------------------------------------
+   Each photograph can carry a focal point (see image_focus() in helpers.php).
+   Where a frame crops the picture, it crops around that point, not the centre. */
+.media img {
+    object-position: var(--fx, 50%) var(--fy, 50%);
+}
+
+[data-fx="0"] { --fx: 0%; }
+[data-fx="25"] { --fx: 25%; }
+[data-fx="75"] { --fx: 75%; }
+[data-fx="100"] { --fx: 100%; }
+[data-fy="0"] { --fy: 0%; }
+[data-fy="25"] { --fy: 25%; }
+[data-fy="75"] { --fy: 75%; }
+[data-fy="100"] { --fy: 100%; }
