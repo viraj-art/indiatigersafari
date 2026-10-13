@@ -1,0 +1,3354 @@
+/* ==========================================================================
+   India Tiger Safari: design system
+   Mobile-first. Breakpoints: 640 / 1024 / 1440.
+   Contents: fonts, tokens, base, layout, type, buttons, header, hero,
+   cards, strip, pillars, band, quotes, call to action, footer, placeholders,
+   motion.
+   ========================================================================== */
+
+/* ---- Fonts (self-hosted) --------------------------------------------------
+   Primary: Playfair Display (headings). Secondary: Lato (body).
+   size-adjust keeps each face at the optical size the layout was drawn for:
+   Playfair runs large for its point size, Lato a little small. */
+
+@font-face {
+    font-family: "Playfair Display";
+    src: url("../fonts/playfair-display-latin-wght-normal.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+    size-adjust: 86%;
+}
+
+@font-face {
+    font-family: "Playfair Display";
+    src: url("../fonts/playfair-display-latin-wght-italic.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: italic;
+    font-display: swap;
+    size-adjust: 86%;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/lato-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    size-adjust: 106%;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/lato-latin-400-italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    size-adjust: 106%;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/lato-latin-700-normal.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    size-adjust: 106%;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/lato-latin-700-italic.woff2") format("woff2");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+    size-adjust: 106%;
+}
+/* ---- Tokens -------------------------------------------------------------- */
+
+:root {
+    /* Brand palette */
+    --cream: #FAF8F5;
+    --green: #1B3B2B;
+    --gold: #C5A059;
+    --charcoal: #222222;
+
+    /* Tints and shades derived from the four brand colours only */
+    --cream-deep: #F2EEE7;      /* cream with a little gold: section tint */
+    --green-deep: #132A1F;      /* green with charcoal: footer */
+    --green-soft: #DDE3DF;      /* green on cream: placeholders, rules */
+    --gold-soft: #EFE5D2;       /* gold on cream: placeholders */
+    --gold-deep: #86683A;       /* gold with charcoal: small text on cream (AA) */
+    --charcoal-soft: #55524E;   /* charcoal on cream: secondary text (AA) */
+    --line: rgba(27, 59, 43, 0.16);
+    --line-light: rgba(250, 248, 245, 0.22);
+
+    /* Type */
+    --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-body: "Lato", "Segoe UI", system-ui, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem);
+    --text-h3: clamp(1.5rem, 1.35rem + 0.7vw, 1.875rem);
+    --text-h2: clamp(2rem, 1.55rem + 2vw, 3.25rem);
+    --text-display: clamp(2.375rem, 1.6rem + 3.6vw, 4.5rem);
+
+    /* Space */
+    --gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
+    --section: clamp(4rem, 2.5rem + 7vw, 8.5rem);
+    --container: 75rem;
+    --container-narrow: 46rem;
+
+    --radius: 2px;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --header-height: 4.5rem;
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img,
+picture {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0 0 0.5em;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+}
+
+h1 { font-size: var(--text-display); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+
+p {
+    margin: 0 0 1.25em;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+[role="list"] {
+    list-style: none;
+}
+
+a {
+    color: var(--green);
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+}
+
+a:hover {
+    text-decoration-color: currentColor;
+}
+
+/* One visible focus style everywhere; gold reads on cream and on green. */
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px rgba(27, 59, 43, 0.35);
+    border-radius: var(--radius);
+}
+
+main:focus {
+    outline: none;
+}
+
+::selection {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--green);
+    color: var(--cream);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* ---- Layout -------------------------------------------------------------- */
+
+.container {
+    width: 100%;
+    max-width: calc(var(--container) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+.container--narrow {
+    max-width: calc(var(--container-narrow) + var(--gutter) * 2);
+}
+
+.section {
+    padding-block: var(--section);
+}
+
+.section--tint {
+    background: var(--cream-deep);
+}
+
+.section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 1.2rem + 3vw, 4rem);
+}
+
+.section-head h2 {
+    max-width: 20ch;
+    margin-bottom: 0;
+}
+
+.section-head--stacked h2 {
+    max-width: 24ch;
+}
+
+/* ---- Type helpers -------------------------------------------------------- */
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    flex: none;
+    width: 2.25rem;
+    height: 1px;
+    background: var(--gold);
+}
+
+/* A section whose large heading has been removed uses the label as its h2. */
+h2.eyebrow,
+.section-head h2.eyebrow {
+    max-width: none;
+    margin-bottom: 0;
+    font-family: var(--font-body);
+}
+
+.eyebrow--light {
+    color: var(--gold);
+}
+
+.display {
+    font-size: var(--text-display);
+}
+
+.lede {
+    color: var(--charcoal-soft);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    align-self: flex-start;
+    padding-block: 0.5rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold);
+}
+
+.link-arrow::after {
+    content: "\2192";
+    transition: transform 0.25s var(--ease);
+}
+
+.link-arrow:hover::after {
+    transform: translateX(4px);
+}
+
+/* ---- Buttons ------------------------------------------------------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.btn--large {
+    min-height: 3.5rem;
+    padding-inline: 2.25rem;
+}
+
+/* Gold with green text: 5:1 contrast. */
+.btn--gold {
+    background: var(--gold);
+    color: var(--green-deep);
+}
+
+.btn--gold:hover {
+    background: var(--cream);
+    color: var(--green);
+}
+
+.btn--green {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.btn--green:hover {
+    background: var(--green-deep);
+}
+
+.btn--outline {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.btn--outline:hover {
+    background: var(--green);
+    color: var(--cream);
+}
+
+/* ---- Header -------------------------------------------------------------- */
+
+.site-header {
+    --header-ink: var(--green);
+    --header-rule: var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+/* Home page: the header floats over the hero film in cream, then turns solid
+   once the page has scrolled. */
+.page-home .site-header {
+    position: fixed;
+    inset-inline: 0;
+    background: transparent;
+}
+
+.page-home .site-header:not(.is-condensed) {
+    --header-ink: var(--cream);
+    --header-rule: var(--line-light);
+}
+
+.page-home .site-header.is-condensed {
+    background: var(--cream);
+}
+
+.site-header__cta {
+    display: none;
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: var(--header-height);
+    padding-block: 1.25rem;
+    transition: padding 0.3s var(--ease), min-height 0.3s var(--ease);
+}
+
+/* Condensed once the page has scrolled (class set in site.js). */
+.site-header.is-condensed {
+    border-bottom-color: var(--line);
+    box-shadow: 0 6px 24px -18px rgba(27, 59, 43, 0.5);
+}
+
+.site-header.is-condensed .site-header__inner {
+    min-height: 3.5rem;
+    padding-block: 0.5rem;
+}
+
+.wordmark {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    color: var(--header-ink);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.wordmark__name {
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--gold);
+}
+
+.site-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+}
+
+.site-nav__list a:not(.btn) {
+    display: inline-block;
+    padding-block: 0.5rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--header-ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.site-nav__list a:not(.btn):hover,
+.site-nav__list a[aria-current="page"] {
+    border-bottom-color: var(--gold);
+}
+
+.nav-toggle {
+    display: none;
+}
+
+/* Small screens with JavaScript: the menu becomes a full-screen panel.
+   Without JavaScript the links simply wrap beneath the wordmark. */
+@media (max-width: 1023.98px) {
+    .site-header__inner {
+        flex-wrap: wrap;
+    }
+
+    .js .site-header__inner {
+        flex-wrap: nowrap;
+    }
+
+    .js .nav-toggle {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-height: 2.75rem;
+        padding: 0.5rem 0;
+        border: 0;
+        background: none;
+        color: var(--header-ink);
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .nav-toggle__icon,
+    .nav-toggle__icon::before {
+        display: block;
+        width: 1.75rem;
+        height: 1px;
+        background: currentColor;
+        transition: transform 0.3s var(--ease);
+    }
+
+    .nav-toggle__icon::before {
+        content: "";
+        transform: translateY(7px);
+    }
+
+    .js .site-nav {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        padding: calc(var(--header-height) + 1rem) var(--gutter) 2rem;
+        overflow-y: auto;
+        background: var(--green);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s var(--ease), visibility 0.35s;
+    }
+
+    .js .site-nav__list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .js .site-nav__list a:not(.btn) {
+        padding-block: 0.625rem;
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1.15;
+    }
+
+    .js .site-nav__cta {
+        margin-top: 2rem;
+    }
+
+    .menu-open {
+        overflow: hidden;
+    }
+
+    .menu-open .site-nav {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menu-open .site-header {
+        border-bottom-color: transparent;
+        box-shadow: none;
+    }
+
+    .menu-open .wordmark,
+    .menu-open .nav-toggle {
+        color: var(--cream);
+    }
+
+    .menu-open .nav-toggle__icon {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-open .nav-toggle__icon::before {
+        transform: rotate(-90deg);
+    }
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: min(calc(100svh - var(--header-height)), 54rem);
+    background: var(--green);
+    color: var(--cream);
+    isolation: isolate;
+}
+
+.hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.hero__media > * {
+    width: 100%;
+    height: 100%;
+}
+
+.hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keeps the headline legible over any photograph. */
+.hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(19, 42, 31, 0.72) 0%, rgba(19, 42, 31, 0.4) 28%, rgba(19, 42, 31, 0.4) 68%, rgba(19, 42, 31, 0.72) 100%);
+}
+
+.hero__video {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+}
+
+/* Film without a headline: only a light wash at the foot, behind the button. */
+.hero--quiet .hero__media::after {
+    background: linear-gradient(to bottom, rgba(19, 42, 31, 0.62) 0%, rgba(19, 42, 31, 0) 30%, rgba(19, 42, 31, 0) 62%, rgba(19, 42, 31, 0.6) 100%);
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 2rem;
+}
+
+.hero__pause {
+    position: absolute;
+    right: var(--gutter);
+    bottom: 1.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.125rem;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    /* Solid enough to stay legible over any frame of the film. */
+    background: rgba(19, 42, 31, 0.78);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__video {
+        display: none;
+    }
+}
+
+.hero__content {
+    width: 100%;
+    padding-block: calc(var(--header-height) + 2rem) 5rem;
+}
+
+/* The home hero fills the screen beneath the floating header. */
+.page-home .hero {
+    min-height: 100svh;
+}
+
+.hero--quiet {
+    align-items: flex-end;
+}
+
+.hero__kicker {
+    margin-bottom: 0.75rem;
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+    line-height: 1.2;
+}
+
+.hero__headline {
+    margin-bottom: 1.5rem;
+    color: var(--cream);
+    font-size: clamp(3rem, 1.6rem + 6.4vw, 6.5rem);
+    font-weight: 400;
+    line-height: 1.02;
+}
+
+.hero__subline {
+    max-width: 38rem;
+    margin-inline: auto;
+    margin-bottom: 2.5rem;
+    color: var(--cream);
+    font-size: var(--text-lg);
+    line-height: 1.75;
+    opacity: 0.92;
+}
+
+/* ---- Intro and call to action ------------------------------------------- */
+
+.intro .display,
+.cta .display {
+    max-width: 16ch;
+}
+
+.cta {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--gold-soft) 100%);
+}
+
+.cta .lede {
+    max-width: 34rem;
+    margin-bottom: 2.5rem;
+    color: var(--charcoal);
+}
+
+/* ---- Journey cards ------------------------------------------------------- */
+
+.card-grid {
+    display: grid;
+    gap: 2.5rem 1.75rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .ph,
+.card .media {
+    transition: transform 0.6s var(--ease);
+}
+
+.card:hover .ph,
+.card:hover .media {
+    transform: scale(0.985);
+}
+
+/* Single-column cards on small screens use a shallower image. */
+@media (max-width: 639.98px) {
+    .card .ph--4x5,
+    .card .media--4x5 {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.card__body {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gold);
+    margin-top: 1.25rem;
+}
+
+.card__meta,
+.tile__meta {
+    margin-bottom: 0.625rem;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.card__title {
+    margin-bottom: 0.625rem;
+    font-size: clamp(1.5rem, 1.4rem + 0.4vw, 1.75rem);
+}
+
+.card__title a {
+    text-decoration: none;
+}
+
+/* The whole card is the link target; the heading holds the accessible name. */
+.card__title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.card__title a:hover {
+    color: var(--gold-deep);
+}
+
+.card__text,
+.tile__text {
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+}
+
+/* ---- Park strip ---------------------------------------------------------- */
+
+.strip {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    /* Tiles snap to the container edge, not the viewport edge. */
+    scroll-padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+    padding-bottom: 1.5rem;
+}
+
+.strip__track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    /* Lines the first tile up with the page container. */
+    padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
+}
+
+.tile {
+    flex: none;
+    width: clamp(15rem, 60vw, 19rem);
+    scroll-snap-align: start;
+}
+
+.tile__meta {
+    margin-top: 1.25rem;
+}
+
+.tile__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.tile__title a {
+    text-decoration: none;
+}
+
+/* ---- Pillars ("Why India Tiger Safari") ---------------------------------- */
+
+.pillars {
+    display: grid;
+    gap: 2.5rem 2rem;
+}
+
+.pillar {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+    line-height: 1.8;
+}
+
+.pillar__number {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--gold-deep);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1;
+}
+
+.pillar__title {
+    margin-bottom: 0.75rem;
+    font-size: 1.625rem;
+}
+
+/* ---- Conservation band --------------------------------------------------- */
+
+.band {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.band h2 {
+    color: var(--cream);
+}
+
+.band .lede {
+    color: var(--cream);
+    opacity: 0.9;
+}
+
+.band__grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* ---- Testimonials -------------------------------------------------------- */
+
+.quotes {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.quote {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gold);
+}
+
+.quote blockquote {
+    margin: 0 0 1.25rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-style: italic;
+    line-height: 1.35;
+}
+
+.quote__by {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.quote__by span {
+    color: var(--charcoal-soft);
+    font-weight: 400;
+}
+
+/* ---- Plain pages (404, confirmations) ------------------------------------ */
+
+.plain {
+    min-height: 60vh;
+}
+
+.plain__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+/* ---- Footer -------------------------------------------------------------- */
+
+.site-footer {
+    padding-top: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+    background: var(--green-deep);
+    color: var(--cream);
+    font-size: var(--text-sm);
+}
+
+.site-footer a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.site-footer a:hover {
+    border-bottom-color: var(--gold);
+}
+
+.site-footer__grid {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.site-footer__brand p {
+    max-width: 26rem;
+    opacity: 0.88;
+}
+
+.wordmark--footer {
+    margin-bottom: 1.5rem;
+    color: var(--cream);
+    opacity: 1 !important;
+}
+
+.site-footer__note {
+    color: var(--gold);
+    opacity: 1 !important;
+}
+
+.site-footer__heading {
+    margin-bottom: 1rem;
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.site-footer ul {
+    display: grid;
+    gap: 0.625rem;
+    list-style: none;
+}
+
+.site-footer__base {
+    margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line-light);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+/* ---- Image frames and placeholders --------------------------------------- */
+
+/* Placeholders stand in until photography is supplied: a quiet cream-to-green
+   wash with a hairline frame, sized exactly as the final image will be. */
+.ph,
+.media {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, var(--gold-soft) 0%, var(--cream-deep) 38%, var(--green-soft) 100%);
+}
+
+.ph::after {
+    content: "";
+    position: absolute;
+    inset: 0.75rem;
+    border: 1px solid rgba(27, 59, 43, 0.14);
+}
+
+.media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ph--4x3, .media--4x3 { aspect-ratio: 4 / 3; }
+.ph--4x5, .media--4x5 { aspect-ratio: 4 / 5; }
+.ph--3x4, .media--3x4 { aspect-ratio: 3 / 4; }
+.ph--16x9, .media--16x9 { aspect-ratio: 16 / 9; }
+
+.ph--hero {
+    border-radius: 0;
+    background:
+        radial-gradient(ellipse at 78% 18%, rgba(197, 160, 89, 0.42) 0%, rgba(197, 160, 89, 0) 55%),
+        linear-gradient(160deg, #2C5A43 0%, var(--green) 55%, var(--green-deep) 100%);
+}
+
+.ph--hero::after {
+    display: none;
+}
+
+.band .ph {
+    background: linear-gradient(145deg, rgba(197, 160, 89, 0.5) 0%, rgba(250, 248, 245, 0.16) 45%, rgba(250, 248, 245, 0.06) 100%);
+}
+
+.band .ph::after {
+    border-color: var(--line-light);
+}
+
+/* ---- Motion -------------------------------------------------------------- */
+
+/* Sections ease in as they enter view. Only when JavaScript is running, so
+   nothing is ever hidden without it. */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---- 640 and up ---------------------------------------------------------- */
+
+@media (min-width: 640px) {
+    .section-head {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .section-head--stacked {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .section-head .link-arrow {
+        align-self: flex-end;
+        flex: none;
+    }
+
+    .card-grid,
+    .pillars,
+    .quotes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tile {
+        width: 19rem;
+    }
+
+    .site-footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---- 1024 and up --------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+    :root {
+        --header-height: 8.5rem;
+    }
+
+    .wordmark {
+        font-size: 1.75rem;
+    }
+
+    /* Two rows: wordmark centred with the enquiry button at the right, then
+       the navigation centred between hairlines. Scrolling folds it into one. */
+    .site-header__inner {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-areas: ". brand cta" "nav nav nav";
+        row-gap: 1.125rem;
+        padding-block: 1.25rem 0;
+    }
+
+    .wordmark {
+        grid-area: brand;
+        justify-self: center;
+    }
+
+    .site-header__cta {
+        display: inline-flex;
+        grid-area: cta;
+        justify-self: end;
+        min-height: 2.75rem;
+    }
+
+    .site-nav {
+        grid-area: nav;
+        border-block: 1px solid var(--header-rule);
+    }
+
+    .site-nav__list {
+        justify-content: center;
+        gap: clamp(2rem, 4vw, 4.5rem);
+        flex-wrap: nowrap;
+    }
+
+    .site-nav__list a:not(.btn) {
+        padding-block: 0.875rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .site-nav__cta {
+        display: none;
+    }
+
+    .site-header.is-condensed .site-header__inner {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "brand nav cta";
+        column-gap: 2rem;
+    }
+
+    .site-header.is-condensed .site-nav {
+        border-block-color: transparent;
+    }
+
+    .card-grid,
+    .pillars {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .quotes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .band__grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(3rem, 6vw, 6rem);
+    }
+
+    .site-footer__grid {
+        grid-template-columns: 1.6fr 1.2fr 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* ---- 1440 and up --------------------------------------------------------- */
+
+@media (min-width: 1440px) {
+    :root {
+        --container: 82rem;
+    }
+
+    .tile {
+        width: 21rem;
+    }
+}
+
+/* ---- Logo ---------------------------------------------------------------- */
+
+.wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wordmark__mark {
+    flex: none;
+    width: auto;
+    height: 2.75rem;
+    transition: height 0.3s var(--ease), filter 0.3s var(--ease);
+}
+
+/* The bronze emblem turns light wherever it sits on film or dark green. */
+.page-home .site-header:not(.is-condensed) .wordmark__mark,
+.menu-open .wordmark__mark,
+.wordmark--footer .wordmark__mark {
+    filter: brightness(0) invert(1);
+}
+
+.wordmark--footer {
+    display: flex;
+}
+
+/* ---- Outline button, for use over film ----------------------------------- */
+
+.btn--ghost {
+    border-color: var(--cream);
+    background: transparent;
+    color: var(--cream);
+}
+
+.btn--ghost:hover {
+    background: var(--cream);
+    color: var(--green);
+}
+
+/* ---- Header refinements (1024 and up) ------------------------------------ */
+
+@media (min-width: 1024px) {
+    .wordmark__mark {
+        height: 3.25rem;
+    }
+
+    /* No enquiry button in the header while it floats over the home film. */
+    .page-home .site-header:not(.is-condensed) .site-header__cta {
+        display: none;
+    }
+
+    /* Scrolled bar: equal side columns keep the navigation truly centred. */
+    .site-header.is-condensed .site-header__inner {
+        grid-template-columns: 1fr auto 1fr;
+        column-gap: 1.5rem;
+    }
+
+    .site-header.is-condensed .wordmark {
+        justify-self: start;
+    }
+
+    .site-header.is-condensed .wordmark__mark {
+        height: 2.5rem;
+    }
+
+    .site-header.is-condensed .site-nav__list {
+        gap: 2.25rem;
+    }
+
+    .site-header.is-condensed .wordmark__name,
+    .site-header.is-condensed .site-header__cta {
+        display: none;
+    }
+}
+
+@media (min-width: 1280px) {
+    .site-header.is-condensed .wordmark__name {
+        display: inline;
+    }
+
+    .site-header.is-condensed .site-header__cta {
+        display: inline-flex;
+        padding-inline: 1.25rem;
+    }
+}
+/* ---- Founder's note ------------------------------------------------------ */
+
+.founder {
+    margin: 0;
+}
+
+.founder__quote {
+    margin: 0 0 2rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.125rem);
+    font-style: italic;
+    line-height: 1.45;
+}
+
+.founder__quote p::before {
+    content: "\201C";
+}
+
+.founder__quote p::after {
+    content: "\201D";
+}
+
+.founder__by {
+    display: grid;
+    gap: 0.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gold);
+}
+
+.founder__name {
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.founder__role {
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+    letter-spacing: 0.04em;
+}
+.intro h2.eyebrow {
+    margin-bottom: 1.75rem;
+}
+
+/* Founder's note: a wider measure and a quieter size. */
+.intro .container--narrow {
+    max-width: calc(62rem + var(--gutter) * 2);
+}
+
+.founder__quote {
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    line-height: 1.55;
+}
+
+/* ---- "Why travel with us": heading, introduction and five reasons -------- */
+
+.why-head {
+    max-width: 52rem;
+    margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+
+.why-head h2 {
+    margin-bottom: 1.25rem;
+}
+
+.pillar__title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+    .pillars--5 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .pillars--5 {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2.5rem 1.75rem;
+    }
+}
+/* "Why travel with us": centred, with a smaller bronze heading. */
+.why-head {
+    max-width: none;
+    text-align: center;
+}
+
+.why-head h2 {
+    margin-bottom: 0;
+    color: var(--gold-deep);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+}
+
+.pillars--5 .pillar {
+    text-align: center;
+}
+
+/* Rows that are not full (3 + 2, or 2 + 2 + 1) stay centred. */
+@media (min-width: 640px) and (max-width: 1279.98px) {
+    .pillars--5 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem 2rem;
+    }
+
+    .pillars--5 .pillar {
+        flex: 0 1 calc(50% - 1rem);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+    .pillars--5 .pillar {
+        flex-basis: calc(33.333% - 1.34rem);
+    }
+}
+/* With the title hidden, the tagline becomes the hero's main line. */
+.hero .visually-hidden + .hero__subline {
+    max-width: 22ch;
+    margin-bottom: 2.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 1.4rem + 3.8vw, 4.25rem);
+    line-height: 1.1;
+    opacity: 1;
+    text-wrap: balance;
+}
+/* ---- Inner page heading and breadcrumbs ---------------------------------- */
+
+.page-head {
+    padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem) clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+.page-head h1 {
+    margin-bottom: 1rem;
+}
+
+.page-head .lede {
+    max-width: 44rem;
+}
+
+.breadcrumbs {
+    margin-bottom: 1.5rem;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.breadcrumbs li + li::before {
+    content: "\203A";
+    margin-right: 0.5rem;
+    color: var(--gold-deep);
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+}
+
+.breadcrumbs [aria-current] {
+    color: var(--charcoal-soft);
+}
+
+/* ---- Experiences listing ------------------------------------------------- */
+
+.filters {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+}
+
+.js .filters {
+    display: flex;
+}
+
+.filter {
+    min-height: 2.75rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--green);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.filter:hover {
+    border-color: var(--green);
+}
+
+.filter[aria-pressed="true"] {
+    border-color: var(--green);
+    background: var(--green);
+    color: var(--cream);
+}
+
+.section--list {
+    padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+}
+
+.section--list:last-of-type {
+    padding-bottom: var(--section);
+}
+
+.section--list > .container > h2.eyebrow {
+    margin-bottom: 2rem;
+}
+
+.card--feature .card__title {
+    font-size: clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem);
+}
+
+.card--feature .card__text {
+    font-size: var(--text-base);
+}
+
+.card__more {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding-bottom: 0.375rem;
+    border-bottom: 1px solid var(--gold);
+    color: var(--green);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+    .card-grid--2,
+    .card-grid--3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.5rem 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-grid--2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 2.5rem;
+    }
+
+    .card-grid--3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.card__soon {
+    margin-top: 1.25rem;
+    color: var(--charcoal-soft);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.card-grid--3 .card--feature .card__title {
+    font-size: clamp(1.5rem, 1.35rem + 0.6vw, 1.875rem);
+}
+
+/* ==========================================================================
+   Tour and extension pages
+   ========================================================================== */
+
+.ph--21x9, .media--21x9 { aspect-ratio: 21 / 9; }
+
+@media (max-width: 639.98px) {
+    .tour-head .ph--21x9,
+    .tour-head .media--21x9 {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.tour-head {
+    padding-top: clamp(2rem, 1.2rem + 3vw, 4rem);
+}
+
+.tour-head__meta {
+    margin-bottom: 0.75rem;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.tour-head h1 {
+    max-width: 18ch;
+    margin-bottom: 1.5rem;
+}
+
+.tour-head__note {
+    max-width: 52rem;
+    margin-bottom: 0;
+    color: var(--charcoal-soft);
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+    line-height: 1.6;
+}
+
+.tour-head__media {
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+}
+
+/* ---- Layout: page navigation beside the copy ------------------------------ */
+
+.tour-layout {
+    padding-bottom: var(--section);
+}
+
+.tour-aside {
+    position: sticky;
+    top: 3.5rem;
+    z-index: 40;
+    margin-inline: calc(var(--gutter) * -1);
+    border-bottom: 1px solid var(--line);
+    background: var(--cream);
+}
+
+/* Small screens: the navigation is a strip that scrolls sideways. */
+.tour-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.tour-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.tour-nav ul {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    padding-inline: var(--gutter);
+    list-style: none;
+}
+
+.tour-nav a {
+    display: block;
+    padding-block: 1rem;
+    border-bottom: 2px solid transparent;
+    color: var(--charcoal-soft);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tour-nav a:hover,
+.tour-nav a[aria-current] {
+    border-bottom-color: var(--gold);
+    color: var(--green);
+}
+
+.tour-aside__cta {
+    display: none;
+}
+
+/* Small screens: the enquiry button stays within reach at the foot of the screen. */
+.tour-bar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 45;
+    padding: 0.75rem var(--gutter);
+    border-top: 1px solid var(--line-light);
+    background: var(--green);
+}
+
+.tour-bar .btn {
+    width: 100%;
+}
+
+.page-tour .site-footer {
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+    .tour-layout {
+        display: grid;
+        grid-template-columns: 13.5rem minmax(0, 1fr);
+        gap: clamp(3rem, 5vw, 5.5rem);
+        align-items: start;
+    }
+
+    .tour-aside {
+        top: 5.5rem;
+        margin: 0;
+        padding-top: 3.5rem;
+        border: 0;
+        background: none;
+    }
+
+    .tour-nav {
+        overflow: visible;
+    }
+
+    .tour-nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: auto;
+        padding: 0;
+        border-left: 1px solid var(--line);
+    }
+
+    .tour-nav a {
+        margin-left: -1px;
+        padding: 0.5rem 0 0.5rem 1.25rem;
+        border-bottom: 0;
+        border-left: 2px solid transparent;
+    }
+
+    .tour-nav a:hover,
+    .tour-nav a[aria-current] {
+        border-left-color: var(--gold);
+    }
+
+    .tour-aside__cta {
+        display: inline-flex;
+        width: 100%;
+        margin-top: 2rem;
+        padding-inline: 1rem;
+        letter-spacing: 0.12em;
+    }
+
+    .tour-bar {
+        display: none;
+    }
+
+    .page-tour .site-footer {
+        padding-bottom: 0;
+    }
+}
+
+/* ---- Sections -------------------------------------------------------------- */
+
+.tour-body {
+    max-width: 50rem;
+}
+
+.tour-section {
+    padding-block: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 7rem;
+}
+
+.tour-section:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.tour-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.75rem, 1.45rem + 1.4vw, 2.5rem);
+}
+
+.tour-section__second {
+    margin-top: 3rem;
+}
+
+.prose > p:last-child {
+    margin-bottom: 0;
+}
+
+.prose--lead > p:first-child {
+    color: var(--charcoal);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+}
+
+.sub-heading {
+    margin: 2.75rem 0 1.25rem;
+    font-size: 1.5rem;
+}
+
+.sub-heading--flush {
+    margin-top: 0;
+}
+
+/* Destinations: the route, one stop per line. */
+.route {
+    border-top: 1px solid var(--line);
+}
+
+.route__stop {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.875rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.route__day {
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+}
+
+/* Lists with a small gold mark. */
+.marked {
+    display: grid;
+    gap: 0.875rem;
+    list-style: none;
+}
+
+.marked li {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.marked li::before {
+    content: "";
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    width: 0.875rem;
+    height: 1px;
+    background: var(--gold);
+}
+
+.marked--tick li::before {
+    top: 0.45em;
+    width: 0.5rem;
+    height: 0.8rem;
+    border: solid var(--gold-deep);
+    border-width: 0 1.5px 1.5px 0;
+    background: none;
+    transform: rotate(40deg) scale(0.8);
+}
+
+/* Itinerary. */
+.days {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--gold);
+}
+
+.day {
+    position: relative;
+}
+
+.day::before {
+    content: "";
+    position: absolute;
+    top: 0.7rem;
+    left: calc(-1.5rem - 4.5px);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.day__title {
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+}
+
+.day__number {
+    color: var(--gold-deep);
+}
+
+.day__overnight {
+    margin: 1rem 0 0;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.1875rem;
+}
+
+.note {
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--cream-deep);
+    border-left: 2px solid var(--gold);
+}
+
+.note__label {
+    margin-bottom: 0.5rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+}
+
+/* Leisure. */
+.leisure {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.leisure__item {
+    padding: 1.5rem 1.75rem;
+    background: var(--cream-deep);
+    font-size: var(--text-sm);
+    line-height: 1.75;
+}
+
+.leisure__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.375rem;
+}
+
+.lead-in strong {
+    color: var(--green);
+}
+
+@media (min-width: 640px) {
+    .leisure {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leisure__item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Accommodation. */
+.handpicked {
+    color: var(--charcoal-soft);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.stays {
+    display: grid;
+    gap: 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+}
+
+.stays__item {
+    padding-block: 1.125rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.stays__item strong,
+.alternatives strong,
+.places strong {
+    color: var(--green);
+}
+
+.alternatives {
+    display: grid;
+    gap: 2rem;
+}
+
+.alternatives__place {
+    margin-bottom: 0.75rem;
+    color: var(--gold-deep);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.alternatives ul {
+    display: grid;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    line-height: 1.75;
+}
+
+@media (min-width: 640px) {
+    .alternatives {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 3rem;
+    }
+}
+
+/* Fauna. */
+.fauna {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+}
+
+.fauna li {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: var(--text-sm);
+}
+
+/* Parks, UNESCO sites, extensions. */
+.places {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Inclusions and exclusions. */
+.inex {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+    .inex {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3rem;
+    }
+}
+
+/* FAQs. */
+.faqs {
+    border-top: 1px solid var(--line);
+}
+
+.faq {
+    border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+    position: relative;
+    display: block;
+    padding: 1.25rem 3rem 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 0.25rem;
+    color: var(--gold-deep);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    transform: translateY(-50%);
+}
+
+.faq[open] summary::after {
+    content: "\2212";
+}
+
+.faq__q {
+    margin: 0;
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+}
+
+.faq__a {
+    padding: 0 3rem 1.5rem 0;
+}
+
+/* Related experiences. */
+.related {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.related__item {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--gold);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+}
+
+.related__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.related__title a {
+    text-decoration: none;
+}
+
+.related__title a:hover {
+    color: var(--gold-deep);
+}
+
+@media (min-width: 640px) {
+    .related {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+/* ==========================================================================
+   Tour pages, lighter: smaller type, tighter rhythm, more room for images
+   ========================================================================== */
+
+.tour-head h1 {
+    max-width: 24ch;
+    margin-bottom: 1.25rem;
+    font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+}
+
+.tour-head__note {
+    max-width: 46rem;
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+}
+
+.tour-body {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+}
+
+.tour-section {
+    padding-block: clamp(2rem, 1.6rem + 1.6vw, 3.25rem);
+}
+
+.tour-section h2 {
+    margin-bottom: 1.125rem;
+    font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+}
+
+.prose--lead > p:first-child {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+}
+
+.sub-heading {
+    margin: 2.25rem 0 1rem;
+    font-size: 1.25rem;
+}
+
+.sub-heading--flush {
+    margin-top: 0;
+}
+
+.route__stop {
+    padding-block: 0.5625rem;
+    font-size: var(--text-sm);
+}
+
+.days {
+    gap: 1.75rem;
+    margin-top: 1.5rem;
+}
+
+.day__title {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
+}
+
+.day::before {
+    top: 0.55rem;
+}
+
+.day__overnight {
+    margin-top: 0.625rem;
+    font-size: 1.0625rem;
+}
+
+.note {
+    margin-top: 2.25rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.note__label {
+    font-size: 1.1875rem;
+}
+
+.leisure {
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.leisure__item {
+    padding: 1.125rem 1.25rem;
+}
+
+.leisure__title {
+    font-size: 1.1875rem;
+}
+
+.handpicked {
+    font-size: 1.0625rem;
+}
+
+.places {
+    gap: 1.125rem;
+}
+
+.faq summary {
+    padding-block: 0.9375rem;
+}
+
+.faq__q {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+}
+
+.related__title {
+    font-size: 1.25rem;
+}
+
+/* ---- Image slots ----------------------------------------------------------- */
+
+.tour-figures {
+    margin-block: 2rem 0.5rem;
+}
+
+.tour-section h2 + .tour-figures {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tour-figures--pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Accommodation: every stay has its own image beside its description. */
+.stays {
+    gap: 1.5rem;
+    margin-top: 2rem;
+    border-top: 0;
+}
+
+.stays__item {
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+    border-bottom: 0;
+}
+
+.stays__item p {
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .stays__item {
+        grid-template-columns: 15rem 1fr;
+        gap: 1.75rem;
+        align-items: center;
+    }
+}
+
+/* ---- Page navigation: the marker for the section being read --------------- */
+
+.tour-nav a {
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+@media (min-width: 1024px) {
+    .tour-layout {
+        grid-template-columns: 12rem minmax(0, 1fr);
+    }
+
+    .tour-aside {
+        /* Sits just beneath the scrolled header bar. */
+        top: 4.5rem;
+        padding-top: 2rem;
+    }
+
+    .tour-body {
+        padding-top: 0;
+    }
+
+    .tour-body > .tour-section:first-child {
+        padding-top: 2rem;
+    }
+
+    .tour-nav ul {
+        border-left: 1px solid var(--line);
+    }
+
+    .tour-nav a {
+        margin-left: -1.5px;
+        padding: 0.4375rem 0 0.4375rem 1.125rem;
+        border-left: 2px solid transparent;
+        font-size: 0.6875rem;
+    }
+
+    .tour-nav a:hover {
+        border-left-color: var(--line);
+    }
+
+    .tour-nav a[aria-current] {
+        border-left-color: var(--gold);
+        color: var(--green);
+    }
+
+    .tour-aside__cta {
+        margin-top: 1.5rem;
+        min-height: 2.75rem;
+        font-size: 0.6875rem;
+    }
+}
+/* Anchor links land just beneath the scrolled header bar. (The header is only
+   tall at the very top of a page, where nothing is being scrolled to.) */
+html {
+    scroll-padding-top: 5rem;
+}
+
+.tour-section {
+    scroll-margin-top: 0;
+}
+
+/* Small screens also have the section strip beneath the header. */
+@media (max-width: 1023.98px) {
+    .tour-section {
+        scroll-margin-top: 3.5rem;
+    }
+}
+/* "Something Else in Mind?" and "Dining & Reservations": two matched panels. */
+.asides {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.asides__item {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--gold);
+    font-size: var(--text-sm);
+    line-height: 1.75;
+}
+
+.asides__title {
+    margin-bottom: 0.625rem;
+    font-size: 1.3125rem;
+}
+
+.asides__item p {
+    margin: 0;
+    color: var(--charcoal-soft);
+}
+
+@media (min-width: 640px) {
+    .asides {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: 2.5rem;
+    }
+}
+/* ==========================================================================
+   National park guides (built on the tour page frame)
+   ========================================================================== */
+
+.park .prose > p {
+    margin-bottom: 1rem;
+}
+
+.park .prose > .sub-heading:first-child {
+    margin-top: 0;
+}
+
+.park .prose > .marked,
+.park .prose > .numbered,
+.park .prose > .fauna {
+    margin-bottom: 1.25rem;
+}
+
+.numbered {
+    display: grid;
+    gap: 0.625rem;
+    padding-left: 1.25rem;
+}
+
+.park .fauna li {
+    padding: 0.3125rem 0.8125rem;
+    font-size: 0.8125rem;
+}
+
+/* Tables: facts, zones, travel. Wide tables scroll sideways within their own frame. */
+.table-wrap {
+    margin-block: 1.5rem;
+    overflow-x: auto;
+    border-top: 1px solid var(--gold);
+}
+
+.table-wrap table {
+    width: 100%;
+    min-width: 30rem;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    line-height: 1.6;
+}
+
+.table-wrap th,
+.table-wrap td {
+    padding: 0.6875rem 1rem 0.6875rem 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.table-wrap thead th {
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.table-wrap tbody th {
+    width: 28%;
+    min-width: 9rem;
+    color: var(--green);
+    font-weight: 600;
+}
+/* ---- Home film: a quieter line and button, set low so the film stays clear --- */
+
+.page-home .hero {
+    align-items: flex-end;
+}
+
+.page-home .hero__content {
+    padding-bottom: clamp(3rem, 2rem + 4vw, 5rem);
+}
+
+.hero .visually-hidden + .hero__subline {
+    max-width: none;
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+    line-height: 1.2;
+}
+
+.page-home .hero .btn--large {
+    min-height: 2.75rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.6875rem;
+}
+
+/* With the text low, only the foot of the film needs a wash behind it. */
+.page-home .hero__media::after {
+    background: linear-gradient(to bottom, rgba(19, 42, 31, 0.6) 0%, rgba(19, 42, 31, 0) 26%, rgba(19, 42, 31, 0) 58%, rgba(19, 42, 31, 0.7) 100%);
+}
+
+/* ---- Scrolled header bar: room between the name and the navigation --------- */
+
+@media (min-width: 1024px) {
+    .site-header.is-condensed .site-header__inner {
+        column-gap: 3rem;
+    }
+
+    .site-header.is-condensed .wordmark {
+        font-size: 1.3125rem;
+    }
+
+    .site-header.is-condensed .site-nav__list {
+        gap: clamp(1.25rem, 2.2vw, 2.25rem);
+    }
+}
+/* ---- About Us ------------------------------------------------------------------ */
+
+.page-about .page-head h1 {
+    max-width: 18ch;
+}
+
+.about__byline {
+    margin: 0;
+    color: var(--gold-deep);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+}
+
+.about__layout {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: clamp(1.5rem, 1rem + 2vw, 3rem) var(--section);
+}
+
+.about__media {
+    max-width: 24rem;
+}
+
+.about__text {
+    max-width: 44rem;
+}
+
+.about__text .prose > p:first-child {
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+    line-height: 1.45;
+}
+
+.about__sign {
+    margin: 2.5rem 0 0;
+}
+
+.about__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2.5rem 0 0;
+}
+
+@media (min-width: 1024px) {
+    .about__layout {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: clamp(3rem, 6vw, 6rem);
+        align-items: start;
+    }
+
+    /* The portrait keeps the reader company down the page. */
+    .about__media {
+        position: sticky;
+        top: 6rem;
+        max-width: none;
+    }
+}
+/* About Us, quieter: smaller heading and opening, a narrower portrait. */
+.page-about .page-head {
+    padding-bottom: 0.5rem;
+}
+
+.page-about .page-head h1 {
+    max-width: none;
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+}
+
+.about__byline {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+}
+
+.about__media {
+    max-width: 16rem;
+}
+
+.about__text {
+    max-width: 40rem;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+}
+
+.about__text .prose > p:first-child {
+    font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+    line-height: 1.55;
+}
+
+@media (min-width: 1024px) {
+    .about__layout {
+        grid-template-columns: 17rem minmax(0, 40rem);
+        gap: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .about__media {
+        max-width: none;
+    }
+}
+/* About Us: photographs with captions beneath the story. */
+.about__layout {
+    padding-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+}
+
+.about-gallery {
+    display: grid;
+    gap: 2rem 1.5rem;
+    padding-bottom: var(--section);
+}
+
+.about-figure {
+    margin: 0;
+}
+
+.about-figure figcaption {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--gold);
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+    .about-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-gallery--3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-gallery--4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+/* About Us: photographs set within the story, the text flowing round them. */
+.about__layout {
+    padding-bottom: var(--section);
+}
+
+.about__text {
+    max-width: 48rem;
+}
+
+.about__story {
+    display: flow-root;
+}
+
+.about-figure {
+    margin: 0.25rem 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .about-figure {
+        width: 14.5rem;
+        /* Each begins below the one before, so text never squeezes between two. */
+        clear: both;
+    }
+
+    .about-figure--right {
+        float: right;
+        margin-left: 1.75rem;
+    }
+
+    .about-figure--left {
+        float: left;
+        margin-right: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about__layout {
+        grid-template-columns: 15rem minmax(0, 48rem);
+    }
+}
+/* A photograph and its paragraph start level, below the photograph before. */
+.about-clear {
+    clear: both;
+}
+
+/* About Us: the story, then the photographs in a row, then the buttons. */
+.about__layout {
+    padding-bottom: clamp(2.5rem, 2rem + 3vw, 4rem);
+}
+
+.about__foot {
+    padding-bottom: var(--section);
+}
+
+.about-gallery {
+    padding-bottom: 0;
+}
+
+/* Undo the wrap-round layout: within the row each photograph fills its column. */
+.about-gallery .about-figure {
+    float: none;
+    width: auto;
+    margin: 0;
+    clear: none;
+}
+
+.about__foot .about__actions {
+    justify-content: center;
+    margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+}
+/* About Us: every paragraph of the story is set the same. */
+.about__text .prose > p:first-child {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* ---- Navigation: pages beneath a main item (About Us) ------------------------ */
+
+.site-nav__sub {
+    list-style: none;
+}
+
+/* Full-screen menu on small screens: the pages beneath are listed, indented. */
+@media (max-width: 1023.98px) {
+    .js .site-nav__sub {
+        margin: 0.25rem 0 0.5rem;
+        padding-left: 1.25rem;
+        border-left: 1px solid var(--line-light);
+    }
+
+    .js .site-nav__list .site-nav__sub a:not(.btn) {
+        padding-block: 0.375rem;
+        font-family: var(--font-body);
+        font-size: 1.0625rem;
+        letter-spacing: 0.04em;
+        opacity: 0.9;
+    }
+
+    /* Without JavaScript the links simply wrap; keep the pages beneath in line. */
+    .site-nav__sub {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 1rem;
+    }
+
+    .js .site-nav__sub {
+        display: block;
+    }
+}
+
+/* Bar on larger screens: a small panel that opens on hover or keyboard focus. */
+@media (min-width: 1024px) {
+    .has-sub {
+        position: relative;
+    }
+
+    .has-sub > a::after {
+        content: "";
+        display: inline-block;
+        width: 0.3125rem;
+        height: 0.3125rem;
+        margin-left: 0.5rem;
+        border: solid currentColor;
+        border-width: 0 1px 1px 0;
+        transform: translateY(-0.2em) rotate(45deg);
+    }
+
+    .site-nav__sub {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 60;
+        min-width: 11rem;
+        padding: 0.5rem 0;
+        border-top: 2px solid var(--gold);
+        background: var(--cream);
+        box-shadow: 0 14px 30px -18px rgba(19, 42, 31, 0.55);
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 0.375rem);
+        transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s;
+    }
+
+    .has-sub:hover > .site-nav__sub,
+    .has-sub:focus-within > .site-nav__sub {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+    }
+
+    /* Always dark on cream, even while the header floats over the home film. */
+    .site-nav__list .site-nav__sub a:not(.btn) {
+        display: block;
+        padding: 0.625rem 1.25rem;
+        border-bottom: 0;
+        color: var(--green);
+        white-space: nowrap;
+    }
+
+    .site-nav__list .site-nav__sub a:not(.btn):hover,
+    .site-nav__list .site-nav__sub a[aria-current="page"] {
+        background: var(--cream-deep);
+        color: var(--gold-deep);
+    }
+}
+
+/* ---- Our Team ----------------------------------------------------------------- */
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 1.25rem;
+}
+
+.team__name {
+    margin: 1rem 0 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gold);
+    font-size: clamp(1.1875rem, 1.1rem + 0.5vw, 1.5rem);
+}
+
+.team__role {
+    margin: 0;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.team__bio {
+    margin-top: 0.75rem;
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+    .team {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .team {
+        gap: 3.5rem 3rem;
+    }
+}
+
+.page-team .section--list {
+    padding-bottom: var(--section);
+}
+/* ---- Our Team: one person to a row, photograph left, words right -------------- */
+
+.ph--3x2, .media--3x2 { aspect-ratio: 3 / 2; }
+
+.team {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+
+.team__member {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.team__name {
+    margin: 0 0 0.5rem;
+    padding-top: 0;
+    border-top: 0;
+    font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+    font-weight: 600;
+}
+
+.team__role {
+    margin-bottom: 1rem;
+}
+
+.team__bio {
+    margin-top: 0;
+    color: var(--charcoal);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+}
+
+.team__bio p:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+    .team {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .team__member {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+        gap: clamp(2.5rem, 6vw, 6rem);
+        align-items: start;
+    }
+}
+/* ---- Contact Us: the enquiry form ----------------------------------------------- */
+
+.contact__layout {
+    display: grid;
+    gap: 3rem;
+    padding-bottom: var(--section);
+}
+
+.contact__form {
+    max-width: 46rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 0 1.5rem;
+}
+
+.form-field {
+    margin-bottom: 1.5rem;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.4375rem;
+    color: var(--green);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.form-field label span {
+    color: var(--gold-deep);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    display: block;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid rgba(27, 59, 43, 0.35);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+    color: var(--charcoal);
+    font: inherit;
+}
+
+.form-field textarea {
+    min-height: 9rem;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+    border-color: var(--green);
+}
+
+.form-field__hint {
+    margin: 0.375rem 0 0;
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+}
+
+/* Errors are shown by words and a marked border, never by colour alone. */
+.form-field.has-error input,
+.form-field.has-error select,
+.form-field.has-error textarea {
+    border-color: #A3271C;
+    border-width: 2px;
+}
+
+.form-field__error {
+    margin: 0.375rem 0 0;
+    color: #A3271C;
+    font-size: var(--text-sm);
+    font-weight: 700;
+}
+
+.form-errors {
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #A3271C;
+    background: #FDF3F1;
+    color: #A3271C;
+    font-weight: 700;
+}
+
+.form-errors p {
+    margin: 0;
+}
+
+.form-note {
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+}
+
+/* The honeypot: out of sight and out of the tab order, but present for form-fillers. */
+.form-trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contact__sent {
+    max-width: 40rem;
+}
+
+.contact__sent h2 {
+    font-size: var(--text-h2);
+}
+
+.contact__details ul {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.contact__details li span {
+    display: block;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.contact__details a {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact__layout {
+        grid-template-columns: minmax(0, 46rem) minmax(0, 1fr);
+        gap: clamp(3rem, 6vw, 6rem);
+        align-items: start;
+    }
+
+    .contact__details {
+        padding-left: 2.5rem;
+        border-left: 1px solid var(--line);
+    }
+}
+/* ---- Contact Us: details beside the map ------------------------------------------ */
+
+.contact__details {
+    font-style: normal;
+}
+
+.contact__details ul {
+    gap: 2rem;
+}
+
+.contact__details li span {
+    margin-bottom: 0.375rem;
+}
+
+.contact__details a,
+.contact__details p {
+    margin: 0;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    line-height: 1.4;
+}
+
+.contact__details a:hover {
+    color: var(--gold-deep);
+}
+
+.contact__map {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--cream-deep);
+}
+
+.contact__map iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (min-width: 1024px) {
+    .contact__layout {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: clamp(3rem, 6vw, 6rem);
+    }
+
+    .contact__layout--single {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .contact__details {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+/* ==========================================================================
+   The Journal (blog)
+   ========================================================================== */
+
+.card--post .card__title {
+    font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+    line-height: 1.25;
+}
+
+.card--post .card__text {
+    font-size: var(--text-sm);
+}
+
+/* Index: one column on phones, two on tablets, three on desktop. */
+.card-grid--posts {
+    gap: 3rem 2rem;
+}
+
+.page-blog .section--list {
+    padding-bottom: var(--section);
+}
+
+.journal-latest .section-head {
+    align-items: center;
+}
+
+.page-park .journal-latest {
+    padding-bottom: calc(var(--section) + 2rem);
+}
+
+/* ---- A post ---------------------------------------------------------------- */
+
+.post__head h1 {
+    max-width: 24ch;
+    font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
+}
+
+.post__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    color: var(--gold-deep);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.post__hero {
+    margin-top: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+.post__layout {
+    max-width: calc(46rem + var(--gutter) * 2);
+    padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem) var(--section);
+}
+
+.post__contents {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 1.75rem;
+    border-left: 2px solid var(--gold);
+    background: var(--cream-deep);
+}
+
+.post__contents .eyebrow {
+    margin-bottom: 0.875rem;
+}
+
+.post__contents ol {
+    display: grid;
+    gap: 0.5rem;
+    padding-left: 1.25rem;
+    font-size: var(--text-sm);
+}
+
+.post__body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+}
+
+.post__body h2,
+.post__body h3,
+.post__faqs > h3 {
+    margin: 2.75rem 0 1rem;
+    font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+    scroll-margin-top: 5.5rem;
+}
+
+.post__body h2 {
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.375rem);
+}
+
+.post__body h4 {
+    margin: 2rem 0 0.75rem;
+    font-size: 1.3125rem;
+    scroll-margin-top: 5.5rem;
+}
+
+.post__body h5,
+.post__body h6 {
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.125rem;
+}
+
+.post__body > :first-child {
+    margin-top: 0;
+}
+
+.post__body .marked,
+.post__body .numbered {
+    margin-bottom: 1.5rem;
+}
+
+.post__body blockquote {
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--gold);
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.3125rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.post__body hr {
+    margin: 2.5rem 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+}
+
+.post__body .table-wrap {
+    margin-block: 2rem;
+}
+
+.post__faqs {
+    margin-top: 3rem;
+    scroll-margin-top: 5.5rem;
+}
+
+.post__faqs .faq__q {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+}
+
+.post__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    padding: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+    background: var(--green);
+}
+
+.post__cta-text {
+    flex: 1 1 18rem;
+    margin: 0;
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    line-height: 1.35;
+}
+
+.post__related > .container > h2.eyebrow {
+    margin-bottom: 2rem;
+}
+/* ---- Journal search --------------------------------------------------------- */
+
+.search {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 36rem;
+    margin-top: 2.25rem;
+}
+
+.search__input {
+    flex: 1;
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(27, 59, 43, 0.35);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+    color: var(--charcoal);
+    font: inherit;
+}
+
+.search__input:hover {
+    border-color: var(--green);
+}
+
+.search__input::placeholder {
+    color: var(--charcoal-soft);
+    opacity: 1;
+}
+
+.search__button {
+    flex: none;
+}
+
+.search__status {
+    min-height: 1.75rem;
+    margin: 1rem 0 0;
+    color: var(--charcoal-soft);
+    font-size: var(--text-sm);
+}
+
+.search__status a {
+    margin-left: 0.5rem;
+    font-weight: 700;
+}
+
+.card-grid--posts > [hidden] {
+    display: none;
+}
+/* ---- Scrolled header bar: the navigation sits to the right ---------------------
+   Brand on the left, navigation on the right, so all the spare width becomes
+   the space between them. The name appears beside the emblem only when the
+   window is wide enough to keep that space generous; the breakpoint is in em
+   so it also holds for visitors who have enlarged their browser's text. */
+@media (min-width: 1024px) {
+    .site-nav__list a {
+        white-space: nowrap;
+    }
+
+    .site-header.is-condensed .site-header__inner {
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas: "brand nav";
+        column-gap: 4rem;
+    }
+
+    .site-header.is-condensed .site-nav__list {
+        justify-content: flex-end;
+    }
+
+    .site-header.is-condensed .wordmark__name {
+        display: none;
+    }
+
+    /* The last item's panel opens leftwards, so it stays on screen. */
+    .site-header.is-condensed .site-nav__sub {
+        left: auto;
+        right: 0;
+        transform: translate(0, 0.375rem);
+    }
+
+    .site-header.is-condensed .has-sub:hover > .site-nav__sub,
+    .site-header.is-condensed .has-sub:focus-within > .site-nav__sub {
+        transform: translate(0, 0);
+    }
+}
+
+@media (min-width: 86em) {
+    .site-header.is-condensed .wordmark__name {
+        display: inline;
+    }
+}
