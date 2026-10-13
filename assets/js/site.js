@@ -14,7 +14,20 @@
 
     // Header condenses once the page has moved.
     if (header) {
-        const condense = () => header.classList.toggle('is-condensed', window.scrollY > 24);
+        // Two thresholds, well apart, so the bar never flickers between its
+        // two states when the page rests near the point of change.
+        let condensed = false;
+        const condense = () => {
+            const y = window.scrollY;
+            if (!condensed && y > 90) {
+                condensed = true;
+            } else if (condensed && y < 30) {
+                condensed = false;
+            } else {
+                return;
+            }
+            header.classList.toggle('is-condensed', condensed);
+        };
         window.addEventListener('scroll', condense, { passive: true });
         condense();
     }
@@ -101,8 +114,9 @@
                 } else {
                     film.play();
                 }
-                pause.setAttribute('aria-pressed', String(paused));
-                pause.textContent = paused ? 'Play film' : 'Pause film';
+                // The control is an icon; its name for screen readers says what it will do.
+                pause.setAttribute('aria-label', paused ? 'Play film' : 'Pause film');
+                pause.classList.toggle('is-paused', paused);
             });
         }
     }

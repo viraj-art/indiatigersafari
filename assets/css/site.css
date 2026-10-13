@@ -3352,3 +3352,666 @@ html {
         display: inline;
     }
 }
+/* ---- Film control: a small round pause / play button in the corner ------------- */
+
+.hero__pause {
+    right: var(--gutter);
+    bottom: 1.25rem;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid rgba(250, 248, 245, 0.55);
+    border-radius: 50%;
+    background: rgba(19, 42, 31, 0.45);
+    color: var(--cream);
+    opacity: 0.8;
+    transition: opacity 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.hero__pause[hidden] {
+    display: none;
+}
+
+.hero__pause:hover,
+.hero__pause:focus-visible {
+    background: rgba(19, 42, 31, 0.8);
+    opacity: 1;
+}
+
+/* Two bars while the film plays. */
+.hero__pause::before {
+    content: "";
+    width: 0.625rem;
+    height: 0.75rem;
+    border-inline: 0.1875rem solid currentColor;
+}
+
+/* A triangle once it is paused. */
+.hero__pause.is-paused::before {
+    width: 0;
+    height: 0;
+    margin-left: 0.1875rem;
+    border-block: 0.4375rem solid transparent;
+    border-left: 0.6875rem solid currentColor;
+    border-right: 0;
+}
+/* ---- Journal, more compact: a narrower page and smaller type -------------------- */
+
+/* Only the page's own content narrows; the header and footer keep the site width. */
+.page-blog main .container,
+.page-post .page-head .container,
+.page-post .post__hero,
+.page-post .post__related .container {
+    max-width: calc(64rem + var(--gutter) * 2);
+}
+
+.page-blog .page-head {
+    padding-block: clamp(2rem, 1.25rem + 3vw, 3.5rem) 1rem;
+}
+
+.page-blog .page-head h1 {
+    margin-bottom: 0.625rem;
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+}
+
+.page-blog .page-head .lede {
+    max-width: 38rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.page-blog .search {
+    max-width: 30rem;
+    margin-top: 1.5rem;
+}
+
+.page-blog .search__input,
+.page-blog .search__button {
+    min-height: 2.5rem;
+    padding-block: 0.5rem;
+    font-size: var(--text-sm);
+}
+
+.page-blog .search__button {
+    font-size: 0.6875rem;
+}
+
+.card-grid--posts {
+    gap: 2.25rem 1.5rem;
+}
+
+.card--post .card__body {
+    margin-top: 0.875rem;
+    padding-top: 1rem;
+}
+
+.card--post .card__meta {
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+}
+
+.card--post .card__title {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    line-height: 1.3;
+}
+
+.card--post .card__text {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+.card--post .card__more {
+    margin-top: 0.875rem;
+    font-size: 0.6875rem;
+}
+
+/* A post. */
+.post__head h1 {
+    max-width: 28ch;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.625rem, 1.3rem + 1.5vw, 2.375rem);
+}
+
+.post__layout {
+    max-width: calc(40rem + var(--gutter) * 2);
+}
+
+.post__body {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+}
+
+.post__body h2 {
+    font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+}
+
+.post__body h3,
+.post__faqs > h3 {
+    margin-top: 2.25rem;
+    font-size: clamp(1.1875rem, 1.1rem + 0.5vw, 1.4375rem);
+}
+
+.post__body h4 {
+    font-size: 1.0625rem;
+}
+
+.post__contents {
+    padding: 1.125rem 1.375rem;
+}
+
+.post__contents ol {
+    font-size: 0.8125rem;
+}
+
+.post__faqs .faq__q {
+    font-size: 1rem;
+}
+
+.post__faqs .faq__a {
+    font-size: 0.9375rem;
+}
+
+.post__cta {
+    margin-top: 2.75rem;
+    padding: 1.5rem 1.75rem;
+}
+
+.post__cta-text {
+    font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+}
+/* Post cards: these outrank the larger sizes set for feature cards. */
+.card-grid--3 .card--post.card--feature .card__title {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    line-height: 1.3;
+}
+
+.card--post.card--feature .card__text {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+/* ---- Header: fixed, so changing height never moves the page ---------------------
+   The header used to sit in the page's flow, so when it folded into the
+   slim bar everything beneath jumped up, which could tip it back again.
+   It now floats above the page on every screen, and each page starts with
+   a fixed allowance for it instead. */
+:root {
+    --header-space: 5.3125rem;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+}
+
+main {
+    padding-top: var(--header-space);
+}
+
+/* The home film runs beneath the header, as before. */
+.page-home main {
+    padding-top: 0;
+}
+
+/* The slim bar eases in instead of snapping. */
+@keyframes header-settle {
+    from { opacity: 0; transform: translateY(-0.5rem); }
+    to { opacity: 1; transform: none; }
+}
+
+.site-header.is-condensed .site-header__inner {
+    animation: header-settle 0.28s var(--ease);
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --header-space: 8.8125rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header.is-condensed .site-header__inner {
+        animation: none;
+    }
+}
+
+/* ---- Experiences and National Parks listings, more compact ---------------------- */
+
+.page-experiences main .container,
+.page-parks main .container {
+    max-width: calc(64rem + var(--gutter) * 2);
+}
+
+.page-experiences .page-head,
+.page-parks .page-head {
+    padding-block: clamp(2rem, 1.25rem + 3vw, 3.5rem) 1rem;
+}
+
+.page-experiences .page-head h1,
+.page-parks .page-head h1 {
+    margin-bottom: 0.625rem;
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+}
+
+.page-experiences .page-head .lede,
+.page-parks .page-head .lede {
+    max-width: 38rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.page-experiences .filters,
+.page-parks .filters {
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.page-experiences .filter,
+.page-parks .filter {
+    min-height: 2.25rem;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.6875rem;
+}
+
+.page-experiences .section--list,
+.page-parks .section--list {
+    padding-block: 1.5rem;
+}
+
+.page-experiences .section--list:last-of-type,
+.page-parks .section--list:last-of-type {
+    padding-bottom: var(--section);
+}
+
+.page-experiences .section--list > .container > h2.eyebrow,
+.page-parks .section--list > .container > h2.eyebrow {
+    margin-bottom: 1.25rem;
+}
+
+.page-experiences .card-grid--3,
+.page-parks .card-grid--3 {
+    gap: 2.25rem 1.5rem;
+}
+
+.page-experiences .card__body,
+.page-parks .card__body {
+    margin-top: 0.875rem;
+    padding-top: 1rem;
+}
+
+.page-experiences .card__meta,
+.page-parks .card__meta {
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+}
+
+.page-experiences .card-grid--3 .card--feature .card__title,
+.page-parks .card-grid--3 .card--feature .card__title {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    line-height: 1.3;
+}
+
+.page-experiences .card--feature .card__text,
+.page-parks .card--feature .card__text {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+.page-experiences .card__more,
+.page-parks .card__more,
+.page-experiences .card__soon,
+.page-parks .card__soon {
+    margin-top: 0.875rem;
+    font-size: 0.6875rem;
+}
+/* ==========================================================================
+   Footer: a light, two-band footer
+   Upper: contact, experiences, national parks, other pages.
+   Lower: logo and social links, newsletter, partners and approvals.
+   ========================================================================== */
+
+.foot {
+    color: var(--charcoal);
+    font-size: var(--text-sm);
+}
+
+.foot__upper {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+    background: var(--cream-deep);
+}
+
+.foot__lower {
+    padding-block: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    background: var(--cream);
+}
+
+.foot__columns {
+    display: grid;
+    gap: 2.5rem 2rem;
+}
+
+.foot__heading {
+    margin-bottom: 1.25rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.foot__heading--ruled {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+}
+
+.foot a {
+    color: var(--charcoal);
+    text-decoration: none;
+}
+
+.foot a:hover {
+    color: var(--gold-deep);
+}
+
+.foot__contact {
+    font-style: normal;
+}
+
+.foot__contact h3 {
+    margin: 0 0 0.25rem;
+    color: var(--green);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.foot__contact p {
+    margin: 0 0 1.25rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.foot__list {
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.foot__list a {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    line-height: 1.5;
+}
+
+/* A small chevron before each link. */
+.foot__list a::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    width: 0.375rem;
+    height: 0.375rem;
+    border: solid var(--gold-deep);
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(-45deg);
+}
+
+.foot__bands {
+    display: grid;
+    gap: 2.75rem 2.5rem;
+    align-items: start;
+}
+
+.foot__brand {
+    margin: 0 0 1.25rem;
+    font-size: 1.375rem;
+}
+
+.foot__brand .wordmark__mark {
+    height: 3rem;
+}
+
+.foot__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.foot__social a {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius);
+    background: var(--green);
+    color: var(--cream);
+    transition: background-color 0.2s var(--ease);
+}
+
+.foot__social a:hover {
+    background: var(--gold-deep);
+    color: var(--cream);
+}
+
+.foot__copyright {
+    margin: 0;
+    color: var(--charcoal-soft);
+}
+
+.foot__subscribe p {
+    max-width: 22rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.foot__form {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 22rem;
+}
+
+.foot__form input[type="email"] {
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(27, 59, 43, 0.35);
+    border-radius: var(--radius);
+    background: #FFFFFF;
+    color: var(--charcoal);
+    font: inherit;
+}
+
+.btn--bronze {
+    background: var(--gold-deep);
+    color: #FFFFFF;
+}
+
+.btn--bronze:hover {
+    background: var(--green);
+}
+
+.foot__status {
+    padding: 0.875rem 1rem;
+    border-left: 2px solid var(--gold);
+    background: var(--cream-deep);
+    color: var(--green);
+    font-weight: 700;
+}
+
+.foot__status--error {
+    border-left-color: #A3271C;
+    background: #FDF3F1;
+    color: #A3271C;
+}
+
+.foot__partners ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem 2.25rem;
+    margin-top: 1.75rem;
+}
+
+.foot__partners img {
+    width: auto;
+    max-width: 9rem;
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+.foot__partners span {
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Tour and park pages keep a fixed enquiry bar at the foot of small screens. */
+.page-tour .foot__lower {
+    padding-bottom: 6rem;
+}
+
+@media (min-width: 640px) {
+    .foot__columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .foot__bands {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .foot__partners {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .foot__columns {
+        grid-template-columns: 1fr 1.25fr 1.1fr 0.9fr;
+        gap: 3rem;
+    }
+
+    .foot__bands {
+        grid-template-columns: 1fr 1fr 1.6fr;
+        gap: 3.5rem;
+    }
+
+    .foot__partners {
+        grid-column: auto;
+    }
+
+    .page-tour .foot__lower {
+        padding-bottom: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    }
+}
+/* Partner logos: white backgrounds melt into the cream of the footer. */
+.foot__partners ul {
+    gap: 1.75rem 2.5rem;
+}
+
+.foot__partners img {
+    max-width: 10.5rem;
+    height: 4rem;
+    mix-blend-mode: multiply;
+}
+/* ---- Contact Us, more compact --------------------------------------------------- */
+
+.page-contact main .container {
+    max-width: calc(64rem + var(--gutter) * 2);
+}
+
+.page-contact .page-head {
+    padding-block: clamp(2rem, 1.25rem + 3vw, 3.5rem) 1rem;
+}
+
+.page-contact .page-head h1 {
+    margin-bottom: 0.625rem;
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+}
+
+.page-contact .page-head .lede {
+    max-width: 38rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.page-contact .section--list {
+    padding-block: 1.5rem 0;
+}
+
+.contact__details ul {
+    gap: 1.25rem;
+}
+
+.contact__details li span {
+    margin-bottom: 0.125rem;
+    font-size: 0.6875rem;
+}
+
+.contact__details a,
+.contact__details p {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+}
+
+.contact__map {
+    aspect-ratio: 16 / 10;
+}
+
+@media (min-width: 1024px) {
+    .page-contact .contact__layout {
+        gap: 3rem;
+    }
+}
+/* ---- Links that read as links ---------------------------------------------------- */
+
+/* Contact page: every detail that can be clicked is underlined in gold, with an arrow. */
+.contact__details a {
+    display: inline-block;
+    padding-bottom: 0.125rem;
+    border-bottom: 1px solid var(--gold);
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.contact__details a::after {
+    content: "\2197";
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: var(--gold-deep);
+    font-family: var(--font-body);
+    font-size: 0.8em;
+    transition: transform 0.2s var(--ease);
+}
+
+.contact__details a:hover {
+    border-bottom-color: var(--gold-deep);
+}
+
+.contact__details a:hover::after {
+    transform: translate(2px, -2px);
+}
+
+/* Footer: social links are labelled buttons, not bare icons. */
+.foot__social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    height: auto;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    color: var(--cream);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
