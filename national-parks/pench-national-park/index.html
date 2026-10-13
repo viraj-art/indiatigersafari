@@ -20,9 +20,9 @@
             <link rel="icon" type="image/png" href="/indiatigersafari/assets/img/favicon.png?v=1791818128">
         <link rel="preload" href="/indiatigersafari/assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/indiatigersafari/assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1791885920">
+    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1791887995">
     <script>document.documentElement.classList.add('js')</script>
-    <script src="/indiatigersafari/assets/js/site.js?v=1791883706" defer></script>
+    <script src="/indiatigersafari/assets/js/site.js?v=1791888013" defer></script>
     <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
@@ -457,7 +457,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1791886505.c2dcf055ca83427284e28cfb78d04383260f5a01cd7a3bf68be8a3cc1a151712">
+                        <input type="hidden" name="token" value="1791889200.81a0903fe96730bd015f40d7a79390511be56138466e704ea9c3fd494859c134">
                         <input type="hidden" name="from" value="/national-parks/pench-national-park/">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -482,5 +482,85 @@ New Delhi, Delhi, India</p>
                     </div>
     </div>
 </footer>
+
+        <a class="enquire-tab" href="/indiatigersafari/contact" data-enquire>Speak to a safari specialist</a>
+
+    <dialog class="enquire" aria-labelledby="enquire-h" data-enquire-dialog>
+        <button class="enquire__close" type="button" aria-label="Close" data-enquire-close></button>
+
+        <div data-enquire-body>
+            <h2 id="enquire-h">Speak to a safari specialist</h2>
+            <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
+
+            <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
+                <input type="hidden" name="token" value="1791889200.81a0903fe96730bd015f40d7a79390511be56138466e704ea9c3fd494859c134">
+                <input type="hidden" name="interest" value="" data-enquire-interest>
+                <div class="form-trap" aria-hidden="true">
+                    <label for="enq-website">Leave this field empty</label>
+                    <input id="enq-website" type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-name">Full name <span aria-hidden="true">*</span></label>
+                        <input id="enq-name" name="name" type="text" required autocomplete="name" maxlength="120" aria-describedby="enq-name-e">
+                        <p class="form-field__error" id="enq-name-e" data-error-for="name" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-email">Email <span aria-hidden="true">*</span></label>
+                        <input id="enq-email" name="email" type="email" required autocomplete="email" maxlength="200" aria-describedby="enq-email-e">
+                        <p class="form-field__error" id="enq-email-e" data-error-for="email" hidden></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-phone">Phone</label>
+                        <input id="enq-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="With country code" aria-describedby="enq-phone-e">
+                        <p class="form-field__error" id="enq-phone-e" data-error-for="phone" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-country">Country</label>
+                        <input id="enq-country" name="country" type="text" autocomplete="country-name" maxlength="80">
+                    </div>
+                </div>
+                <fieldset class="form-choice">
+                    <legend>Preferred mode of communication</legend>
+                    <label><input type="radio" name="contactMethod" value="WhatsApp"> WhatsApp</label>
+                    <label><input type="radio" name="contactMethod" value="Email" checked> Email</label>
+                    <label><input type="radio" name="contactMethod" value="Phone"> Phone</label>
+                </fieldset>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-dates">Estimated travel dates</label>
+                        <input id="enq-dates" name="travelWindow" type="text" maxlength="120" placeholder="For example: February 2027">
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-people">Number of people travelling</label>
+                        <input id="enq-people" name="partySize" type="number" min="1" max="99" inputmode="numeric" aria-describedby="enq-people-e">
+                        <p class="form-field__error" id="enq-people-e" data-error-for="partySize" hidden></p>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="enq-message">Message</label>
+                    <textarea id="enq-message" name="message" rows="3" maxlength="3000"></textarea>
+                </div>
+
+                <p class="form-errors" role="alert" data-error-for="form" hidden></p>
+                <button class="btn btn--green enquire__send" type="submit">Send enquiry</button>
+            </form>
+
+                            <p class="enquire__or"><span>or</span></p>
+                <a class="btn enquire__whatsapp" href="https://wa.me/919283900139?text=Hello%2C%20I%20would%20like%20to%20speak%20to%20a%20safari%20specialist." target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3.5a8.4 8.4 0 0 0-7.2 12.800L3.600 20.500l4.300-1.100A8.400 8.400 0 1 0 12 3.500zm0 1.700a6.700 6.700 0 1 1-3.400 12.500l-.400-.200-2.300.600.600-2.200-.300-.400A6.700 6.700 0 0 1 12 5.200zm-2.700 3.300c-.200 0-.500.100-.700.400-.300.300-.900.900-.900 2.100s.900 2.400 1 2.600c.100.200 1.800 2.700 4.300 3.700 2.100.800 2.500.700 3 .600.500 0 1.500-.600 1.700-1.200.200-.600.200-1.100.100-1.200l-.500-.300-1.700-.800c-.200-.100-.400-.100-.600.100l-.800 1c-.100.200-.300.200-.500.100-.300-.100-1.100-.400-2.100-1.300-.800-.700-1.300-1.500-1.400-1.800-.200-.200 0-.400.100-.500l.400-.500.200-.400v-.400l-.800-1.900c-.200-.400-.400-.400-.500-.400z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                    </div>
+
+        <div class="enquire__done" data-enquire-done tabindex="-1" hidden>
+            <h2>Thank you</h2>
+            <p class="enquire__lede">Your enquiry is with our safari specialists, who will be in touch shortly to begin shaping your bespoke, curated journey.</p>
+            <button class="btn btn--outline" type="button" data-enquire-close>Close</button>
+        </div>
+    </dialog>
 </body>
 </html>

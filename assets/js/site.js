@@ -223,6 +223,102 @@
         }
     }
 
+    // "Speak to a safari specialist": the side tab, and the enquiry buttons on
+    // tour and park pages, open a pop-up with a short form and a WhatsApp link.
+    const enquire = document.querySelector('[data-enquire-dialog]');
+    if (enquire && typeof enquire.showModal === 'function') {
+        const form = enquire.querySelector('[data-enquire-form]');
+        const body = enquire.querySelector('[data-enquire-body]');
+        const done = enquire.querySelector('[data-enquire-done]');
+        const interest = enquire.querySelector('[data-enquire-interest]');
+        const send = form.querySelector('[type="submit"]');
+
+        const clearErrors = () => {
+            form.querySelectorAll('[data-error-for]').forEach((el) => {
+                el.hidden = true;
+                el.textContent = '';
+            });
+            form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+        };
+
+        document.addEventListener('click', (event) => {
+            const opener = event.target.closest('[data-enquire], .tour-bar a, .tour-aside__cta, .hero .btn');
+            if (!opener) {
+                return;
+            }
+            event.preventDefault();
+            clearErrors();
+            body.hidden = false;
+            done.hidden = true;
+            // Tell the specialists which page the visitor was reading.
+            interest.value = (document.querySelector('h1')?.textContent || document.title).trim();
+            enquire.showModal();
+        });
+
+        enquire.addEventListener('click', (event) => {
+            // A click on the dimmed area outside the panel, or on a close button.
+            if (event.target === enquire || event.target.closest('[data-enquire-close]')) {
+                enquire.close();
+            }
+        });
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            clearErrors();
+            send.disabled = true;
+            send.textContent = 'Sending…';
+            let result = { ok: false, errors: { form: 'Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.' } };
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'X-Requested-With': 'fetch', Accept: 'application/json' },
+                });
+                result = await response.json();
+            } catch (error) { /* the message above is shown */ }
+            send.disabled = false;
+            send.textContent = 'Send enquiry';
+
+            if (result.ok) {
+                form.reset();
+                body.hidden = true;
+                done.hidden = false;
+                done.focus();
+                return;
+            }
+            let first = null;
+            Object.entries(result.errors || {}).forEach(([field, message]) => {
+                const note = form.querySelector(`[data-error-for="${field}"]`);
+                if (note) {
+                    note.textContent = message;
+                    note.hidden = false;
+                }
+                const input = form.elements[field];
+                if (input && input.setAttribute) {
+                    input.setAttribute('aria-invalid', 'true');
+                    first = first || input;
+                }
+            });
+            if (first) {
+                first.focus();
+            }
+        });
+    }
+
+    // Home page: the side tab stays away while the film fills the screen, and
+    // appears once the film has mostly scrolled out of view.
+    const sideTab = document.querySelector('.enquire-tab');
+    const filmSection = document.querySelector('.page-home .hero');
+    if (sideTab && filmSection) {
+        const placeTab = () => {
+            // Shown once no more than the last quarter of the film is still on screen.
+            sideTab.classList.toggle('is-shown', filmSection.getBoundingClientRect().bottom < window.innerHeight * 0.25);
+        };
+        window.addEventListener('scroll', placeTab, { passive: true });
+        window.addEventListener('resize', placeTab);
+        placeTab();
+    }
+
     // Sections ease in as they enter view.
     const reveals = document.querySelectorAll('.reveal');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
