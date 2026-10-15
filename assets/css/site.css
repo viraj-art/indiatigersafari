@@ -5004,3 +5004,122 @@ main {
         display: none;
     }
 }
+
+/* ---- "Speak to a safari specialist": a small pill on phones and tablets ------------------
+   Below 1024 px every page (tour pages included) shows one compact "Enquire" pill in the
+   bottom-right corner instead of a wide tab or a full-width bar, so it no longer covers
+   the text. Larger screens keep the tab on the right-hand edge. */
+.enquire-tab__short,
+.enquire-tab__icon {
+    display: none;
+}
+
+@media (max-width: 1023.98px) {
+    .enquire-tab,
+    .page-tour .enquire-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        right: 0.875rem;
+        bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px));
+        min-height: 2.75rem;
+        padding: 0.5rem 1rem 0.5rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+    }
+
+    .enquire-tab__icon,
+    .enquire-tab__short {
+        display: inline-block;
+    }
+
+    .enquire-tab__long {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    /* The pill replaces the full-width bar tour and park pages used to keep at the foot. */
+    .tour-bar {
+        display: none;
+    }
+
+    .page-tour .site-footer {
+        padding-bottom: 0;
+    }
+}
+
+/* ---- Enquiry form at the end of every page, above the footer links ------------------- */
+.foot-enquire {
+    padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+    background: var(--green);
+    color: var(--cream);
+}
+
+.foot-enquire__inner {
+    display: grid;
+    gap: 2rem 4rem;
+    align-items: start;
+}
+
+.foot-enquire h2 {
+    max-width: 18ch;
+    margin: 0 0 1rem;
+    color: var(--cream);
+    font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+}
+
+.foot-enquire__intro p {
+    max-width: 34rem;
+    margin: 0;
+    color: rgba(250, 248, 245, 0.85);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+}
+
+.foot-enquire .form-field label {
+    color: var(--cream);
+}
+
+.foot-enquire .form-field label span {
+    color: var(--gold);
+}
+
+.foot-enquire .form-field input,
+.foot-enquire .form-field textarea {
+    border-color: rgba(250, 248, 245, 0.35);
+}
+
+.foot-enquire .form-field textarea {
+    min-height: 6.5rem;
+}
+
+.foot-enquire .form-field__error {
+    color: #F4C7B8;
+}
+
+.foot-enquire__sent {
+    padding: 1.5rem;
+    border-top: 2px solid var(--gold);
+    background: rgba(250, 248, 245, 0.06);
+}
+
+.foot-enquire__sent h3 {
+    color: var(--cream);
+}
+
+@media (min-width: 40rem) {
+    .foot-enquire .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 64rem) {
+    .foot-enquire__inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    }
+}

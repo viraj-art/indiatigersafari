@@ -138,6 +138,51 @@
         }
     }
 
+    // The enquiry form at the end of every page: sent to /enquire and answered in place.
+    document.querySelectorAll('[data-inline-enquire]').forEach((form) => {
+        const sent = form.parentElement.querySelector('[data-inline-sent]');
+        const send = form.querySelector('[type="submit"]');
+        const interest = form.querySelector('[data-inline-interest]');
+        // Tell the specialists which page the visitor was reading.
+        const heading = document.querySelector('h1');
+        if (interest && heading && heading.textContent.trim()) {
+            interest.value = heading.textContent.trim().slice(0, 160);
+        }
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            form.querySelectorAll('[data-error-for]').forEach((el) => { el.hidden = true; el.textContent = ''; });
+            form.querySelectorAll('.has-error').forEach((el) => el.classList.remove('has-error'));
+            form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+            send.disabled = true;
+            send.textContent = 'Sending…';
+            let result = { ok: false, errors: { form: 'Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.' } };
+            try {
+                const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'X-Requested-With': 'fetch', Accept: 'application/json' } });
+                result = await response.json();
+            } catch (error) { /* the message above is shown */ }
+            send.disabled = false;
+            send.textContent = 'Send enquiry';
+            if (result.ok) {
+                form.hidden = true;
+                sent.hidden = false;
+                sent.focus();
+                return;
+            }
+            let first = null;
+            Object.entries(result.errors || {}).forEach(([field, message]) => {
+                const note = form.querySelector(`[data-error-for="${field}"]`);
+                if (note) { note.textContent = message; note.hidden = false; }
+                const input = form.elements[field];
+                if (input && input.setAttribute) {
+                    input.setAttribute('aria-invalid', 'true');
+                    input.closest('.form-field')?.classList.add('has-error');
+                    first = first || input;
+                }
+            });
+            first?.focus();
+        });
+    });
+
     // Our Team on phones: long biographies fold to five lines behind "Read more".
     const phone = window.matchMedia('(max-width: 767.98px)');
     document.querySelectorAll('.page-team .team__bio').forEach((bio, i) => {
