@@ -130,8 +130,27 @@
         }
     }
 
-    // Sliding strips (home page experiences and parks): previous / next move by about a screenful,
-    // and each arrow rests at its end of the strip.
+    // Sliding rows. Every group of more than one photograph (card grids, photo pairs and trios, the
+    // About gallery, tour stays) is a swipeable row; larger screens also get previous / next arrows
+    // beneath it. The home page strips have their arrows in the section heading already.
+    const rowSelector = '.card-grid, .tour-figures--pair, .tour-figures--three, .about-gallery, .stays, .alternatives';
+    const arrow = (d) => `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`;
+    let rowCount = 0;
+    document.querySelectorAll(rowSelector).forEach((row) => {
+        if (row.children.length < 2) {
+            return;
+        }
+        row.id = row.id || `slide-row-${++rowCount}`;
+        const controls = document.createElement('div');
+        controls.className = 'strip-controls strip-controls--after';
+        controls.dataset.stripControls = row.id;
+        controls.hidden = true;
+        controls.innerHTML = `<button type="button" class="strip-controls__btn" data-strip-prev aria-controls="${row.id}" aria-label="Scroll back">${arrow('M15 5l-7 7 7 7')}</button>`
+            + `<button type="button" class="strip-controls__btn" data-strip-next aria-controls="${row.id}" aria-label="Scroll for more">${arrow('M9 5l7 7-7 7')}</button>`;
+        row.after(controls);
+    });
+
+    // Previous / next move by about a screenful, and each arrow rests at its end of the row.
     document.querySelectorAll('[data-strip-controls]').forEach((controls) => {
         const strip = document.getElementById(controls.dataset.stripControls);
         if (!strip) {
@@ -155,6 +174,10 @@
             timer = setTimeout(update, 60);
         }, { passive: true });
         window.addEventListener('resize', update);
+        // Rows that start hidden (a filtered group, a closed section) are measured again once they show.
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(update).observe(strip);
+        }
         update();
     });
 
