@@ -4900,3 +4900,65 @@ main {
         padding-block: 0.3rem;
     }
 }
+
+/* ---- Our Team on phones ------------------------------------------------------------
+   Desktop keeps its portrait-beside-text spread. On phones the portrait sat beside the
+   biography and squeezed it into a very narrow column; now each person is a stacked card:
+   portrait, name and role centred, the biography at full width and folded to five lines
+   behind "Read more" (added by site.js; without it the whole biography shows). */
+@media (max-width: 767.98px) {
+    .page-team .team__member {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 1rem;
+        padding-block: 2rem;
+    }
+
+    .page-team .team__photo {
+        width: 8.5rem;
+    }
+
+    .page-team .team__text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-team .team__bio {
+        max-width: none;
+        text-align: left;
+    }
+
+    .page-team .team__bio.is-folded {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+        overflow: hidden;
+    }
+
+    .page-team .team__bio.is-folded > p {
+        display: inline;
+    }
+
+    .page-team .team__more {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        margin-top: 0.25rem;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--green);
+        font: 700 0.875rem var(--font-body);
+        text-decoration: underline;
+        text-decoration-color: var(--gold);
+        text-underline-offset: 0.25em;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-team .team__more {
+        display: none;
+    }
+}

@@ -138,6 +138,32 @@
         }
     }
 
+    // Our Team on phones: long biographies fold to five lines behind "Read more".
+    const phone = window.matchMedia('(max-width: 767.98px)');
+    document.querySelectorAll('.page-team .team__bio').forEach((bio, i) => {
+        const more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'team__more';
+        bio.id = bio.id || `team-bio-${i + 1}`;
+        more.setAttribute('aria-controls', bio.id);
+        bio.after(more);
+        let open = false;
+        const sync = () => {
+            bio.classList.toggle('is-folded', phone.matches && !open);
+            // Only offer the button where the text is actually longer than five lines.
+            const overflowing = phone.matches && (open || bio.scrollHeight > bio.clientHeight + 4);
+            more.hidden = !overflowing;
+            more.textContent = open ? 'Read less' : 'Read more';
+            more.setAttribute('aria-expanded', String(open));
+        };
+        more.addEventListener('click', () => {
+            open = !open;
+            sync();
+        });
+        phone.addEventListener ? phone.addEventListener('change', sync) : phone.addListener(sync);
+        sync();
+    });
+
     // Sliding rows. Every group of more than one photograph (card grids, photo pairs and trios, the
     // About gallery, tour stays) is a swipeable row; larger screens also get previous / next arrows
     // beneath it. The home page strips have their arrows in the section heading already.
