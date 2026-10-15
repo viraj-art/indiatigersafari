@@ -44,6 +44,70 @@
     var initial = new URL(window.location.href).searchParams.get('collection');
     if (initial) setCollection(initial, false);
 
+    /* ---- Photograph slider: swipe, arrows, dots and arrow keys; it never moves on its own ---- */
+    Array.prototype.forEach.call(document.querySelectorAll('[data-sp-slider]'), function (slider) {
+        var track = slider.querySelector('[data-sp-track]');
+        var slides = track.children;
+        var controls = slider.querySelector('[data-sp-controls]');
+        var prev = slider.querySelector('[data-sp-prev]');
+        var next = slider.querySelector('[data-sp-next]');
+        var dots = slider.querySelectorAll('[data-sp-dot]');
+        var count = slider.querySelector('[data-sp-count]');
+        if (!slides.length) return;
+        controls.hidden = false;
+        var current = 0;
+
+        var settling = null;   // set while a button or key move is still sliding into place
+        function show(i) {
+            i = Math.max(0, Math.min(slides.length - 1, i));
+            mark(i);
+            settling = i;
+            track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+        // After a swipe, the dots and counter follow the slide in view.
+        function sync() {
+            var i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+            i = Math.max(0, Math.min(slides.length - 1, i));
+            if (settling !== null) {
+                if (i !== settling) return;   // still on its way to the chosen slide
+                settling = null;
+            }
+            mark(i);
+        }
+        function mark(i) {
+            if (i === current) return;
+            current = i;
+            count.textContent = String(i + 1);
+            Array.prototype.forEach.call(dots, function (d, n) {
+                if (n === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+            });
+            Array.prototype.forEach.call(slides, function (s, n) { s.setAttribute('aria-hidden', n === i ? 'false' : 'true'); });
+            prev.disabled = i === 0;
+            next.disabled = i === slides.length - 1;
+        }
+        var pending = null;
+        track.addEventListener('scroll', function () {
+            clearTimeout(pending);
+            pending = setTimeout(sync, 80);
+        }, { passive: true });
+        // A swipe that is cut short should not leave the controls waiting for a slide it never reaches.
+        track.addEventListener('pointerdown', function () { settling = null; }, { passive: true });
+        track.addEventListener('touchstart', function () { settling = null; }, { passive: true });
+        prev.addEventListener('click', function () { show(current - 1); });
+        next.addEventListener('click', function () { show(current + 1); });
+        Array.prototype.forEach.call(dots, function (d) {
+            d.addEventListener('click', function () { show(parseInt(d.getAttribute('data-sp-dot'), 10)); });
+        });
+        slider.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+        });
+        // Keep the same photograph in view when the screen is rotated or resized.
+        window.addEventListener('resize', function () { track.scrollLeft = current * track.clientWidth; });
+        current = -1;
+        mark(0);
+    });
+
     /* ---- Day by day: expand all / collapse all ---- */
     var days = document.querySelectorAll('.sp-day');
     var toggleAll = document.querySelector('[data-sp-toggle-all]');

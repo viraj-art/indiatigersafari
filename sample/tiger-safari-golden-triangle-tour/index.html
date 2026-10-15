@@ -303,7 +303,7 @@
 </header>
 
 <main id="main" tabindex="-1">
-<link rel="stylesheet" href="/indiatigersafari/assets/css/sp-sample.css?v=1792073582">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/sp-sample.css?v=1792077836">
 
 <article class="sp">
     <!-- 1. First screen -->
@@ -321,7 +321,39 @@
             <p class="tour-head__note sp-standfirst"><em>This itinerary is completely customisable, including accommodation that is not on our list. Speak to our safari specialists and they will design a fully customised journey around a romantic dinner in the forest, a family adventure or a serious wildlife photography expedition.</em></p>
         </div>
         <div class="container tour-head__media">
-            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="Bengal tiger walking past ruins in Ranthambore National Park"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography</span></div>        </div>
+            <!-- Photograph slider: the five supplied photograph slots, hero first. Swipe on phones; arrows,
+                 dots and the keyboard elsewhere. Never moves on its own. Without the script it still scrolls sideways. -->
+            <section class="sp-slider" data-sp-slider aria-roledescription="carousel" aria-label="Photographs of this journey">
+                <ul class="sp-slider__track" data-sp-track tabindex="0">
+                                            <li class="sp-slider__slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="Bengal tiger walking past ruins in Ranthambore National Park"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography: Bengal tiger walking past ruins in Ranthambore National Park</span></div>                        </li>
+                                            <li class="sp-slider__slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
+                            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="Taj Mahal at sunrise from the gardens"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography: Taj Mahal at sunrise from the gardens</span></div>                        </li>
+                                            <li class="sp-slider__slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
+                            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="Amber Fort above Maota Lake in Jaipur"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography: Amber Fort above Maota Lake in Jaipur</span></div>                        </li>
+                                            <li class="sp-slider__slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
+                            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="guests on a private game drive in Ranthambore"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography: guests on a private game drive in Ranthambore</span></div>                        </li>
+                                            <li class="sp-slider__slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
+                            <div class="sp-photo sp-photo--hero"><div class="ph ph--21x9" role="img" aria-label="tented suite at a luxury camp beside the park"></div><span class="sp-photo__label" aria-hidden="true">Replace with photography: tented suite at a luxury camp beside the park</span></div>                        </li>
+                                    </ul>
+                <div class="sp-slider__controls" data-sp-controls hidden>
+                    <button class="sp-slider__arrow" type="button" data-sp-prev aria-label="Previous photograph">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                    </button>
+                    <div class="sp-slider__dots">
+                                                    <button class="sp-slider__dot" type="button" data-sp-dot="0" aria-label="Photograph 1" aria-current="true"></button>
+                                                    <button class="sp-slider__dot" type="button" data-sp-dot="1" aria-label="Photograph 2"></button>
+                                                    <button class="sp-slider__dot" type="button" data-sp-dot="2" aria-label="Photograph 3"></button>
+                                                    <button class="sp-slider__dot" type="button" data-sp-dot="3" aria-label="Photograph 4"></button>
+                                                    <button class="sp-slider__dot" type="button" data-sp-dot="4" aria-label="Photograph 5"></button>
+                                            </div>
+                    <p class="sp-slider__count" aria-live="polite"><span data-sp-count>1</span> / 5</p>
+                    <button class="sp-slider__arrow" type="button" data-sp-next aria-label="Next photograph">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                    </button>
+                </div>
+            </section>
+        </div>
         <div class="container">
             <dl class="sp-glance">
                                     <div class="sp-glance__item">
@@ -534,7 +566,7 @@
                 </table>
             </div>
 
-            <div class="sp-photo sp-photo--wide"><div class="ph ph--16x9" role="img" aria-label="tented suite at a luxury camp beside the park"></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>        </section>
+        </section>
 
         <!-- 6. Day by day -->
         <section class="sp-section" id="sp-days" aria-labelledby="sp-days-h">
@@ -542,7 +574,7 @@
                 <h2 id="sp-days-h">Tiger Safari &amp; Golden Triangle Itinerary: Day by Day</h2>
                 <button class="sp-toggle-all" type="button" data-sp-toggle-all hidden>Expand all</button>
             </div>
-                        <div class="sp-days">
+            <div class="sp-days">
                                     <details class="sp-day" id="day-1" open>
                         <summary>
                             <h3 class="sp-day__title">Day 1: Arrive in Delhi</h3>
@@ -605,7 +637,7 @@
                                                                     </span>
                                                     </summary>
                         <div class="sp-day__body">
-                            <div class="sp-photo sp-photo--day"><div class="ph ph--3x2" role="img" aria-label="Taj Mahal at sunrise from the gardens"></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
+                            <div class="sp-photo sp-photo--day" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
                                 See the Taj Mahal when it opens, in soft light and thin crowds. Then drive to Jaipur via Fatehpur Sikri, Akbar&#039;s abandoned capital, and the Chand Baori stepwell at Abhaneri.                            </p>
                         </div>
                     </details>
@@ -621,7 +653,7 @@
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
-                            <div class="sp-photo sp-photo--day"><div class="ph ph--3x2" role="img" aria-label="Amber Fort above Maota Lake in Jaipur"></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
+                            <div class="sp-photo sp-photo--day" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
                                 Amber Fort before the heat, then the City Palace, Jantar Mantar and the Hawa Mahal. The late afternoon is at leisure, or with block-printing and jewellery artisans.                            </p>
                         </div>
                     </details>
@@ -654,7 +686,7 @@
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
-                            <div class="sp-photo sp-photo--day"><div class="ph ph--3x2" role="img" aria-label="guests on a private game drive in Ranthambore"></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
+                            <div class="sp-photo sp-photo--day" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <p>
                                 Two tiger safari game drives, one at first light and one in the afternoon, with an expert naturalist. Ranthambore is one of the few reserves where tigers are regularly seen in daylight around lakes, ruins and open grassland.                            </p>
                         </div>
                     </details>
@@ -845,7 +877,7 @@
             <div class="sp-slot" data-sp-slot="specialist" hidden aria-hidden="true"></div>
 
             <form class="sp-form" method="post" action="/indiatigersafari/enquire" novalidate data-sp-form>
-                <input type="hidden" name="token" value="1792077226.cdfe1b6f9fb0fcdaa929e8e7355470ecc459672e9db24074718f08058d08d7e7">
+                <input type="hidden" name="token" value="1792077994.9b4aa77afa812ed18f9d37334dde4439f15cf146c05d74e4ca75bd2b633e48b3">
                 <div class="form-trap" aria-hidden="true">
                     <label for="sp-website">Leave this field empty</label>
                     <input id="sp-website" type="text" name="website" tabindex="-1" autocomplete="off">
@@ -902,7 +934,7 @@
     <a class="btn btn--gold sp-bar__btn" href="#sp-enquire">Speak to a safari specialist</a>
 </div>
 
-<script src="/indiatigersafari/assets/js/sp-sample.js?v=1792073583" defer></script>
+<script src="/indiatigersafari/assets/js/sp-sample.js?v=1792077926" defer></script>
 </main>
 
 <footer class="foot">
@@ -1012,7 +1044,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1792077226.cdfe1b6f9fb0fcdaa929e8e7355470ecc459672e9db24074718f08058d08d7e7">
+                        <input type="hidden" name="token" value="1792077994.9b4aa77afa812ed18f9d37334dde4439f15cf146c05d74e4ca75bd2b633e48b3">
                         <input type="hidden" name="from" value="/sample/tiger-safari-golden-triangle-tour">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -1047,7 +1079,7 @@ New Delhi, Delhi, India</p>
             <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
 
             <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
-                <input type="hidden" name="token" value="1792077226.cdfe1b6f9fb0fcdaa929e8e7355470ecc459672e9db24074718f08058d08d7e7">
+                <input type="hidden" name="token" value="1792077994.9b4aa77afa812ed18f9d37334dde4439f15cf146c05d74e4ca75bd2b633e48b3">
                 <input type="hidden" name="interest" value="" data-enquire-interest>
                 <div class="form-trap" aria-hidden="true">
                     <label for="enq-website">Leave this field empty</label>
