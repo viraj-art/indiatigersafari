@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Route Map Sample | India Tiger Safari</title>
+    <meta name="description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <link rel="canonical" href="https://viraj-art.github.io/indiatigersafari/indiatigersafari/map-sample">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="India Tiger Safari">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Route Map Sample | India Tiger Safari">
+    <meta property="og:description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <meta property="og:url" content="https://viraj-art.github.io/indiatigersafari/indiatigersafari/map-sample">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Route Map Sample | India Tiger Safari">
+    <meta name="twitter:description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <meta name="theme-color" content="#1B3B2B">
+            <link rel="icon" type="image/png" href="/indiatigersafari/assets/img/favicon.png?v=1791818128">
+        <link rel="preload" href="/indiatigersafari/assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/indiatigersafari/assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1791989307">
+    <script>document.documentElement.classList.add('js')</script>
+    <script src="/indiatigersafari/assets/js/site.js?v=1791888013" defer></script>
+    <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "TravelAgency",
+            "@id": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/#organization",
+            "name": "India Tiger Safari",
+            "url": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/",
+            "description": "Private, bespoke tiger safaris in India's finest reserves, with handpicked lodges and expert naturalists. Every journey contributes to TOFTigers.",
+            "areaServed": [
+                "GB",
+                "US"
+            ],
+            "email": "Inquiry@indiatigersafari.com",
+            "telephone": "+91 9283900139",
+            "address": "202, Manisha Building, Nehru Place,, New Delhi, Delhi, India",
+            "sameAs": [
+                "https://www.instagram.com/indiatigersafari/"
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/#website",
+            "name": "India Tiger Safari",
+            "url": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/",
+            "inLanguage": "en-GB",
+            "publisher": {
+                "@id": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/#organization"
+            }
+        }
+    ]
+}</script>
+</head>
+<body class="page-map-sample">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+        <a class="wordmark" href="/indiatigersafari/" aria-label="India Tiger Safari, home">
+                            <img class="wordmark__mark" src="/indiatigersafari/assets/img/logo-emblem.png?v=1791818126" alt="" width="242" height="192">
+                        <span class="wordmark__name">India Tiger Safari</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+            <span class="nav-toggle__label" data-nav-label>Menu</span>
+            <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+            <ul class="site-nav__list">
+                                                                                <li><a href="/indiatigersafari/tours">Experiences</a></li>
+                                                                                                    <li><a href="/indiatigersafari/national-parks/">National Parks</a></li>
+                                                                                                    <li><a href="/indiatigersafari/#conservation">Conservation</a></li>
+                                                                                                    <li><a href="/indiatigersafari/blog">Blog</a></li>
+                                                                                                    <li><a href="/indiatigersafari/contact">Contact Us</a></li>
+                                                                                                                            <li class="has-sub">
+                            <a href="/indiatigersafari/about">About Us</a>
+                            <ul class="site-nav__sub" aria-label="About Us">
+                                                                    <li><a href="/indiatigersafari/about">Our Story</a></li>
+                                                                    <li><a href="/indiatigersafari/our-team">Our Team</a></li>
+                                                            </ul>
+                        </li>
+                                                </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+<link rel="stylesheet" href="/indiatigersafari/assets/vendor/leaflet/leaflet.min.css">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/route-map.css?v=1792069364">
+
+<article class="route-map">
+    <header class="page-head">
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/indiatigersafari/">Home</a></li>
+                    <li aria-current="page">Route map sample</li>
+                </ol>
+            </nav>
+            <p class="eyebrow">Sample for review</p>
+            <h1>Delhi, Agra, Jaipur &amp; Ranthambore</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="route-map__frame">
+            <div class="route-map__map" id="route-map" data-geo="/indiatigersafari/assets/data/" role="region" aria-label="Map of the route from Delhi to Agra, Jaipur, Ranthambore and back to Delhi"></div>
+            <div class="route-map__inset" aria-hidden="true">
+                <span class="route-map__inset-label">India</span>
+                <div class="route-map__inset-map" id="route-inset"></div>
+            </div>
+            <button class="btn btn--outline route-map__toggle" type="button" data-map-toggle>Show all of India</button>
+        </div>
+
+        <ol class="route-legs">
+                            <li>
+                    <span class="route-legs__n" aria-hidden="true">1</span>
+                    <p class="route-legs__title">Delhi to Agra</p>
+                    <p class="route-legs__meta">By road, about 4 hours (230 km)</p>
+                </li>
+                            <li>
+                    <span class="route-legs__n" aria-hidden="true">2</span>
+                    <p class="route-legs__title">Agra to Jaipur</p>
+                    <p class="route-legs__meta">By road, about 5 hours (240 km), via Fatehpur Sikri and Abhaneri</p>
+                </li>
+                            <li>
+                    <span class="route-legs__n" aria-hidden="true">3</span>
+                    <p class="route-legs__title">Jaipur to Ranthambore</p>
+                    <p class="route-legs__meta">By road, about 4 hours (180 km)</p>
+                </li>
+                            <li>
+                    <span class="route-legs__n" aria-hidden="true">4</span>
+                    <p class="route-legs__title">Ranthambore to Delhi</p>
+                    <p class="route-legs__meta">By road, about 7 hours</p>
+                </li>
+                    </ol>
+        <p class="route-map__note">Lines on the map join the stops in order and are indicative only; they do not follow the roads.</p>
+    </div>
+</article>
+
+<script type="application/json" id="route-data">{"name":"Delhi, Agra, Jaipur and Ranthambore","stops":[{"id":"delhi","name":"Delhi","lat":28.6139,"lng":77.209,"type":"stop","label":"Start and finish"},{"id":"agra","name":"Agra","lat":27.1767,"lng":78.0081,"type":"stop"},{"id":"fatehpur-sikri","name":"Fatehpur Sikri","lat":27.094,"lng":77.6679,"type":"waypoint","note":"On the drive from Agra to Jaipur"},{"id":"abhaneri","name":"Abhaneri","lat":27.007,"lng":76.607,"type":"waypoint","note":"On the drive from Agra to Jaipur"},{"id":"jaipur","name":"Jaipur","lat":26.9124,"lng":75.7873,"type":"stop","labelSide":"bottom"},{"id":"ranthambore","name":"Ranthambore National Park","lat":26.0173,"lng":76.5026,"type":"stop"}],"legs":[{"from":"Delhi","to":"Agra","path":["delhi","agra"],"time":"about 4 hours","distance":"230 km"},{"from":"Agra","to":"Jaipur","via":"Fatehpur Sikri and Abhaneri","path":["agra","fatehpur-sikri","abhaneri","jaipur"],"time":"about 5 hours","distance":"240 km"},{"from":"Jaipur","to":"Ranthambore","path":["jaipur","ranthambore"],"time":"about 4 hours","distance":"180 km"},{"from":"Ranthambore","to":"Delhi","path":["ranthambore","delhi"],"time":"about 7 hours","distance":""}],"states":["Delhi","Uttar Pradesh","Rajasthan"],"stateLabels":[{"name":"Rajasthan","lat":26.4,"lng":74.6},{"name":"Uttar Pradesh","lat":27.75,"lng":78.75}]}</script>
+<script src="/indiatigersafari/assets/vendor/leaflet/leaflet.min.js"></script>
+<script src="/indiatigersafari/assets/js/route-map.js?v=1792069416"></script>
+
+</main>
+
+<footer class="foot">
+    <div class="foot__upper">
+        <div class="container foot__columns">
+            <div class="foot__col">
+                <h2 class="foot__heading">Contact Us</h2>
+                <address class="foot__contact">
+                                            <h3>Office Address</h3>
+                        <p>202, Manisha Building, Nehru Place,<br />
+New Delhi, Delhi, India</p>
+                                                                <h3>Email</h3>
+                        <p><a href="mailto:Inquiry@indiatigersafari.com">Inquiry@indiatigersafari.com</a></p>
+                                                                <h3>Phone</h3>
+                        <p><a href="tel:+919283900139">+91 9283900139</a></p>
+                                    </address>
+            </div>
+
+                            <nav class="foot__col" aria-label="Experiences">
+                    <h2 class="foot__heading">Experiences</h2>
+                    <ul class="foot__list">
+                                                    <li><a href="/indiatigersafari/tours/corbett-kanha-bandhavgarh-tiger-safari">Corbett, Kanha &amp; Bandhavgarh Tiger Safari</a></li>
+                                                    <li><a href="/indiatigersafari/tours/luxury-tiger-safari-holiday-india">Luxury Tiger Safari Holiday in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/pench-kanha-bandhavgarh-tiger-safari">Pench, Kanha &amp; Bandhavgarh Tiger Safari</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-safari-golden-triangle-tour">Tiger Safari &amp; Golden Triangle Tour</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-leopard-safari-india">Tiger &amp; Leopard Safari in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/kabini-tiger-black-panther-safari">Tiger &amp; Black Panther Safari in Kabini</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-safari-temples-taj-mahal-tour">Tiger Safari, Temples &amp; Taj Mahal Tour</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-rhino-safari-india">Tiger &amp; One-Horned Rhino Safari in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-safari-birding-tour-india">Tiger Safari &amp; Birding Tour in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/snow-leopard-safari-ladakh">Snow Leopard Safari in Ladakh</a></li>
+                                                    <li><a href="/indiatigersafari/tours/red-panda-safari-india">Red Panda Safari in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/tiger-asiatic-lion-safari-india">Tiger &amp; Asiatic Lion Safari in India</a></li>
+                                                    <li><a href="/indiatigersafari/tours/ladakh-snow-leopard-safari-extension">Ladakh Snow Leopard Safari Extension</a></li>
+                                                    <li><a href="/indiatigersafari/tours/darjeeling-red-panda-safari-extension">Darjeeling Red Panda Safari Extension</a></li>
+                                                    <li><a href="/indiatigersafari/tours/golden-triangle-tour-extension">Golden Triangle Tour Extension: Delhi, Agra &amp; Jaipur</a></li>
+                                                    <li><a href="/indiatigersafari/tours/keoladeo-birding-extension">Keoladeo Birding Extension: Bharatpur</a></li>
+                                            </ul>
+                </nav>
+            
+                            <nav class="foot__col" aria-label="National parks">
+                    <h2 class="foot__heading">National Parks</h2>
+                    <ul class="foot__list">
+                                                    <li><a href="/indiatigersafari/national-parks/bandhavgarh-national-park/">Bandhavgarh National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/jim-corbett-national-park/">Jim Corbett National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/kanha-national-park/">Kanha National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/ranthambore-national-park/">Ranthambore National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/dudhwa-national-park/">Dudhwa National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/panna-national-park/">Panna National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/pench-national-park/">Pench National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/satpura-national-park/">Satpura National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/tadoba-andhari-tiger-reserve/">Tadoba-Andhari Tiger Reserve</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/hemis-national-park/">Hemis National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/sariska-national-park/">Sariska Tiger Reserve</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/keoladeo/">Keoladeo National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/jawai-leopard-reserve/">Jawai Leopard Reserve</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/gir-national-park/">Gir National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/kaziranga/">Kaziranga National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/manas/">Manas National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/sundarbans/">Sundarbans National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/singalila-national-park/">Singalila National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/nagarhole-national-park/">Nagarhole National Park</a></li>
+                                                    <li><a href="/indiatigersafari/national-parks/periyar-national-park/">Periyar National Park</a></li>
+                                            </ul>
+                </nav>
+            
+            <nav class="foot__col" aria-label="Other pages">
+                <h2 class="foot__heading">Other</h2>
+                <ul class="foot__list">
+                    <li><a href="/indiatigersafari/tours">All Experiences</a></li>
+                    <li><a href="/indiatigersafari/national-parks/">National Park Guides</a></li>
+                    <li><a href="/indiatigersafari/blog">Journal</a></li>
+                    <li><a href="/indiatigersafari/about">Our Story</a></li>
+                    <li><a href="/indiatigersafari/our-team">Our Team</a></li>
+                    <li><a href="/indiatigersafari/contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="foot__lower">
+        <div class="container foot__bands">
+            <div class="foot__follow">
+                <h2 class="foot__heading">Follow Us</h2>
+                <p class="wordmark foot__brand">
+                                            <img class="wordmark__mark" src="/indiatigersafari/assets/img/logo-emblem.png?v=1791818126" alt="" width="242" height="192" loading="lazy">
+                                        <span class="wordmark__name">India Tiger Safari</span>
+                </p>
+                                    <ul class="foot__social" role="list">
+                                                    <li>
+                                <a href="https://www.instagram.com/indiatigersafari/" rel="noopener">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16.8" cy="7.2" r="1.1"/></svg>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="https://wa.me/919283900139" rel="noopener">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3.5a8.4 8.4 0 0 0-7.2 12.800L3.600 20.500l4.300-1.100A8.400 8.400 0 1 0 12 3.500zm0 1.700a6.700 6.700 0 1 1-3.400 12.500l-.400-.200-2.300.600.600-2.200-.300-.400A6.700 6.700 0 0 1 12 5.200zm-2.700 3.300c-.200 0-.500.100-.700.400-.300.300-.900.900-.900 2.100s.900 2.400 1 2.600c.100.200 1.800 2.700 4.300 3.700 2.100.800 2.500.700 3 .600.500 0 1.500-.600 1.700-1.200.200-.600.200-1.100.100-1.200l-.500-.300-1.700-.800c-.200-.100-.400-.100-.600.100l-.800 1c-.100.200-.300.200-.500.100-.300-.100-1.100-.400-2.100-1.300-.800-.700-1.300-1.500-1.400-1.800-.200-.200 0-.400.100-.500l.400-.500.200-.400v-.400l-.800-1.900c-.200-.400-.400-.400-.500-.400z"/></svg>
+                                    <span>WhatsApp</span>
+                                </a>
+                            </li>
+                                            </ul>
+                                <p class="foot__copyright">Copyright &copy; 2026 India Tiger Safari</p>
+            </div>
+
+            <div class="foot__subscribe" id="subscribe">
+                <h2 class="foot__heading">Subscribe</h2>
+                                    <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
+                                        <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
+                        <input type="hidden" name="token" value="1792070162.6f87e34219a5e89f45abeecfad3e564c89e88f0fad6b25c74a6266963dda043a">
+                        <input type="hidden" name="from" value="/map-sample">
+                                                <div class="form-trap" aria-hidden="true">
+                            <label for="sub-website">Leave this field empty</label>
+                            <input id="sub-website" type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <label class="visually-hidden" for="sub-email">Email address</label>
+                        <input id="sub-email" type="email" name="email" placeholder="Email" required autocomplete="email" maxlength="200">
+                        <button class="btn btn--bronze" type="submit">Subscribe</button>
+                    </form>
+                            </div>
+
+                            <div class="foot__partners">
+                    <h2 class="foot__heading foot__heading--ruled">Partners and Approvals</h2>
+                    <ul role="list">
+                                                                                <li><img src="/indiatigersafari/assets/img/partners/toftigers.png?v=1791885219" alt="TOFTigers: Sustaining the wild" loading="lazy"></li>
+                                                                                <li><img src="/indiatigersafari/assets/img/partners/ministry-of-tourism.png?v=1791885259" alt="Ministry of Tourism, Government of India" loading="lazy"></li>
+                                                                                <li><img src="/indiatigersafari/assets/img/partners/atoai.png?v=1791885236" alt="Adventure Tour Operators Association of India (ATOAI)" loading="lazy"></li>
+                                                                                <li><img src="/indiatigersafari/assets/img/partners/pata.png?v=1791895252" alt="Pacific Asia Travel Association (PATA)" loading="lazy"></li>
+                                            </ul>
+                </div>
+                    </div>
+    </div>
+</footer>
+
+        <a class="enquire-tab" href="/indiatigersafari/contact" data-enquire>Speak to a safari specialist</a>
+
+    <dialog class="enquire" aria-labelledby="enquire-h" data-enquire-dialog>
+        <button class="enquire__close" type="button" aria-label="Close" data-enquire-close></button>
+
+        <div data-enquire-body>
+            <h2 id="enquire-h">Speak to a safari specialist</h2>
+            <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
+
+            <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
+                <input type="hidden" name="token" value="1792070162.6f87e34219a5e89f45abeecfad3e564c89e88f0fad6b25c74a6266963dda043a">
+                <input type="hidden" name="interest" value="" data-enquire-interest>
+                <div class="form-trap" aria-hidden="true">
+                    <label for="enq-website">Leave this field empty</label>
+                    <input id="enq-website" type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-name">Full name <span aria-hidden="true">*</span></label>
+                        <input id="enq-name" name="name" type="text" required autocomplete="name" maxlength="120" aria-describedby="enq-name-e">
+                        <p class="form-field__error" id="enq-name-e" data-error-for="name" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-email">Email <span aria-hidden="true">*</span></label>
+                        <input id="enq-email" name="email" type="email" required autocomplete="email" maxlength="200" aria-describedby="enq-email-e">
+                        <p class="form-field__error" id="enq-email-e" data-error-for="email" hidden></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-phone">Phone</label>
+                        <input id="enq-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="With country code" aria-describedby="enq-phone-e">
+                        <p class="form-field__error" id="enq-phone-e" data-error-for="phone" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-country">Country</label>
+                        <input id="enq-country" name="country" type="text" autocomplete="country-name" maxlength="80">
+                    </div>
+                </div>
+                <fieldset class="form-choice">
+                    <legend>Preferred mode of communication</legend>
+                    <label><input type="radio" name="contactMethod" value="WhatsApp"> WhatsApp</label>
+                    <label><input type="radio" name="contactMethod" value="Email" checked> Email</label>
+                    <label><input type="radio" name="contactMethod" value="Phone"> Phone</label>
+                </fieldset>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="enq-dates">Estimated travel dates</label>
+                        <input id="enq-dates" name="travelWindow" type="text" maxlength="120" placeholder="For example: February 2027">
+                    </div>
+                    <div class="form-field">
+                        <label for="enq-people">Number of people travelling</label>
+                        <input id="enq-people" name="partySize" type="number" min="1" max="99" inputmode="numeric" aria-describedby="enq-people-e">
+                        <p class="form-field__error" id="enq-people-e" data-error-for="partySize" hidden></p>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="enq-message">Message</label>
+                    <textarea id="enq-message" name="message" rows="3" maxlength="3000"></textarea>
+                </div>
+
+                <p class="form-errors" role="alert" data-error-for="form" hidden></p>
+                <button class="btn btn--green enquire__send" type="submit">Send enquiry</button>
+            </form>
+
+                            <p class="enquire__or"><span>or</span></p>
+                <a class="btn enquire__whatsapp" href="https://wa.me/919283900139?text=Hello%2C%20I%20would%20like%20to%20speak%20to%20a%20safari%20specialist." target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3.5a8.4 8.4 0 0 0-7.2 12.800L3.600 20.500l4.300-1.100A8.400 8.400 0 1 0 12 3.500zm0 1.700a6.700 6.700 0 1 1-3.400 12.500l-.400-.200-2.300.600.600-2.200-.300-.400A6.700 6.700 0 0 1 12 5.200zm-2.700 3.300c-.200 0-.500.100-.700.400-.300.300-.900.900-.900 2.100s.900 2.400 1 2.600c.100.200 1.800 2.700 4.300 3.700 2.100.800 2.500.700 3 .600.500 0 1.500-.600 1.700-1.200.200-.600.200-1.100.100-1.200l-.500-.300-1.700-.800c-.200-.100-.400-.100-.600.100l-.800 1c-.100.200-.300.200-.500.100-.300-.100-1.100-.400-2.100-1.300-.800-.700-1.300-1.500-1.400-1.800-.200-.200 0-.400.100-.500l.400-.500.200-.400v-.400l-.800-1.900c-.200-.400-.400-.400-.500-.400z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                    </div>
+
+        <div class="enquire__done" data-enquire-done tabindex="-1" hidden>
+            <h2>Thank you</h2>
+            <p class="enquire__lede">Your enquiry is with our safari specialists, who will be in touch shortly to begin shaping your bespoke, curated journey.</p>
+            <button class="btn btn--outline" type="button" data-enquire-close>Close</button>
+        </div>
+    </dialog>
+</body>
+</html>

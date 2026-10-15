@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /*?preview=
 
-Sitemap: https://viraj-art.github.io/indiatigersafari/sitemap.xml
+Sitemap: https://viraj-art.github.io/indiatigersafari/indiatigersafari/sitemap.xml

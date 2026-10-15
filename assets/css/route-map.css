@@ -1,0 +1,44 @@
+/* Route map (trial page /map-sample). Loaded only on pages with a route map, after site.css. */
+
+.route-map { padding-bottom: var(--section); }
+.route-map__frame { position: relative; margin-top: 2rem; border: 1px solid var(--line); background: var(--cream-deep); }
+/* Outside India (sea and neighbours) is a soft blue-grey; India is drawn on top in cream. */
+.route-map__map { height: clamp(26rem, 68vh, 42rem); }
+.route-map .leaflet-container { background: #DCE3E1; font-family: var(--font-body); }
+.route-map__map--no-geo { background: var(--cream-deep); }
+.route-map__map--far .route-map__label,
+.route-map__map--far .route-state { visibility: hidden; }
+.route-state { font: italic 400 0.8125rem/16px var(--font-display); color: var(--gold-deep); text-align: center; letter-spacing: 0.04em; white-space: nowrap; pointer-events: none; }
+.route-map .leaflet-control-attribution { background: rgba(250, 248, 245, 0.85); color: var(--charcoal-soft); font-size: 0.6875rem; }
+.route-map .leaflet-control-attribution a { color: var(--green); }
+
+/* India locator in the corner: the whole country with the route's area outlined. */
+.route-map__inset { position: absolute; right: 0.75rem; bottom: 1.75rem; z-index: 500; width: 6.5rem; height: 7.25rem; border: 1px solid var(--line); background: var(--cream); box-shadow: 0 6px 18px rgba(19, 42, 31, 0.18); }
+.route-map__inset-map { height: 100%; }
+.route-map .route-map__inset-map.leaflet-container { background: #DCE3E1; }
+.route-map__inset-label { position: absolute; left: 0; right: 0; top: 0.35rem; z-index: 600; text-align: center; font: 700 0.625rem/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); pointer-events: none; }
+.route-map__toggle { position: absolute; left: 0.75rem; bottom: 1.75rem; z-index: 500; background: var(--cream); }
+
+/* Markers: numbered stops (Delhi in gold as start and finish), waypoints as small ringed dots. */
+.route-pin { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--green); color: var(--cream); border: 2px solid var(--cream); font: 700 0.8125rem/1 var(--font-body); box-shadow: 0 2px 8px rgba(19, 42, 31, 0.35); }
+.route-pin--home { background: var(--gold); color: var(--green-deep); }
+.route-dot { display: block; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--cream); border: 3px solid var(--gold-deep); }
+.leaflet-tooltip.route-map__label { background: var(--cream); border: 0; border-radius: var(--radius); box-shadow: 0 2px 8px rgba(19, 42, 31, 0.2); color: var(--green); font: 700 0.8125rem/1.2 var(--font-body); padding: 0.3rem 0.55rem; }
+.leaflet-tooltip.route-map__label::before { display: none; }
+.leaflet-tooltip.route-map__label--way { font-weight: 400; font-style: italic; color: var(--charcoal-soft); }
+.route-map .leaflet-popup-content-wrapper { border-radius: var(--radius); }
+.route-map .leaflet-popup-content { font: 0.9375rem/1.5 var(--font-body); color: var(--charcoal); margin: 0.85rem 1rem; }
+.route-map .leaflet-popup-content strong { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 500; color: var(--green); }
+
+/* The legs, written out beneath the map. */
+.route-legs { margin: 2rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.route-legs li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 0.25rem 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.route-legs__n { grid-row: span 2; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--green); color: var(--cream); font: 700 0.8125rem/1 var(--font-body); }
+.route-legs__title { margin: 0; font-family: var(--font-display); font-size: 1.125rem; color: var(--green); }
+.route-legs__meta { margin: 0; color: var(--charcoal-soft); font-size: var(--text-sm); }
+.route-map__note { margin-top: 1.25rem; font-size: var(--text-sm); color: var(--charcoal-soft); }
+
+@media (min-width: 48rem) {
+    .route-legs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
+    .route-map__inset { width: 11.5rem; height: 12.5rem; }
+}
