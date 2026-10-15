@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Route Map Sample | India Tiger Safari</title>
-    <meta name="description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <meta name="description" content="Trial itinerary map: Delhi, Agra, Jaipur and Ranthambore.">
     <link rel="canonical" href="https://viraj-art.github.io/indiatigersafari/indiatigersafari/map-sample">
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="India Tiger Safari">
     <meta property="og:locale" content="en_GB">
     <meta property="og:title" content="Route Map Sample | India Tiger Safari">
-    <meta property="og:description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <meta property="og:description" content="Trial itinerary map: Delhi, Agra, Jaipur and Ranthambore.">
     <meta property="og:url" content="https://viraj-art.github.io/indiatigersafari/indiatigersafari/map-sample">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Route Map Sample | India Tiger Safari">
-    <meta name="twitter:description" content="Trial interactive route map: Delhi, Agra, Jaipur and Ranthambore.">
+    <meta name="twitter:description" content="Trial itinerary map: Delhi, Agra, Jaipur and Ranthambore.">
     <meta name="theme-color" content="#1B3B2B">
             <link rel="icon" type="image/png" href="/indiatigersafari/assets/img/favicon.png?v=1791818128">
         <link rel="preload" href="/indiatigersafari/assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -92,7 +92,7 @@
 
 <main id="main" tabindex="-1">
 <link rel="stylesheet" href="/indiatigersafari/assets/vendor/leaflet/leaflet.min.css">
-<link rel="stylesheet" href="/indiatigersafari/assets/css/route-map.css?v=1792069364">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/route-map.css?v=1792071763">
 
 <article class="route-map">
     <header class="page-head">
@@ -108,45 +108,42 @@
         </div>
     </header>
 
-    <div class="container">
-        <div class="route-map__frame">
-            <div class="route-map__map" id="route-map" data-geo="/indiatigersafari/assets/data/" role="region" aria-label="Map of the route from Delhi to Agra, Jaipur, Ranthambore and back to Delhi"></div>
-            <div class="route-map__inset" aria-hidden="true">
-                <span class="route-map__inset-label">India</span>
-                <div class="route-map__inset-map" id="route-inset"></div>
-            </div>
-            <button class="btn btn--outline route-map__toggle" type="button" data-map-toggle>Show all of India</button>
+    <div class="container route-demo">
+        <section>
+            <p class="route-demo__label">Full width</p>
+            <figure class="route-map__frame" data-route-map data-route="route-data-full" data-geo="/indiatigersafari/assets/data/">
+    <div class="route-map__map" role="img" aria-label="Map of India showing the route: Delhi, 3 nights; then Agra, 1 night; then Jaipur, 2 nights; then Ranthambore National Park, 3 nights; then back to Delhi."></div>
+    <svg class="route-map__north" viewBox="0 0 20 28" aria-hidden="true" focusable="false"><path d="M10 0 L19 26 L10 20 L1 26 Z"/></svg>
+</figure>
+<script type="application/json" id="route-data-full">{"name":"Delhi, Agra, Jaipur and Ranthambore","stops":[{"id":"delhi","n":1,"name":"Delhi","nights":3,"lat":28.6139,"lng":77.209,"callout":[-0.7,-1]},{"id":"agra","n":2,"name":"Agra","nights":1,"lat":27.1767,"lng":78.0081,"callout":[1,-0.25]},{"id":"jaipur","n":3,"name":"Jaipur","nights":2,"lat":26.9124,"lng":75.7873,"callout":[-1,0.6]},{"id":"ranthambore","n":4,"name":"Ranthambore National Park","short":"Ranthambore","nights":3,"lat":26.0173,"lng":76.5026,"callout":[0.15,1],"highlight":true}],"waypoints":[{"id":"fatehpur-sikri","name":"Fatehpur Sikri","lat":27.094,"lng":77.6679},{"id":"abhaneri","name":"Abhaneri","lat":27.007,"lng":76.607}],"legs":[{"path":["delhi","agra"]},{"path":["agra","fatehpur-sikri","abhaneri","jaipur"]},{"path":["jaipur","ranthambore"]},{"path":["ranthambore","delhi"],"return":true}],"seas":[{"name":"Arabian Sea","lat":15.5,"lng":69.6},{"name":"Bay of Bengal","lat":15.8,"lng":87.6}]}</script>
+            </section>
+
+        <div class="route-demo__row">
+            <section>
+                <p class="route-demo__label">Half width, beside text</p>
+                <div class="route-demo__half"><figure class="route-map__frame" data-route-map data-route="route-data-half" data-geo="/indiatigersafari/assets/data/">
+    <div class="route-map__map" role="img" aria-label="Map of India showing the route: Delhi, 3 nights; then Agra, 1 night; then Jaipur, 2 nights; then Ranthambore National Park, 3 nights; then back to Delhi."></div>
+    <svg class="route-map__north" viewBox="0 0 20 28" aria-hidden="true" focusable="false"><path d="M10 0 L19 26 L10 20 L1 26 Z"/></svg>
+</figure>
+<script type="application/json" id="route-data-half">{"name":"Delhi, Agra, Jaipur and Ranthambore","stops":[{"id":"delhi","n":1,"name":"Delhi","nights":3,"lat":28.6139,"lng":77.209,"callout":[-0.7,-1]},{"id":"agra","n":2,"name":"Agra","nights":1,"lat":27.1767,"lng":78.0081,"callout":[1,-0.25]},{"id":"jaipur","n":3,"name":"Jaipur","nights":2,"lat":26.9124,"lng":75.7873,"callout":[-1,0.6]},{"id":"ranthambore","n":4,"name":"Ranthambore National Park","short":"Ranthambore","nights":3,"lat":26.0173,"lng":76.5026,"callout":[0.15,1],"highlight":true}],"waypoints":[{"id":"fatehpur-sikri","name":"Fatehpur Sikri","lat":27.094,"lng":77.6679},{"id":"abhaneri","name":"Abhaneri","lat":27.007,"lng":76.607}],"legs":[{"path":["delhi","agra"]},{"path":["agra","fatehpur-sikri","abhaneri","jaipur"]},{"path":["jaipur","ranthambore"]},{"path":["ranthambore","delhi"],"return":true}],"seas":[{"name":"Arabian Sea","lat":15.5,"lng":69.6},{"name":"Bay of Bengal","lat":15.8,"lng":87.6}]}</script>
+    </div>
+            </section>
+            <section>
+                <p class="route-demo__label">Small, sidebar or card (320 px)</p>
+                <figure class="route-map__frame" data-route-map data-route="route-data-small" data-geo="/indiatigersafari/assets/data/">
+    <div class="route-map__map" role="img" aria-label="Map of India showing the route: Delhi, 3 nights; then Agra, 1 night; then Jaipur, 2 nights; then Ranthambore National Park, 3 nights; then back to Delhi."></div>
+    <svg class="route-map__north" viewBox="0 0 20 28" aria-hidden="true" focusable="false"><path d="M10 0 L19 26 L10 20 L1 26 Z"/></svg>
+</figure>
+<script type="application/json" id="route-data-small">{"name":"Delhi, Agra, Jaipur and Ranthambore","stops":[{"id":"delhi","n":1,"name":"Delhi","nights":3,"lat":28.6139,"lng":77.209,"callout":[-0.7,-1]},{"id":"agra","n":2,"name":"Agra","nights":1,"lat":27.1767,"lng":78.0081,"callout":[1,-0.25]},{"id":"jaipur","n":3,"name":"Jaipur","nights":2,"lat":26.9124,"lng":75.7873,"callout":[-1,0.6]},{"id":"ranthambore","n":4,"name":"Ranthambore National Park","short":"Ranthambore","nights":3,"lat":26.0173,"lng":76.5026,"callout":[0.15,1],"highlight":true}],"waypoints":[{"id":"fatehpur-sikri","name":"Fatehpur Sikri","lat":27.094,"lng":77.6679},{"id":"abhaneri","name":"Abhaneri","lat":27.007,"lng":76.607}],"legs":[{"path":["delhi","agra"]},{"path":["agra","fatehpur-sikri","abhaneri","jaipur"]},{"path":["jaipur","ranthambore"]},{"path":["ranthambore","delhi"],"return":true}],"seas":[{"name":"Arabian Sea","lat":15.5,"lng":69.6},{"name":"Bay of Bengal","lat":15.8,"lng":87.6}]}</script>
+                </section>
         </div>
 
-        <ol class="route-legs">
-                            <li>
-                    <span class="route-legs__n" aria-hidden="true">1</span>
-                    <p class="route-legs__title">Delhi to Agra</p>
-                    <p class="route-legs__meta">By road, about 4 hours (230 km)</p>
-                </li>
-                            <li>
-                    <span class="route-legs__n" aria-hidden="true">2</span>
-                    <p class="route-legs__title">Agra to Jaipur</p>
-                    <p class="route-legs__meta">By road, about 5 hours (240 km), via Fatehpur Sikri and Abhaneri</p>
-                </li>
-                            <li>
-                    <span class="route-legs__n" aria-hidden="true">3</span>
-                    <p class="route-legs__title">Jaipur to Ranthambore</p>
-                    <p class="route-legs__meta">By road, about 4 hours (180 km)</p>
-                </li>
-                            <li>
-                    <span class="route-legs__n" aria-hidden="true">4</span>
-                    <p class="route-legs__title">Ranthambore to Delhi</p>
-                    <p class="route-legs__meta">By road, about 7 hours</p>
-                </li>
-                    </ol>
-        <p class="route-map__note">Lines on the map join the stops in order and are indicative only; they do not follow the roads.</p>
+        <p class="route-map__note">Lines join the stops in order and are indicative only; they do not follow the roads. India boundaries: <a href="https://github.com/datameet/maps">DataMeet</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
     </div>
 </article>
 
-<script type="application/json" id="route-data">{"name":"Delhi, Agra, Jaipur and Ranthambore","stops":[{"id":"delhi","name":"Delhi","lat":28.6139,"lng":77.209,"type":"stop","label":"Start and finish"},{"id":"agra","name":"Agra","lat":27.1767,"lng":78.0081,"type":"stop"},{"id":"fatehpur-sikri","name":"Fatehpur Sikri","lat":27.094,"lng":77.6679,"type":"waypoint","note":"On the drive from Agra to Jaipur"},{"id":"abhaneri","name":"Abhaneri","lat":27.007,"lng":76.607,"type":"waypoint","note":"On the drive from Agra to Jaipur"},{"id":"jaipur","name":"Jaipur","lat":26.9124,"lng":75.7873,"type":"stop","labelSide":"bottom"},{"id":"ranthambore","name":"Ranthambore National Park","lat":26.0173,"lng":76.5026,"type":"stop"}],"legs":[{"from":"Delhi","to":"Agra","path":["delhi","agra"],"time":"about 4 hours","distance":"230 km"},{"from":"Agra","to":"Jaipur","via":"Fatehpur Sikri and Abhaneri","path":["agra","fatehpur-sikri","abhaneri","jaipur"],"time":"about 5 hours","distance":"240 km"},{"from":"Jaipur","to":"Ranthambore","path":["jaipur","ranthambore"],"time":"about 4 hours","distance":"180 km"},{"from":"Ranthambore","to":"Delhi","path":["ranthambore","delhi"],"time":"about 7 hours","distance":""}],"states":["Delhi","Uttar Pradesh","Rajasthan"],"stateLabels":[{"name":"Rajasthan","lat":26.4,"lng":74.6},{"name":"Uttar Pradesh","lat":27.75,"lng":78.75}]}</script>
 <script src="/indiatigersafari/assets/vendor/leaflet/leaflet.min.js"></script>
-<script src="/indiatigersafari/assets/js/route-map.js?v=1792069416"></script>
+<script src="/indiatigersafari/assets/js/route-map.js?v=1792071874"></script>
 
 </main>
 
@@ -257,7 +254,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1792070162.6f87e34219a5e89f45abeecfad3e564c89e88f0fad6b25c74a6266963dda043a">
+                        <input type="hidden" name="token" value="1792072012.8e77e7919d77ad28bdc3c4ba9032a52f22e859928eca774799f0e2bc6002894b">
                         <input type="hidden" name="from" value="/map-sample">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -292,7 +289,7 @@ New Delhi, Delhi, India</p>
             <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
 
             <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
-                <input type="hidden" name="token" value="1792070162.6f87e34219a5e89f45abeecfad3e564c89e88f0fad6b25c74a6266963dda043a">
+                <input type="hidden" name="token" value="1792072012.8e77e7919d77ad28bdc3c4ba9032a52f22e859928eca774799f0e2bc6002894b">
                 <input type="hidden" name="interest" value="" data-enquire-interest>
                 <div class="form-trap" aria-hidden="true">
                     <label for="enq-website">Leave this field empty</label>

@@ -1,125 +1,130 @@
 /*
- * Route map (trial page /map-sample). Reads the route from <script type="application/json" id="route-data">:
- * stops (id, name, lat, lng, type "stop" | "waypoint") and legs (from, to, path of stop ids, time, distance)
- * and an optional "states" list to tint. India itself is drawn from the site's own boundary files
- * (assets/data, DataMeet, CC BY 4.0), so no map-tile service is needed.
- * Opens on the whole of India, then moves in to the route. Needs Leaflet (assets/vendor/leaflet).
+ * Itinerary map: all of India with the route drawn on it and each stop's nights labelled on the map.
+ * Any number per page, at any frame size; nothing is written beside or beneath the map.
+ *
+ * Markup: <figure data-route-map data-route="ID" data-geo="/assets/data/"> holding a .route-map__map div,
+ * where ID names a <script type="application/json" id="ID"> with:
+ *   stops     numbered stops (id, n, name, short, nights, lat, lng, callout [dx, dy], highlight)
+ *             "callout" is the direction the label sits from its stop, e.g. [-1, -1] up and to the left
+ *   waypoints small dots along a drive (id, name, lat, lng)
+ *   legs      lines in travel order (path of ids; "return": true draws the way home dashed)
+ *   seas      sea names (name, lat, lng)
+ *
+ * The stops sit close together at country scale, so each label stands a little way off its stop on a thin
+ * leader line; the distance grows with the frame. Text sizes follow the frame through container queries.
+ * India is drawn from the site's own boundary files (assets/data, DataMeet, CC BY 4.0). Needs Leaflet.
  */
 (function () {
     'use strict';
-    var el = document.getElementById('route-map');
-    var dataEl = document.getElementById('route-data');
-    if (!el || !dataEl || !window.L) return;
+    if (!window.L) return;
 
-    var route = JSON.parse(dataEl.textContent);
-    var base = el.getAttribute('data-geo') || '/assets/data/';
-    var byId = {};
-    route.stops.forEach(function (s) { byId[s.id] = s; });
-    var tinted = route.states || [];
-    var india = L.latLngBounds([6.5, 68.0], [37.2, 97.5]);
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var credit = 'India boundaries: <a href="https://github.com/datameet/maps">DataMeet</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)';
+    var INDIA = L.latLngBounds([6.4, 68.0], [37.1, 97.5]);   // all of India, Kashmir to the Andamans
+    var geoCache = {};
 
-    var map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25, minZoom: 3.5, maxZoom: 10, maxBounds: india.pad(0.35), attributionControl: true });
-    map.attributionControl.setPrefix(false);
-    map.attributionControl.addAttribution(credit);
-    map.fitBounds(india);
-
-    // Names only once the map is close enough for them not to pile up.
-    function labels() { el.classList.toggle('route-map__map--far', map.getZoom() < 5.5); }
-    map.on('zoomend', labels);
-    labels();
-
-    // Stacking: states under the outline, route lines and markers above.
-    map.createPane('india').style.zIndex = 300;
-    map.createPane('outline').style.zIndex = 350;
-
-    function json(name) {
-        return fetch(base + name).then(function (r) { if (!r.ok) throw new Error(name); return r.json(); });
+    function geo(base, name) {
+        var url = base + name;
+        if (!geoCache[url]) {
+            geoCache[url] = fetch(url).then(function (r) { if (!r.ok) throw new Error(name); return r.json(); });
+        }
+        return geoCache[url];
     }
 
-    var insetEl = document.getElementById('route-inset');
-    var inset = null;
-    if (insetEl) {
-        inset = L.map(insetEl, { zoomControl: false, attributionControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, touchZoom: false, zoomSnap: 0.1 });
-        inset.fitBounds(india, { padding: [6, 18] });
-    }
+    function nightsText(n) { return n + (n === 1 ? ' night' : ' nights'); }
 
-    Promise.all([json('india-states.geojson'), json('india-outline.geojson')]).then(function (geo) {
-        var states = geo[0], outline = geo[1];
-        L.geoJSON(states, {
-            pane: 'india', interactive: false,
-            style: function (f) {
-                var on = tinted.indexOf(f.properties.name) !== -1;
-                return { color: '#B9AE98', weight: 0.8, fillColor: on ? '#EFE5D2' : '#FAF8F5', fillOpacity: 1 };
-            }
-        }).addTo(map);
-        L.geoJSON(outline, { pane: 'outline', interactive: false, style: { color: '#86683A', weight: 1.4, fill: false } }).addTo(map);
+    function draw(frame) {
+        var el = frame.querySelector('.route-map__map');
+        var dataEl = document.getElementById(frame.getAttribute('data-route') || 'route-data');
+        if (!el || !dataEl) return;
+        var route = JSON.parse(dataEl.textContent);
+        var base = frame.getAttribute('data-geo') || '/assets/data/';
 
-        // State names for the states the route crosses, placed at a fixed point inside each.
-        (route.stateLabels || []).forEach(function (s) {
-            L.marker([s.lat, s.lng], { interactive: false, keyboard: false, icon: L.divIcon({ className: 'route-state', html: s.name, iconSize: [140, 16], iconAnchor: [70, 8] }) }).addTo(map);
+        var at = {};
+        route.stops.concat(route.waypoints || []).forEach(function (p) { at[p.id] = L.latLng(p.lat, p.lng); });
+
+        var map = L.map(el, {
+            zoomControl: false, attributionControl: false, dragging: false, scrollWheelZoom: false,
+            doubleClickZoom: false, boxZoom: false, keyboard: false, touchZoom: false, zoomSnap: 0
+        });
+        map.createPane('land').style.zIndex = 300;
+        map.createPane('leaders').style.zIndex = 420;
+
+        Promise.all([geo(base, 'india-states.geojson'), geo(base, 'india-outline.geojson')]).then(function (g) {
+            L.geoJSON(g[0], { pane: 'land', interactive: false, style: { color: '#CFCCC6', weight: 0.8, fillColor: '#F4F4F2', fillOpacity: 1 } }).addTo(map);
+            L.geoJSON(g[1], { pane: 'land', interactive: false, style: { color: '#BDB9B2', weight: 1.1, fill: false } }).addTo(map);
+        }).catch(function () { el.classList.add('route-map__map--no-geo'); });
+
+        (route.seas || []).forEach(function (s) {
+            L.marker([s.lat, s.lng], { interactive: false, keyboard: false, icon: L.divIcon({ className: 'route-sea', html: s.name, iconSize: [140, 18], iconAnchor: [70, 9] }) }).addTo(map);
         });
 
-        if (inset) {
-            L.geoJSON(outline, { interactive: false, style: { color: '#86683A', weight: 0.8, fillColor: '#FAF8F5', fillOpacity: 1 } }).addTo(inset);
-            L.rectangle(routeBounds.pad(0.3), { color: '#1B3B2B', weight: 1.5, fillColor: '#C5A059', fillOpacity: 0.55, interactive: false }).addTo(inset);
-        }
-    }).catch(function () { el.classList.add('route-map__map--no-geo'); });
+        // Solid blue on the way out, dashed grey for the way home.
+        route.legs.forEach(function (leg) {
+            var pts = leg.path.map(function (id) { return at[id]; });
+            L.polyline(pts, leg['return']
+                ? { color: '#A9A6A0', weight: 1.3, dashArray: '3 3', interactive: false }
+                : { color: '#4D6FD1', weight: 2, interactive: false }).addTo(map);
+        });
+        (route.waypoints || []).forEach(function (w) {
+            L.circleMarker(at[w.id], { radius: 1.8, color: '#4D6FD1', weight: 1, fillColor: '#FFFFFF', fillOpacity: 1, interactive: false }).addTo(map);
+        });
+        route.stops.forEach(function (s) {
+            L.circleMarker(at[s.id], { radius: 3.5, color: s.highlight ? '#4D6FD1' : '#1E1E1E', weight: 1.5, fillColor: s.highlight ? '#DCE4FA' : '#FFFFFF', fillOpacity: 1, interactive: false }).addTo(map);
+        });
 
-    // One line per leg, in travel order: a cream casing under a dashed green line.
-    var all = [];
-    route.legs.forEach(function (leg) {
-        var pts = leg.path.map(function (id) { return [byId[id].lat, byId[id].lng]; });
-        all = all.concat(pts);
-        L.polyline(pts, { color: '#FAF8F5', weight: 7, opacity: 0.95, interactive: false }).addTo(map);
-        L.polyline(pts, { color: '#1B3B2B', weight: 3.5, dashArray: '8 7', lineCap: 'round' })
-            .bindTooltip(leg.from + ' to ' + leg.to + ': ' + leg.time + (leg.distance ? ' (' + leg.distance + ')' : ''), { sticky: true })
-            .addTo(map);
-    });
-    var routeBounds = L.latLngBounds(all);
+        // Labels: number, place and nights, set off from the stop on a leader line.
+        var callouts = route.stops.map(function (s) {
+            var d = s.callout || [1, 0];
+            var side = Math.abs(d[0]) >= Math.abs(d[1]) ? (d[0] < 0 ? 'left' : 'right') : (d[1] < 0 ? 'top' : 'bottom');
+            var html = '<span><b class="route-callout__n">' + s.n + '</b>'
+                + '<span class="route-callout__name" data-short="' + (s.short || s.name) + '">' + s.name + '</span>'
+                + '<span class="route-callout__nights">' + nightsText(s.nights) + '</span></span>';
+            var label = L.marker(at[s.id], { interactive: false, keyboard: false, icon: L.divIcon({ className: 'route-callout route-callout--' + side + (s.highlight ? ' route-callout--park' : ''), html: html, iconSize: [0, 0], iconAnchor: [0, 0] }) }).addTo(map);
+            var leader = L.polyline([at[s.id], at[s.id]], { pane: 'leaders', color: s.highlight ? '#4D6FD1' : '#6B6862', weight: 1, interactive: false }).addTo(map);
+            return { stop: s, dir: d, label: label, leader: leader };
+        });
 
-    // Stops numbered in travel order; the first stop (start and finish) is 1, in gold. Waypoints are small dots.
-    var n = 1;
-    route.stops.forEach(function (s, i) {
-        var marker;
-        if (s.type === 'waypoint') {
-            marker = L.marker([s.lat, s.lng], {
-                icon: L.divIcon({ className: '', html: '<span class="route-dot"></span>', iconSize: [12, 12], iconAnchor: [6, 6] }),
-                title: s.name, alt: s.name
+        function placeCallouts() {
+            var w = frame.clientWidth;
+            var dist = Math.max(24, Math.min(80, w * 0.075));
+            var box = el.getBoundingClientRect();
+            var margin = 4;
+            callouts.forEach(function (c) {
+                var len = Math.sqrt(c.dir[0] * c.dir[0] + c.dir[1] * c.dir[1]) || 1;
+                var p = map.latLngToContainerPoint(at[c.stop.id]);
+                var x = p.x + c.dir[0] / len * dist, y = p.y + c.dir[1] / len * dist;
+                c.label.setLatLng(map.containerPointToLatLng([x, y]));
+                // Keep the whole tag inside the frame: slide it (and the end of its leader) back in if it spills over.
+                var tag = c.label.getElement() && c.label.getElement().firstChild;
+                if (tag) {
+                    var r = tag.getBoundingClientRect();
+                    var dx = 0, dy = 0;
+                    if (r.left < box.left + margin) dx = box.left + margin - r.left;
+                    else if (r.right > box.right - margin) dx = box.right - margin - r.right;
+                    if (r.top < box.top + margin) dy = box.top + margin - r.top;
+                    else if (r.bottom > box.bottom - margin) dy = box.bottom - margin - r.bottom;
+                    if (dx || dy) { x += dx; y += dy; c.label.setLatLng(map.containerPointToLatLng([x, y])); }
+                }
+                c.leader.setLatLngs([at[c.stop.id], map.containerPointToLatLng([x, y])]);
             });
-            marker.bindTooltip(s.name, { permanent: true, direction: 'bottom', offset: [0, 6], className: 'route-map__label route-map__label--way' });
-            if (s.note) marker.bindPopup('<strong>' + s.name + '</strong><br>' + s.note);
+        }
+
+        function fit() {
+            map.invalidateSize();
+            map.fitBounds(INDIA, { padding: [6, 6] });
+            placeCallouts();
+        }
+        fit();
+
+        // Refit whenever the frame changes size (window resized, column collapsed, tab shown).
+        if (window.ResizeObserver) {
+            var last = frame.clientWidth;
+            new ResizeObserver(function () {
+                if (frame.clientWidth !== last) { last = frame.clientWidth; fit(); }
+            }).observe(frame);
         } else {
-            var home = i === 0;
-            var num = home ? '1' : String(++n);
-            marker = L.marker([s.lat, s.lng], {
-                icon: L.divIcon({ className: '', html: '<span class="route-pin' + (home ? ' route-pin--home' : '') + '">' + num + '</span>', iconSize: [32, 32], iconAnchor: [16, 16] }),
-                title: s.name, alt: s.name
-            });
-            var side = s.labelSide || 'right';
-            var offsets = { right: [18, 0], left: [-18, 0], bottom: [0, 18], top: [0, -18] };
-            marker.bindTooltip(s.name + (home ? ' (start and finish)' : ''), { permanent: true, direction: side, offset: offsets[side] || offsets.right, className: 'route-map__label' });
-            marker.bindPopup('<strong>' + s.name + '</strong>' + (s.label ? '<br>' + s.label : ''));
+            window.addEventListener('resize', fit);
         }
-        marker.addTo(map);
-    });
+    }
 
-    // Open on the whole of India, then move in to the route; the button switches between the two.
-    var toggle = document.querySelector('[data-map-toggle]');
-    var onRoute = false;
-    function go(bounds, opts) {
-        if (reduce) map.fitBounds(bounds, opts);
-        else map.flyToBounds(bounds, Object.assign({ duration: 2 }, opts));
-    }
-    // Leave room on the right for the India locator so no stop sits beneath it.
-    function showRoute() {
-        onRoute = true;
-        if (toggle) toggle.textContent = 'Show all of India';
-        var right = insetEl ? insetEl.offsetWidth + 40 : 70;
-        go(routeBounds, { paddingTopLeft: [60, 60], paddingBottomRight: [right, 70] });
-    }
-    function showIndia() { onRoute = false; if (toggle) toggle.textContent = 'Back to the route'; go(india, {}); }
-    if (toggle) toggle.addEventListener('click', function () { onRoute ? showIndia() : showRoute(); });
-    setTimeout(showRoute, 1400);
+    Array.prototype.forEach.call(document.querySelectorAll('[data-route-map]'), draw);
 })();
