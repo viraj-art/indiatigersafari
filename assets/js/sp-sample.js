@@ -16,9 +16,12 @@
     function setCollection(id, updateUrl) {
         if (!document.querySelector('input[name="sp-collection"][value="' + id + '"]')) return;
         Array.prototype.forEach.call(radios, function (r) { r.checked = r.value === id; });
+        // "Not sure yet" keeps every collection's hotel on the cards (data-sp-unsure), each with its collection named.
         Array.prototype.forEach.call(document.querySelectorAll('[data-sp-for]'), function (el) {
-            el.hidden = el.getAttribute('data-sp-for') !== id;
+            el.hidden = !(el.getAttribute('data-sp-for') === id || (id === 'not-sure' && el.hasAttribute('data-sp-unsure')));
         });
+        var article = document.querySelector('article.sp');
+        if (article) article.classList.toggle('sp-unsure', id === 'not-sure');
         Array.prototype.forEach.call(document.querySelectorAll('[data-sp-blurb]'), function (el) {
             el.hidden = el.getAttribute('data-sp-blurb') !== id;
         });

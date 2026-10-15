@@ -57,6 +57,14 @@
             }
         });
 
+        // The small-screen menu is a compact panel: a tap anywhere outside it closes it.
+        document.addEventListener('click', (event) => {
+            if (isOpen() && !nav.contains(event.target) && !toggle.contains(event.target)) {
+                setOpen(false);
+                syncInert();
+            }
+        });
+
         document.addEventListener('keydown', (event) => {
             if (!isOpen()) {
                 return;

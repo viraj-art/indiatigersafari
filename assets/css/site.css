@@ -4786,3 +4786,117 @@ main {
     justify-content: flex-end;
     margin-top: 0.5rem;
 }
+
+/* ---- Small-screen menu: a compact panel under the menu button ---------------------
+   It used to fill the whole screen with very large type; now it is a small card that
+   drops down from the header, with the page dimmed (not hidden) behind it. */
+@media (max-width: 1023.98px) {
+    .js .site-nav {
+        inset: auto;
+        top: calc(var(--header-height) - 0.25rem);
+        right: var(--gutter);
+        left: auto;
+        display: block;
+        width: min(18rem, calc(100vw - 2 * var(--gutter)));
+        max-height: calc(100svh - var(--header-height) - 1rem);
+        padding: 0.5rem 1.25rem 1rem;
+        border-top: 2px solid var(--gold);
+        border-radius: var(--radius);
+        background: var(--green);
+        box-shadow: 0 24px 48px -16px rgba(19, 42, 31, 0.55);
+        transform: translateY(-0.5rem);
+        transition: opacity 0.25s var(--ease), visibility 0.25s, transform 0.25s var(--ease);
+    }
+
+    .menu-open .site-nav {
+        transform: none;
+    }
+
+    /* A light veil over the page while the menu is open. */
+    .js .site-header::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background: rgba(19, 42, 31, 0.35);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.25s var(--ease), visibility 0.25s;
+    }
+
+    .menu-open .site-header::after {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .js .site-nav__list {
+        gap: 0;
+    }
+
+    .js .site-nav__list > li {
+        width: 100%;
+        border-bottom: 1px solid var(--line-light);
+    }
+
+    .js .site-nav__list > li:last-child {
+        border-bottom: 0;
+    }
+
+    .js .site-nav__list a:not(.btn) {
+        display: block;
+        padding-block: 0.7rem;
+        font-size: 1.1875rem;
+        line-height: 1.3;
+    }
+
+    .js .site-nav__sub {
+        margin: -0.25rem 0 0.5rem;
+        padding-left: 0.875rem;
+    }
+
+    .js .site-nav__list .site-nav__sub a:not(.btn) {
+        padding-block: 0.5rem;
+        font-size: 0.9375rem;
+    }
+
+    /* The header keeps its own colours: the menu no longer covers it. */
+    .menu-open .site-header {
+        border-bottom-color: var(--header-rule);
+    }
+
+    .menu-open .wordmark,
+    .menu-open .nav-toggle {
+        color: var(--header-ink);
+    }
+
+    .menu-open .site-header .wordmark__mark {
+        filter: none;
+    }
+
+    .page-home .site-header:not(.is-condensed) .wordmark__mark {
+        filter: brightness(0) invert(1);
+    }
+}
+
+/* ---- Phones: small labels never below 12 px ------------------------------------ */
+@media (max-width: 47.99rem) {
+    .btn,
+    .filter,
+    .card__meta,
+    .tile__meta,
+    .team__role,
+    .enquire-tab,
+    time {
+        font-size: 0.75rem;
+    }
+
+    /* Lists of links (breadcrumbs, footer, related parks and tours) get a comfortable tap height. */
+    .breadcrumbs a,
+    .foot__list a,
+    .foot__contact a,
+    li > a:only-child:not(.btn) {
+        display: inline-block;
+        padding-block: 0.3rem;
+    }
+}

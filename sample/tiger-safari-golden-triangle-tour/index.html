@@ -20,9 +20,9 @@
             <link rel="icon" type="image/png" href="/indiatigersafari/assets/img/favicon.png?v=1791818128">
         <link rel="preload" href="/indiatigersafari/assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/indiatigersafari/assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1792078604">
+    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1792082659">
     <script>document.documentElement.classList.add('js')</script>
-    <script src="/indiatigersafari/assets/js/site.js?v=1792078627" defer></script>
+    <script src="/indiatigersafari/assets/js/site.js?v=1792082652" defer></script>
     <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
@@ -303,7 +303,7 @@
 </header>
 
 <main id="main" tabindex="-1">
-<link rel="stylesheet" href="/indiatigersafari/assets/css/sp-sample.css?v=1792078353">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/sp-sample.css?v=1792082396">
 
 <article class="sp">
     <!-- 1. First screen -->
@@ -467,22 +467,30 @@
                                 <input type="radio" name="sp-collection" value="palace-camp">
                                 <span>The Palace &amp; Camp Collection</span>
                             </label>
-                                            </div>
+                                                <label class="sp-choose__option sp-choose__option--unsure">
+                            <input type="radio" name="sp-collection" value="not-sure">
+                            <span>Not sure yet</span>
+                        </label>
+                    </div>
                 </fieldset>
                                     <p class="sp-choose__blurb" data-sp-blurb="experiential" hidden>For guests who want immersion over formality: owner-run guest houses and boutique lodges where the experience, from the naturalist to the table, comes first.</p>
                                     <p class="sp-choose__blurb" data-sp-blurb="heritage">Established names with a strong sense of place, from ITC&#039;s Delhi and Agra hotels to the palace-hotel style of Jai Mahal in Jaipur.</p>
                                     <p class="sp-choose__blurb" data-sp-blurb="palace-camp" hidden>The most private and exclusive way to travel: Rambagh Palace, The Oberoi Amarvilas and a tented camp beside the park.</p>
-                
+                                <p class="sp-choose__blurb" data-sp-blurb="not-sure" hidden>Not sure which style suits you? Compare the three below, and our safari specialists will suggest the right stays for your journey.</p>
+
                 <ul class="sp-stays" role="list" aria-live="polite">
                                             <li class="sp-stay">
                             <div class="sp-photo sp-photo--stay" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <div class="sp-stay__text">
                                 <h3 class="sp-stay__place">Delhi</h3>
                                 <p class="sp-stay__when">3 nights · Days 1, 2 and 9</p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Experiential Collection</span>
                                         <strong>Colonel&#039;s Retreat</strong><span class="sp-stay__note">, a guest house in Defence Colony</span>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="heritage">
+                                                                    <p class="sp-stay__hotel" data-sp-for="heritage" data-sp-unsure>
+                                        <span class="sp-stay__col">The Heritage Collection</span>
                                         <strong>ITC Maurya</strong><span class="sp-stay__note">, in the Diplomatic Enclave</span>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Palace &amp; Camp Collection</span>
                                         <strong>The Oberoi, New Delhi</strong><span class="sp-stay__note">, on Dr Zakir Hussain Marg</span>                                    </p>
                                                             </div>
                         </li>
@@ -490,11 +498,14 @@
                             <div class="sp-photo sp-photo--stay" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <div class="sp-stay__text">
                                 <h3 class="sp-stay__place">Agra</h3>
                                 <p class="sp-stay__when">1 night · Day 3</p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Experiential Collection</span>
                                         <strong>Tajview</strong><span class="sp-stay__note">, Fatehabad Road</span>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="heritage">
+                                                                    <p class="sp-stay__hotel" data-sp-for="heritage" data-sp-unsure>
+                                        <span class="sp-stay__col">The Heritage Collection</span>
                                         <strong>ITC Mughal</strong><span class="sp-stay__note">, Taj Ganj</span>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Palace &amp; Camp Collection</span>
                                         <strong>The Oberoi Amarvilas</strong><span class="sp-stay__note">, with views of the Taj Mahal</span>                                    </p>
                                                             </div>
                         </li>
@@ -502,11 +513,14 @@
                             <div class="sp-photo sp-photo--stay" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <div class="sp-stay__text">
                                 <h3 class="sp-stay__place">Jaipur</h3>
                                 <p class="sp-stay__when">2 nights · Days 4 and 5</p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Experiential Collection</span>
                                         <strong>Dera Jaipur</strong>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="heritage">
+                                                                    <p class="sp-stay__hotel" data-sp-for="heritage" data-sp-unsure>
+                                        <span class="sp-stay__col">The Heritage Collection</span>
                                         <strong>Jai Mahal Palace</strong>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Palace &amp; Camp Collection</span>
                                         <strong>Rambagh Palace</strong>                                    </p>
                                                             </div>
                         </li>
@@ -514,11 +528,14 @@
                             <div class="sp-photo sp-photo--stay" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span class="sp-photo__label" aria-hidden="true">Photograph to come</span></div>                            <div class="sp-stay__text">
                                 <h3 class="sp-stay__place">Ranthambore</h3>
                                 <p class="sp-stay__when">3 nights · Days 6 to 8</p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="experiential" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Experiential Collection</span>
                                         <strong>Dev Vilas</strong>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="heritage">
+                                                                    <p class="sp-stay__hotel" data-sp-for="heritage" data-sp-unsure>
+                                        <span class="sp-stay__col">The Heritage Collection</span>
                                         <strong>Khem Villas</strong>                                    </p>
-                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" hidden>
+                                                                    <p class="sp-stay__hotel" data-sp-for="palace-camp" data-sp-unsure hidden>
+                                        <span class="sp-stay__col">The Palace &amp; Camp Collection</span>
                                         <strong>Sujan Sher Bagh</strong><span class="sp-stay__note">, a luxury tented camp about 2.5 km from the park gate</span>                                    </p>
                                                             </div>
                         </li>
@@ -583,7 +600,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Colonel&#039;s Retreat</span>
                                                                                             <span data-sp-for="heritage">ITC Maurya</span>
                                                                                             <span data-sp-for="palace-camp" hidden>The Oberoi, New Delhi</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Delhi</span>
+                                        </span>
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
@@ -599,7 +617,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Colonel&#039;s Retreat</span>
                                                                                             <span data-sp-for="heritage">ITC Maurya</span>
                                                                                             <span data-sp-for="palace-camp" hidden>The Oberoi, New Delhi</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Delhi</span>
+                                        </span>
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
@@ -615,7 +634,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Tajview</span>
                                                                                             <span data-sp-for="heritage">ITC Mughal</span>
                                                                                             <span data-sp-for="palace-camp" hidden>The Oberoi Amarvilas</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Agra</span>
+                                        </span>
                                                                                                                 <span class="sp-day__fact"><span class="sp-day__label">Drive:</span> about 4 hours (230 km)</span>
                                                                     </span>
                                                     </summary>
@@ -632,7 +652,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Dera Jaipur</span>
                                                                                             <span data-sp-for="heritage">Jai Mahal Palace</span>
                                                                                             <span data-sp-for="palace-camp" hidden>Rambagh Palace</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Jaipur</span>
+                                        </span>
                                                                                                                 <span class="sp-day__fact"><span class="sp-day__label">Drive:</span> about 5 hours (240 km)</span>
                                                                     </span>
                                                     </summary>
@@ -649,7 +670,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Dera Jaipur</span>
                                                                                             <span data-sp-for="heritage">Jai Mahal Palace</span>
                                                                                             <span data-sp-for="palace-camp" hidden>Rambagh Palace</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Jaipur</span>
+                                        </span>
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
@@ -665,7 +687,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Dev Vilas</span>
                                                                                             <span data-sp-for="heritage">Khem Villas</span>
                                                                                             <span data-sp-for="palace-camp" hidden>Sujan Sher Bagh</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Ranthambore</span>
+                                        </span>
                                                                                                                 <span class="sp-day__fact"><span class="sp-day__label">Drive:</span> about 4 hours (180 km)</span>
                                                                     </span>
                                                     </summary>
@@ -682,7 +705,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Dev Vilas</span>
                                                                                             <span data-sp-for="heritage">Khem Villas</span>
                                                                                             <span data-sp-for="palace-camp" hidden>Sujan Sher Bagh</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Ranthambore</span>
+                                        </span>
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
@@ -698,7 +722,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Dev Vilas</span>
                                                                                             <span data-sp-for="heritage">Khem Villas</span>
                                                                                             <span data-sp-for="palace-camp" hidden>Sujan Sher Bagh</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Ranthambore</span>
+                                        </span>
                                                                                                         </span>
                                                     </summary>
                         <div class="sp-day__body">
@@ -714,7 +739,8 @@
                                                                                             <span data-sp-for="experiential" hidden>Colonel&#039;s Retreat</span>
                                                                                             <span data-sp-for="heritage">ITC Maurya</span>
                                                                                             <span data-sp-for="palace-camp" hidden>The Oberoi, New Delhi</span>
-                                                                                    </span>
+                                                                                        <span data-sp-for="not-sure" hidden>Delhi</span>
+                                        </span>
                                                                                                                 <span class="sp-day__fact"><span class="sp-day__label">Drive:</span> about 7 hours, or by train from Sawai Madhopur, which we can arrange</span>
                                                                     </span>
                                                     </summary>
@@ -877,7 +903,7 @@
             <div class="sp-slot" data-sp-slot="specialist" hidden aria-hidden="true"></div>
 
             <form class="sp-form" method="post" action="/indiatigersafari/enquire" novalidate data-sp-form>
-                <input type="hidden" name="token" value="1792078701.e1ed1e4a78d399149dcb22816c03cce6c6224278d6fc562910bcbaa326057da0">
+                <input type="hidden" name="token" value="1792082725.c886b3e7655229667b674c19364df3605b00dc207d3543541b25116b9147d222">
                 <div class="form-trap" aria-hidden="true">
                     <label for="sp-website">Leave this field empty</label>
                     <input id="sp-website" type="text" name="website" tabindex="-1" autocomplete="off">
@@ -912,7 +938,8 @@
                                                     <option value="Sample page: Tiger Safari &amp; Golden Triangle Tour (9N/10D), The Experiential Collection" data-id="experiential">The Experiential Collection</option>
                                                     <option value="Sample page: Tiger Safari &amp; Golden Triangle Tour (9N/10D), The Heritage Collection" data-id="heritage" selected>The Heritage Collection</option>
                                                     <option value="Sample page: Tiger Safari &amp; Golden Triangle Tour (9N/10D), The Palace &amp; Camp Collection" data-id="palace-camp">The Palace &amp; Camp Collection</option>
-                                            </select>
+                                                <option value="Sample page: Tiger Safari &amp; Golden Triangle Tour (9N/10D), collection not chosen yet" data-id="not-sure">Not sure yet</option>
+                    </select>
                 </div>
                 <div class="form-field">
                     <label for="sp-message">Tell us about the journey you have in mind</label>
@@ -934,7 +961,7 @@
     <a class="btn btn--gold sp-bar__btn" href="#sp-enquire">Speak to a safari specialist</a>
 </div>
 
-<script src="/indiatigersafari/assets/js/sp-sample.js?v=1792077926" defer></script>
+<script src="/indiatigersafari/assets/js/sp-sample.js?v=1792082398" defer></script>
 </main>
 
 <footer class="foot">
@@ -1044,7 +1071,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1792078701.e1ed1e4a78d399149dcb22816c03cce6c6224278d6fc562910bcbaa326057da0">
+                        <input type="hidden" name="token" value="1792082725.c886b3e7655229667b674c19364df3605b00dc207d3543541b25116b9147d222">
                         <input type="hidden" name="from" value="/sample/tiger-safari-golden-triangle-tour">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -1079,7 +1106,7 @@ New Delhi, Delhi, India</p>
             <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
 
             <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
-                <input type="hidden" name="token" value="1792078701.e1ed1e4a78d399149dcb22816c03cce6c6224278d6fc562910bcbaa326057da0">
+                <input type="hidden" name="token" value="1792082725.c886b3e7655229667b674c19364df3605b00dc207d3543541b25116b9147d222">
                 <input type="hidden" name="interest" value="" data-enquire-interest>
                 <div class="form-trap" aria-hidden="true">
                     <label for="enq-website">Leave this field empty</label>
