@@ -4610,3 +4610,97 @@ main {
         grid-template-columns: minmax(0, 1fr) 13.5rem;
     }
 }
+
+/* ---- Home: sliding strips for experiences and parks ------------------------- */
+
+/* Experience cards in a strip: one and a bit on a phone, so the next card shows there is more. */
+.strip__card {
+    flex: none;
+    width: clamp(16rem, 74vw, 22rem);
+    scroll-snap-align: start;
+}
+
+.section-head__side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+}
+
+.strip-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.strip-controls[hidden] {
+    display: none;
+}
+
+.strip-controls__btn {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--green);
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease), color 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+.strip-controls__btn:hover:not(:disabled) {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.strip-controls__btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.strip-controls__btn:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (min-width: 48rem) {
+    .section-head:has(> .section-head__side) {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+/* Phones swipe; the arrows are for mouse users on larger screens. */
+@media (max-width: 47.99rem) {
+    .strip-controls {
+        display: none !important;
+    }
+}
+
+/* ---- Header on narrow phones ------------------------------------------------- */
+
+/* The wordmark, emblem and menu button side by side need more room than a narrow phone has:
+   the wordmark steps down a size and the menu button shows its icon only (it is still named "Menu"). */
+@media (max-width: 29.99rem) {
+    .site-header .wordmark {
+        gap: 0.5rem;
+        font-size: 1.1875rem;
+        letter-spacing: 0.02em;
+    }
+
+    .site-header .wordmark__mark {
+        height: 2.25rem;
+    }
+
+    .nav-toggle__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+}

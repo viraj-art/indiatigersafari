@@ -20,9 +20,9 @@
             <link rel="icon" type="image/png" href="/indiatigersafari/assets/img/favicon.png?v=1791818128">
         <link rel="preload" href="/indiatigersafari/assets/fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/indiatigersafari/assets/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1791989307">
+    <link rel="stylesheet" href="/indiatigersafari/assets/css/site.css?v=1792078334">
     <script>document.documentElement.classList.add('js')</script>
-    <script src="/indiatigersafari/assets/js/site.js?v=1791888013" defer></script>
+    <script src="/indiatigersafari/assets/js/site.js?v=1792078343" defer></script>
     <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
@@ -94,8 +94,9 @@
 
 <section class="hero" aria-labelledby="hero-heading">
     <div class="hero__media">
-        <picture class="media media--hero"><img src="/indiatigersafari/assets/img/hero-poster.jpg?v=1791817230" alt="Bengal tiger walking through sal forest at dawn" width="1920" height="1080" fetchpriority="high" decoding="async"></picture>                                <video class="hero__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-hero-video poster="/indiatigersafari/assets/img/hero-poster.jpg?v=1791817230">
-                <source src="/indiatigersafari/assets/video/hero.mp4?v=1791817228" type="video/mp4">
+        <picture class="media media--hero"><source media="(max-width: 767.98px)" srcset="/indiatigersafari/assets/img/hero-poster-mobile.jpg?v=1792078201"><img src="/indiatigersafari/assets/img/hero-poster.jpg?v=1791817230" alt="Bengal tiger walking through sal forest at dawn" width="1920" height="1080" fetchpriority="high" decoding="async"></picture>                                <video class="hero__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" data-hero-video poster="/indiatigersafari/assets/img/hero-poster.jpg?v=1791817230">
+                                    <source src="/indiatigersafari/assets/video/hero-mobile.mp4?v=1792078222" type="video/mp4" media="(max-width: 767.98px)">
+                                <source src="/indiatigersafari/assets/video/hero.mp4?v=1791817228" type="video/mp4">
             </video>
             </div>
     <div class="container hero__content">
@@ -162,32 +163,36 @@
 <section class="section" aria-labelledby="journeys-heading">
     <div class="container">
         <header class="section-head reveal">
-            <h2 class="eyebrow" id="journeys-heading">Curated experiences</h2>            <a class="link-arrow" href="/indiatigersafari/tours">View all experiences</a>
+            <h2 class="eyebrow" id="journeys-heading">Curated experiences</h2>            <div class="section-head__side">
+                <a class="link-arrow" href="/indiatigersafari/tours">View all experiences</a>
+                <div class="strip-controls" data-strip-controls="journeys-strip" hidden><button type="button" class="strip-controls__btn" data-strip-prev aria-controls="journeys-strip" aria-label="Previous experiences"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button type="button" class="strip-controls__btn" data-strip-next aria-controls="journeys-strip" aria-label="More experiences"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></div>            </div>
         </header>
+    </div>
 
-        <ul class="card-grid" role="list">
-                            <li class="card reveal">
+        <div class="strip" id="journeys-strip" role="region" aria-labelledby="journeys-heading" tabindex="0">
+        <ul class="strip__track" role="list">
+                            <li class="card strip__card">
                     <picture class="media media--4x5"><img src="/indiatigersafari/assets/img/photos/tiger-standing-beside-a-forest-stream-342.jpg?v=1791899326" alt="Tiger standing beside a forest stream in Jim Corbett National Park" data-fx="25" data-fy="50" width="1600" height="1066" loading="lazy" decoding="async"></picture>                    <div class="card__body">
                         <p class="card__meta">13 nights / 14 days</p>
                         <h3 class="card__title"><a href="/indiatigersafari/tours/corbett-kanha-bandhavgarh-tiger-safari">Corbett, Kanha &amp; Bandhavgarh Tiger Safari</a></h3>
                         <p class="card__text">From the Himalayan foothills to the heart of Central India&#039;s tiger country.</p>
                     </div>
                 </li>
-                            <li class="card reveal">
+                            <li class="card strip__card">
                     <picture class="media media--4x5"><img src="/indiatigersafari/assets/img/photos/tiger-walking-through-tall-dry-grass-399.jpg?v=1791899328" alt="Tiger walking through tall dry grass in summer" data-fx="50" data-fy="25" width="1600" height="1067" loading="lazy" decoding="async"></picture>                    <div class="card__body">
                         <p class="card__meta">16 nights / 17 days</p>
                         <h3 class="card__title"><a href="/indiatigersafari/tours/luxury-tiger-safari-holiday-india">Luxury Tiger Safari Holiday in India</a></h3>
                         <p class="card__text">Our most complete journey, from Rajasthan&#039;s palaces to four of India&#039;s finest tiger reserves.</p>
                     </div>
                 </li>
-                            <li class="card reveal">
+                            <li class="card strip__card">
                     <picture class="media media--4x5"><img src="/indiatigersafari/assets/img/photos/tiger-walking-through-sal-saplings-in-347.jpg?v=1791899326" alt="Tiger walking through sal saplings in Kanha National Park" data-fx="50" data-fy="25" width="1600" height="1066" loading="lazy" decoding="async"></picture>                    <div class="card__body">
                         <p class="card__meta">12 nights / 13 days</p>
                         <h3 class="card__title"><a href="/indiatigersafari/tours/pench-kanha-bandhavgarh-tiger-safari">Pench, Kanha &amp; Bandhavgarh Tiger Safari</a></h3>
                         <p class="card__text">A deeper, slower immersion in the forests of Central India.</p>
                     </div>
                 </li>
-                            <li class="card reveal">
+                            <li class="card strip__card">
                     <picture class="media media--4x5"><img src="/indiatigersafari/assets/img/photos/two-young-tigers-sparring-in-shallow-400.jpg?v=1791899328" alt="Two young tigers sparring in shallow water" data-fx="50" data-fy="50" width="1080" height="719" loading="lazy" decoding="async"></picture>                    <div class="card__body">
                         <p class="card__meta">9 nights / 10 days</p>
                         <h3 class="card__title"><a href="/indiatigersafari/tours/tiger-safari-golden-triangle-tour">Tiger Safari &amp; Golden Triangle Tour</a></h3>
@@ -201,11 +206,13 @@
 <section class="section section--tint" aria-labelledby="parks-heading">
     <div class="container">
         <header class="section-head reveal">
-            <h2 class="eyebrow" id="parks-heading">National parks</h2>            <a class="link-arrow" href="/indiatigersafari/national-parks/">All national park guides</a>
+            <h2 class="eyebrow" id="parks-heading">National parks</h2>            <div class="section-head__side">
+                <a class="link-arrow" href="/indiatigersafari/national-parks/">All national park guides</a>
+                <div class="strip-controls" data-strip-controls="parks-strip" hidden><button type="button" class="strip-controls__btn" data-strip-prev aria-controls="parks-strip" aria-label="Previous national parks"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><button type="button" class="strip-controls__btn" data-strip-next aria-controls="parks-strip" aria-label="More national parks"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></div>            </div>
         </header>
     </div>
 
-    <div class="strip" role="region" aria-labelledby="parks-heading" tabindex="0">
+    <div class="strip" id="parks-strip" role="region" aria-labelledby="parks-heading" tabindex="0">
         <ul class="strip__track" role="list">
                             <li class="tile">
                     <picture class="media media--3x4"><img src="/indiatigersafari/assets/img/photos/tiger-standing-beside-a-forest-stream-342.jpg?v=1791899326" alt="Tiger standing beside a forest stream in Jim Corbett National Park" data-fx="25" data-fy="50" width="1600" height="1066" loading="lazy" decoding="async"></picture>                    <p class="tile__meta">Uttarakhand</p>
@@ -363,7 +370,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1792077992.4eee43ba86c5781d61c9499d0f4a80a1b314ae77cd1871b531076e067ae0e7b6">
+                        <input type="hidden" name="token" value="1792078451.091f910d7b9ad41490de1f94b35a0c5f851abd9d60b1b42fc86bc7e4ad0267dd">
                         <input type="hidden" name="from" value="/">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -398,7 +405,7 @@ New Delhi, Delhi, India</p>
             <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
 
             <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
-                <input type="hidden" name="token" value="1792077992.4eee43ba86c5781d61c9499d0f4a80a1b314ae77cd1871b531076e067ae0e7b6">
+                <input type="hidden" name="token" value="1792078451.091f910d7b9ad41490de1f94b35a0c5f851abd9d60b1b42fc86bc7e4ad0267dd">
                 <input type="hidden" name="interest" value="" data-enquire-interest>
                 <div class="form-trap" aria-hidden="true">
                     <label for="enq-website">Leave this field empty</label>

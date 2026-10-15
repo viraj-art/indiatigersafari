@@ -102,7 +102,16 @@
     const film = document.querySelector('[data-hero-video]');
     const pause = document.querySelector('[data-hero-pause]');
     if (film) {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Visitors saving data, or on a very slow connection, keep the still image instead of downloading the film.
+        const connection = navigator.connection || {};
+        const saveData = connection.saveData === true || /(^|-)2g$/.test(connection.effectiveType || '');
+        if (saveData) {
+            film.removeAttribute('autoplay');
+            film.pause();
+            film.querySelectorAll('source').forEach((source) => source.remove());
+            film.load();
+            film.hidden = true;
+        } else if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             film.removeAttribute('autoplay');
             film.pause();
         } else if (pause) {
@@ -120,6 +129,34 @@
             });
         }
     }
+
+    // Sliding strips (home page experiences and parks): previous / next move by about a screenful,
+    // and each arrow rests at its end of the strip.
+    document.querySelectorAll('[data-strip-controls]').forEach((controls) => {
+        const strip = document.getElementById(controls.dataset.stripControls);
+        if (!strip) {
+            return;
+        }
+        const prev = controls.querySelector('[data-strip-prev]');
+        const next = controls.querySelector('[data-strip-next]');
+        const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const update = () => {
+            const max = strip.scrollWidth - strip.clientWidth - 2;
+            prev.disabled = strip.scrollLeft <= 2;
+            next.disabled = strip.scrollLeft >= max;
+            controls.hidden = max <= 0;   // nothing to slide when everything already fits
+        };
+        const step = () => Math.max(strip.clientWidth * 0.8, 280);
+        prev.addEventListener('click', () => strip.scrollBy({ left: -step(), behavior: smooth ? 'smooth' : 'auto' }));
+        next.addEventListener('click', () => strip.scrollBy({ left: step(), behavior: smooth ? 'smooth' : 'auto' }));
+        let timer = null;
+        strip.addEventListener('scroll', () => {
+            clearTimeout(timer);
+            timer = setTimeout(update, 60);
+        }, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    });
 
     // Experiences page: show all groups, or one.
     const filters = document.querySelector('[data-filters]');

@@ -19,9 +19,9 @@
 @media (max-width: 47.99rem) {
     .sp-photo--hero .ph { aspect-ratio: 16 / 9 !important; }
 }
-/* Larger screens: the hero's height is capped so the facts and the call to action stay on the first screen. */
+/* Larger screens: a generous hero (the side tab keeps the call to action in view); phones keep 16:9 above. */
 @media (min-width: 48rem) {
-    .sp-photo--hero .ph { aspect-ratio: auto !important; height: clamp(12rem, 24vh, 22rem); }
+    .sp-photo--hero .ph { aspect-ratio: auto !important; height: clamp(22rem, 62vh, 44rem); }
 }
 .sp-photo__label { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 0.3rem 0.65rem;
     background: rgba(250, 248, 245, 0.92); border-radius: var(--radius); color: var(--charcoal-soft);
