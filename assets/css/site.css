@@ -5351,3 +5351,7 @@ main {
 /* ---- Footer: Privacy Policy and Cookie settings ------------------------------------- */
 .foot__legal { margin: 0.5rem 0 0; font-size: 0.875rem; }
 .foot__legal a { display: inline-block; padding-block: 0.4rem; color: inherit; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 0.2em; }
+
+/* ---- "From" prices on the home page's experience cards --------------------------------------- */
+.card__price { margin: 0.75rem 0 0; padding-top: 0.6rem; border-top: 1px solid var(--line); color: var(--green); font-size: 0.875rem; font-weight: 700; line-height: 1.5; }
+.card__price span { margin-right: 0.2rem; color: var(--gold-deep); font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; }
