@@ -1,0 +1,297 @@
+/*
+ * Cookie consent banner and preferences panel (cc-). Built on site.css tokens. "Accept all" and
+ * "Reject non-essential" share one style (.cc-btn--choice) so neither is more prominent.
+ */
+
+/* First layer: a small card at the foot of the screen; the page stays readable and usable. */
+.cc-banner {
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    max-width: 34rem;
+    max-height: calc(100svh - 6rem);
+    overflow-y: auto;
+    padding: 1.125rem 1.125rem 1rem;
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--charcoal);
+    box-shadow: 0 18px 50px -18px rgba(19, 42, 31, 0.55);
+}
+
+.cc-banner[hidden] {
+    display: none;
+}
+
+.cc-banner__title,
+.cc-panel__title {
+    margin: 0 0 0.4rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.cc-banner__text,
+.cc-panel__intro,
+.cc-cat__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.cc-banner a,
+.cc-panel a {
+    color: var(--green);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 0.2em;
+}
+
+.cc-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+
+.cc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--green);
+    border-radius: var(--radius);
+    font: 700 0.8125rem/1.25 var(--font-body);
+    letter-spacing: 0.04em;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Accept and reject: identical in size, weight and treatment. */
+.cc-btn--choice {
+    background: var(--green);
+    color: var(--cream);
+}
+
+.cc-btn--choice:hover {
+    background: var(--green-deep);
+}
+
+.cc-btn--quiet,
+.cc-btn--save {
+    grid-column: 1 / -1;
+    background: transparent;
+    color: var(--green);
+}
+
+.cc-btn--quiet:hover,
+.cc-btn--save:hover {
+    background: var(--cream-deep);
+}
+
+.cc-btn:focus-visible,
+.cc-panel__close:focus-visible,
+.cc-switch input:focus-visible + .cc-switch__track {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* The enquiry pill steps aside while the banner is open, so neither covers the other. */
+.cc-banner-open .enquire-tab,
+.cc-banner-open .sp-bar {
+    visibility: hidden;
+}
+
+/* Preferences panel: a modal dialog. */
+.cc-panel {
+    width: min(34rem, calc(100vw - 1.5rem));
+    max-height: calc(100dvh - 1.5rem);
+    padding: 1.5rem 1.25rem 1.25rem;
+    overflow-y: auto;
+    border: 0;
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--charcoal);
+    box-shadow: 0 30px 80px -30px rgba(19, 42, 31, 0.7);
+}
+
+.cc-panel::backdrop {
+    background: rgba(19, 42, 31, 0.55);
+}
+
+.cc-panel__title {
+    padding-right: 2.75rem;
+}
+
+.cc-panel__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background: none;
+    color: var(--green);
+    cursor: pointer;
+}
+
+.cc-panel__close::before,
+.cc-panel__close::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.125rem;
+    height: 1.5px;
+    background: currentColor;
+}
+
+.cc-panel__close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.cc-panel__close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.cc-cats {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+.cc-cat {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.cc-cat__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.35rem;
+}
+
+.cc-cat__name {
+    margin: 0;
+    color: var(--green);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.cc-cat__state {
+    color: var(--gold-deep);
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+/* A switch for each optional category; never on until the visitor turns it on. */
+.cc-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    cursor: pointer;
+}
+
+.cc-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 2.75rem;
+    height: 1.6rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.cc-switch__track {
+    position: relative;
+    flex: none;
+    width: 2.75rem;
+    height: 1.6rem;
+    border: 1.5px solid var(--green);
+    border-radius: 999px;
+    background: #FFFFFF;
+    transition: background-color 0.2s var(--ease);
+}
+
+.cc-switch__track::after {
+    content: "";
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--green);
+    transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.cc-switch input:checked + .cc-switch__track {
+    background: var(--green);
+}
+
+.cc-switch input:checked + .cc-switch__track::after {
+    background: var(--cream);
+    transform: translateX(1.15rem);
+}
+
+.cc-actions--panel {
+    margin-top: 1.25rem;
+}
+
+@media (min-width: 40rem) {
+    .cc-banner {
+        left: 1.25rem;
+        right: auto;
+        bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+        padding: 1.375rem 1.5rem 1.25rem;
+    }
+
+    .cc-actions {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .cc-btn--quiet {
+        grid-column: auto;
+    }
+
+    .cc-panel {
+        padding: 2rem 2rem 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-switch__track,
+    .cc-switch__track::after {
+        transition: none;
+    }
+}
+
+/* Content held back until consent (the Contact page map). */
+.cc-blocked {
+    display: grid;
+    align-content: center;
+    gap: 0.5rem;
+    height: 100%;
+    min-height: 16rem;
+    padding: 1.5rem;
+    background: var(--cream-deep);
+    border: 1px dashed var(--gold-deep);
+    color: var(--charcoal-soft);
+    font-size: 0.9375rem;
+    text-align: center;
+}
+
+.cc-blocked p {
+    margin: 0;
+}
+
+.cc-blocked a {
+    color: var(--green);
+    font-weight: 700;
+}
