@@ -138,6 +138,34 @@
         }
     }
 
+    // Footer on phones: each list of links (Experiences, National Parks, Other) folds behind its
+    // heading and opens with a tap. Every link stays in the page; larger screens show them all.
+    document.querySelectorAll('.foot nav.foot__col').forEach((col, i) => {
+        const heading = col.querySelector('.foot__heading');
+        const list = col.querySelector('.foot__list');
+        if (!heading || !list) {
+            return;
+        }
+        list.id = list.id || `foot-list-${i + 1}`;
+        const label = heading.textContent.trim();
+        heading.innerHTML = '';
+        const text = document.createElement('span');
+        text.className = 'foot__heading-text';
+        text.textContent = label;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'foot__toggle';
+        button.textContent = label;
+        button.setAttribute('aria-controls', list.id);
+        button.setAttribute('aria-expanded', 'false');
+        heading.append(text, button);
+        col.classList.add('is-foldable', 'is-folded');
+        button.addEventListener('click', () => {
+            const open = col.classList.toggle('is-folded') === false;
+            button.setAttribute('aria-expanded', String(open));
+        });
+    });
+
     // The enquiry form at the end of every page: sent to /enquire and answered in place.
     document.querySelectorAll('[data-inline-enquire]').forEach((form) => {
         const sent = form.parentElement.querySelector('[data-inline-sent]');
