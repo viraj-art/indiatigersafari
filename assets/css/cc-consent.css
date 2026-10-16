@@ -100,10 +100,13 @@
     outline-offset: 2px;
 }
 
-/* The enquiry pill steps aside while the banner is open, so neither covers the other. */
-.cc-banner-open .enquire-tab,
-.cc-banner-open .sp-bar {
-    visibility: hidden;
+/* The enquiry button stays available while the banner is open: on phones and tablets it sits just
+   above the banner (its height is measured by cc-consent.js), so neither covers the other. */
+@media (max-width: 1023.98px) {
+    .cc-banner-open .enquire-tab,
+    .cc-banner-open .sp-bar {
+        bottom: calc(var(--cc-banner-h, 0px) + 1.25rem + env(safe-area-inset-bottom, 0px));
+    }
 }
 
 /* Preferences panel: a modal dialog. */

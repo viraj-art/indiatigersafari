@@ -75,9 +75,16 @@
         });
     }
 
+    // The banner's height, so the enquiry button can sit just above it on small screens.
+    function measure() {
+        document.documentElement.style.setProperty('--cc-banner-h', banner.hidden ? '0px' : banner.offsetHeight + 'px');
+    }
+    window.addEventListener('resize', measure);
+
     function showBanner(show) {
         banner.hidden = !show;
         document.documentElement.classList.toggle('cc-banner-open', show);
+        measure();
     }
 
     var lastFocus = null;
