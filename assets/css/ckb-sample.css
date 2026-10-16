@@ -117,3 +117,7 @@
     .ckb-actions, .ckb-toggle-all, .ckb-enquire, .enquire-tab { display: none !important; }
     .ckb details::details-content { content-visibility: visible; display: block; }
 }
+
+/* "Expand all" sits just above Day 1, on the right. */
+.ckb-days__tools { display: flex; justify-content: flex-end; margin-top: 1rem; }
+.ckb-days__tools + .ckb-days { margin-top: 0; }
