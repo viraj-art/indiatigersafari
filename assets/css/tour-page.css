@@ -1,6 +1,6 @@
 /*
- * SAMPLE PAGE ONLY (/sample/corbett-kanha-bandhavgarh-tiger-safari). Mobile first; built on site.css tokens.
- * Every rule is ckb- prefixed or scoped to .ckb-page, so deleting this file with the sample leaves no trace.
+ * Experience pages (/tours/{slug}, tour.php). Mobile first; built on site.css tokens.
+ * Every rule is ckb- prefixed (the layout was first trialled on the Corbett, Kanha & Bandhavgarh page).
  */
 
 .ckb { --ckb-read: 46rem; }
@@ -121,3 +121,13 @@
 /* "Expand all" sits just above Day 1, on the right. */
 .ckb-days__tools { display: flex; justify-content: flex-end; margin-top: 1rem; }
 .ckb-days__tools + .ckb-days { margin-top: 0; }
+
+/* A destination's own note (e.g. the fly camp night), above its hotels. */
+.ckb-place-note { max-width: var(--ckb-read); margin: 0 0 0.85rem; color: var(--charcoal-soft); font-size: 0.9375rem; }
+
+/* Bird checklists, folded with the other reference sections. */
+.ckb-ref__body h3 { margin: 1.5rem 0 0.5rem; font-size: 1.125rem; }
+.ckb-ref__body h3:first-child { margin-top: 0; }
+.ckb-ref__body .marked li { margin-bottom: 0.4rem; }
+.ckb-ref__body > p + p { margin-top: 0.75rem; }
+.ckb-card__meta { display: block; margin-bottom: 0.25rem; color: var(--gold-deep); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }

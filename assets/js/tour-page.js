@@ -1,5 +1,5 @@
-/* SAMPLE PAGE ONLY (/sample/corbett-kanha-bandhavgarh-tiger-safari): "Expand all / Collapse all" for the
-   day-by-day itinerary, and every day opened for printing. Without this file each day still opens on its own. */
+/* Experience pages (tour.php): "Expand all / Collapse all" for the day-by-day itinerary, and every
+   day opened for printing. Without this file each day still opens on its own. */
 (function () {
     'use strict';
     var days = document.querySelectorAll('.ckb-day');

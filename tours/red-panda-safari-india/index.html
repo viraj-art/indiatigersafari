@@ -66,7 +66,7 @@
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Experiences",
+                    "name": "Tours",
                     "item": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/tours"
                 },
                 {
@@ -79,7 +79,7 @@
         },
         {
             "@type": "TouristTrip",
-            "name": "Red Panda Safari in India",
+            "name": "Red Panda Safari in India (7N/8D)",
             "description": "An 8-day private red panda safari in Darjeeling, with four nights tracking red pandas in Singalila National Park and stays at Glenburn Tea Estate.",
             "url": "https://viraj-art.github.io/indiatigersafari/indiatigersafari/tours/red-panda-safari-india",
             "touristType": "Wildlife and luxury travellers",
@@ -96,7 +96,7 @@
                         "item": {
                             "@type": "TouristAttraction",
                             "name": "Day 1: Arrival in New Delhi",
-                            "description": "A VIP representative meets you at the aircraft and guides you swiftly through immigration, baggage reclaim and customs. Your chauffeur drives you the few minutes to Roseate House in Aerocity, convenient for tomorrow's flight east. Rest and enjoy a quiet dinner at the hotel."
+                            "description": "A VIP representative meets you at the aircraft and guides you swiftly through immigration, baggage reclaim and customs. Your chauffeur drives you to your hotel, where you can rest and enjoy a quiet dinner before tomorrow's flight east."
                         }
                     },
                     {
@@ -105,7 +105,7 @@
                         "item": {
                             "@type": "TouristAttraction",
                             "name": "Day 2: New Delhi to Glenburn Tea Estate",
-                            "description": "A morning flight takes you to Bagdogra, in the foothills of the Eastern Himalaya, in about two hours. Your chauffeur drives you for about three hours up through the tea gardens to Glenburn Tea Estate, set above the Rungeet river. Settle into your suite in one of the restored planter's bungalows and take afternoon tea on the verandah as the hills fade into evening."
+                            "description": "A morning flight takes you to Bagdogra, in the foothills of the Eastern Himalaya. Your chauffeur drives you up through the tea gardens to Glenburn Tea Estate, set above the Rungeet river. Settle into your suite in one of the restored planter's bungalows and take afternoon tea on the verandah as the hills fade into evening."
                         }
                     },
                     {
@@ -114,7 +114,7 @@
                         "item": {
                             "@type": "TouristAttraction",
                             "name": "Day 3: Glenburn to Singalila National Park",
-                            "description": "After breakfast, drive through Darjeeling to Manebhanjan, the gateway to Singalila National Park, about two and a half hours away. Here you board one of the vintage Land Rovers for the climb up the ridge, about two hours through forests of oak, magnolia and rhododendron. Red Panda Outpost stands high on the Singalila Ridge, at about 2,865 metres (9,400 feet): a traditional wooden teahouse, lovingly converted, with six rooms, each with its own bathroom, around a warming bukhari stove."
+                            "description": "After breakfast, drive through Darjeeling to Manebhanjan, the gateway to Singalila National Park. Here you board one of the vintage Land Rovers for the climb up the ridge through forests of oak, magnolia and rhododendron. Red Panda Outpost stands high on the Singalila Ridge, at about 2,865 metres (9,400 feet): a traditional wooden teahouse, lovingly converted, with six rooms, each with its own bathroom, around a warming bukhari stove."
                         }
                     },
                     {
@@ -150,7 +150,7 @@
                         "item": {
                             "@type": "TouristAttraction",
                             "name": "Day 7: Singalila to Glenburn Tea Estate",
-                            "description": "After a last morning with the trackers, descend by Land Rover to Manebhanjan and return to Glenburn, about five hours in all. Arrive in time to walk among the tea bushes and join a tasting of the estate's own teas, followed by a candlelit farewell dinner."
+                            "description": "After a last morning with the trackers, descend by Land Rover to Manebhanjan and return to Glenburn. Arrive in time to walk among the tea bushes and join a tasting of the estate's own teas, followed by a candlelit farewell dinner."
                         }
                     },
                     {
@@ -159,7 +159,7 @@
                         "item": {
                             "@type": "TouristAttraction",
                             "name": "Day 8: Glenburn to New Delhi",
-                            "description": "After a leisurely breakfast on the verandah, your chauffeur drives you to Bagdogra, about three hours away, for your flight to Delhi and your onward journey."
+                            "description": "After a leisurely breakfast on the verandah, your chauffeur drives you to Bagdogra for your flight to Delhi and your onward journey."
                         }
                     }
                 ]
@@ -205,7 +205,7 @@
                     "name": "How do I book a private red panda tour in India?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Speak with our safari specialists, who will tailor this itinerary around your dates, interests and pace. Every journey is private, bespoke and curated for you, and we recommend booking six to nine months ahead, as Red Panda Outpost has only six rooms."
+                        "text": "Speak with our safari specialists, who will curate this itinerary around your dates, interests and pace. Every journey is private and bespoke, and we recommend booking six to nine months ahead, as Red Panda Outpost has only six rooms."
                     }
                 }
             ]
@@ -213,7 +213,7 @@
     ]
 }</script>
 </head>
-<body class="page-tour">
+<body class="page-experience ckb-page">
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-header" data-site-header>
@@ -248,407 +248,363 @@
 </header>
 
 <main id="main" tabindex="-1">
+<link rel="stylesheet" href="/indiatigersafari/assets/vendor/leaflet/leaflet.min.css">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/route-map.css?v=1792071763">
+<link rel="stylesheet" href="/indiatigersafari/assets/css/tour-page.css?v=1792162719">
 
-<article class="tour">
-    <header class="tour-head">
+<article class="ckb">
+    <header class="ckb-head">
+        <div class="ckb-hero"><div class="ph ph--4x3" role="img" aria-label="Red panda resting in a rhododendron tree in Singalila National Park"></div></div>
         <div class="container">
             <nav class="breadcrumbs" aria-label="Breadcrumb">
                 <ol>
                     <li><a href="/indiatigersafari/">Home</a></li>
-                    <li><a href="/indiatigersafari/tours">Experiences</a></li>
+                    <li><a href="/indiatigersafari/tours">Tours</a></li>
                     <li aria-current="page">Red Panda Safari in India</li>
                 </ol>
             </nav>
-            <p class="tour-head__meta">7 nights / 8 days</p>
-            <h1>Red Panda Safari in India</h1>
+            <h1>Red Panda Safari in India (7N/8D)</h1>
             <p class="tour-price"><span class="tour-price__label">From</span> X USD · X CAD · X EUR · X GBP</p>
-                            <p class="tour-head__note"><em>This itinerary is a starting point, and every element can be tailored. Speak with our safari specialists and we will shape your journey around you. That might be a romantic dinner in the forest, a family adventure with lodges and naturalists who delight young explorers, or a serious wildlife photography expedition with extra time in the field. Every journey we create is bespoke, curated around your pace, interests and dreams.</em></p>
-                    </div>
-        <div class="container tour-head__media">
-            <div class="ph ph--21x9" role="img" aria-label="Red panda resting in a rhododendron tree in Singalila National Park"></div>        </div>
+                            <p class="ckb-note"><em>This itinerary is completely customisable, including accommodation that is not on our list. Speak to our safari specialists and they will design a fully bespoke journey around a family adventure, extra time with the trackers or a serious wildlife photography expedition.</em></p>
+                        <div class="ckb-actions">
+                <a class="btn btn--gold" href="#ckb-enquire">Speak to a safari specialist</a>
+                <a class="ckb-link" href="#itinerary">See the itinerary</a>
+            </div>
+        </div>
     </header>
 
-    <div class="container tour-layout">
-        <aside class="tour-aside">
-            <nav class="tour-nav" aria-label="On this page" data-tour-nav>
-                <ul>
-                                            <li><a href="#about">Overview</a></li>
-                                            <li><a href="#testimonials">Guests</a></li>
-                                            <li><a href="#destinations">Destinations</a></li>
-                                            <li><a href="#experience">Highlights</a></li>
-                                            <li><a href="#itinerary">Itinerary</a></li>
-                                            <li><a href="#leisure">Leisure</a></li>
-                                            <li><a href="#accommodation">Accommodation</a></li>
-                                            <li><a href="#fauna">Wildlife</a></li>
-                                            <li><a href="#birds">Birds</a></li>
-                                            <li><a href="#parks">Places</a></li>
-                                            <li><a href="#inclusions">Inclusions</a></li>
-                                            <li><a href="#extensions">Extensions</a></li>
-                                            <li><a href="#faqs">FAQs</a></li>
-                                            <li><a href="#related">Related</a></li>
-                                    </ul>
-            </nav>
-        </aside>
-
-        <div class="tour-body">
-
-                        <section class="tour-section" id="about" aria-labelledby="about-h">
-                <h2 id="about-h">About This Red Panda Safari</h2>
-                <div class="prose prose--lead">
-                                            <p>This red panda safari in India takes you high into the Eastern Himalaya above Darjeeling, to the Singalila Ridge. Here, in forests of oak, magnolia, rhododendron and bamboo, lives one of the world&#039;s most enchanting animals: the red panda, with its russet coat and ringed tail. <a href="/indiatigersafari/national-parks/singalila-national-park/">Singalila National Park</a> is one of the best places on earth to see it in the wild, and on clear mornings the ridge looks out to the snows of Kangchenjunga.</p>
-                                            <p>You spend four nights on the ridge at Red Panda Outpost, a converted family teahouse high on the ridge, where local trackers search the bamboo each morning and guide you to the pandas on foot. Before and after, you stay at Glenburn Tea Estate, a planter&#039;s retreat founded in 1859 above the Rungeet river, with the vintage Land Rovers of Manebhanjan carrying you up the ridge between them. A VIP welcome at Delhi airport, chauffeur-driven private SUVs and domestic flights make every transfer effortless.</p>
-                                            <p>This is travel that gives back. Red Panda Outpost is run on a community-tourism model, with local trackers and villagers at its heart, and Darjeeling&#039;s zoo has returned captive-bred red pandas to Singalila to strengthen the wild population. Your journey also contributes to TOFTigers, the wildlife tourism and conservation alliance that won a Travel + Leisure Global Vision Award in 2025. The finest months are March to May and October to early December, and every departure is private and bespoke, curated around your dates and interests.</p>
-                                    </div>
-                <div class="tour-figures tour-figures--pair">
-                    <div class="ph ph--4x3" role="img" aria-label="Vintage Land Rover on the Singalila Ridge above Manebhanjan"></div>                    <div class="ph ph--4x3" role="img" aria-label="Red Panda Outpost teahouse lodge on the Singalila Ridge"></div>                </div>
-            </section>
-            
-                        <section class="tour-section" id="testimonials" aria-labelledby="testimonials-h"><h2 id="testimonials-h">What Our Guests Say</h2><ul class="guest-quotes card-grid" role="list"><li class="visually-hidden">Guest testimonials will appear here.</li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li></ul></section>
-                        <section class="tour-section" id="destinations" aria-labelledby="destinations-h">
-                <h2 id="destinations-h">Destinations Covered</h2>
-                <ol class="route" role="list">
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 1</span>
-                                <span class="route__text">Arrive in New Delhi</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 2</span>
-                                <span class="route__text">New Delhi to Bagdogra (approx. 2 hr flight), then to Glenburn Tea Estate (3 hours drive)</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 3</span>
-                                <span class="route__text">Glenburn to Singalila National Park (about 2.5 hours drive to Manebhanjan, then about 2 hours by vintage Land Rover)</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 4</span>
-                                <span class="route__text">Singalila National Park</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 5</span>
-                                <span class="route__text">Singalila National Park</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 6</span>
-                                <span class="route__text">Singalila National Park</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 7</span>
-                                <span class="route__text">Singalila to Glenburn Tea Estate (about 5 hours)</span>
-                                                    </li>
-                                                                    <li class="route__stop">
-                                                            <span class="route__day">Day 8</span>
-                                <span class="route__text">Glenburn to Bagdogra (3 hours drive), flight to New Delhi (approx. 2 hr) and depart</span>
-                                                    </li>
-                                    </ol>
-            </section>
-            
-                        <section class="tour-section" id="experience" aria-labelledby="experience-h">
-                <h2 id="experience-h">What You Will Experience</h2>
-                <ul class="marked">
-                                            <li><strong>Wild red pandas in Singalila National Park</strong>, found each morning by local trackers who know the ridge intimately.</li>
-                                            <li><strong>Four nights on the Singalila Ridge</strong> at Red Panda Outpost, giving you the best chance of unhurried sightings.</li>
-                                            <li><strong>Himalayan birds</strong>, from the satyr tragopan to the blood pheasant, in forests of rhododendron and bamboo.</li>
-                                            <li><strong>Views of Kangchenjunga</strong>, the world&#039;s third-highest mountain, from the ridge.</li>
-                                            <li><strong>The vintage Land Rovers of Manebhanjan</strong>, which have carried travellers up the ridge for generations.</li>
-                                            <li><strong>Glenburn Tea Estate</strong>, a planter&#039;s retreat founded in 1859, with tea plucked on the slopes below your verandah.</li>
-                                    </ul>
-                <div class="tour-figures tour-figures--pair">
-                    <div class="ph ph--4x3" role="img" aria-label="Tea gardens of Glenburn Tea Estate above the Rungeet river"></div>                    <div class="ph ph--4x3" role="img" aria-label=""></div>                </div>
-            </section>
-            
-            <section class="tour-section" id="itinerary" aria-labelledby="itinerary-h">
-                <h2 id="itinerary-h">Red Panda Safari in India Itinerary: Day by Day</h2>
-                <div class="tour-figures">
-                    <div class="ph ph--16x9" role="img" aria-label="Kangchenjunga at sunrise from the Singalila Ridge, Darjeeling"></div>                </div>
-                <ol class="days" role="list">
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 1:</span> Arrival in New Delhi</h3>
-                            <div class="prose"><p>A VIP representative meets you at the aircraft and guides you swiftly through immigration, baggage reclaim and customs. Your chauffeur drives you the few minutes to Roseate House in Aerocity, convenient for tomorrow&#039;s flight east. Rest and enjoy a quiet dinner at the hotel.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Roseate House, New Delhi</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 2:</span> New Delhi to Glenburn Tea Estate</h3>
-                            <div class="prose"><p>A morning flight takes you to Bagdogra, in the foothills of the Eastern Himalaya, in about two hours. Your chauffeur drives you for about three hours up through the tea gardens to Glenburn Tea Estate, set above the Rungeet river. Settle into your suite in one of the restored planter&#039;s bungalows and take afternoon tea on the verandah as the hills fade into evening.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Glenburn Tea Estate, Darjeeling Hills</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 3:</span> Glenburn to Singalila National Park</h3>
-                            <div class="prose"><p>After breakfast, drive through Darjeeling to Manebhanjan, the gateway to Singalila National Park, about two and a half hours away. Here you board one of the vintage Land Rovers for the climb up the ridge, about two hours through forests of oak, magnolia and rhododendron. Red Panda Outpost stands high on the Singalila Ridge, at about 2,865 metres (9,400 feet): a traditional wooden teahouse, lovingly converted, with six rooms, each with its own bathroom, around a warming bukhari stove.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Red Panda Outpost, Singalila Ridge</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 4:</span> Singalila National Park</h3>
-                            <div class="prose"><p>The trackers set out at first light to search the bamboo thickets where red pandas feed. When one is found, you walk out with your guide, usually for an hour or two, to watch it resting in the canopy or foraging quietly, often allowing long, unhurried views. The rest of the day is for birding along the ridge, where satyr tragopans and blood pheasants move through the undergrowth.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Red Panda Outpost, Singalila Ridge</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 5:</span> Singalila National Park</h3>
-                            <div class="prose"><p>Another morning with the trackers, perhaps finding a different panda in a new stretch of forest. Between sightings, walk the ridge trails with your naturalist in search of yellow-throated martens, barking deer and Himalayan black bears, and watch the light change on Kangchenjunga, the third-highest mountain on earth.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Red Panda Outpost, Singalila Ridge</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 6:</span> Singalila National Park</h3>
-                            <div class="prose"><p>A final full day on the ridge, based at Red Panda Outpost. Photographers may return to a favourite panda with the trackers, while others walk the forest trails around the lodge with a naturalist, looking for Himalayan monal and kalij pheasant among the rhododendrons. Evenings are spent by the stove, sharing stories of the day.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Red Panda Outpost, Singalila Ridge</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 7:</span> Singalila to Glenburn Tea Estate</h3>
-                            <div class="prose"><p>After a last morning with the trackers, descend by Land Rover to Manebhanjan and return to Glenburn, about five hours in all. Arrive in time to walk among the tea bushes and join a tasting of the estate&#039;s own teas, followed by a candlelit farewell dinner.</p></div>
-                                                            <p class="day__overnight"><em>Overnight: Glenburn Tea Estate, Darjeeling Hills</em></p>
-                                                    </li>
-                                            <li class="day">
-                            <h3 class="day__title"><span class="day__number">Day 8:</span> Glenburn to New Delhi</h3>
-                            <div class="prose"><p>After a leisurely breakfast on the verandah, your chauffeur drives you to Bagdogra, about three hours away, for your flight to Delhi and your onward journey.</p></div>
-                                                    </li>
-                                    </ol>
-                                    <aside class="note" aria-label="A note from our planners">
-                        <p class="note__label"><em>A note from our planners</em></p>
-                        <div class="prose"><p>Singalila National Park closes from mid-June to mid-September for the monsoon. Please carry your passport, which is needed for park permits. Nights are cold for much of the season, and power comes from solar panels and a generator. Red pandas are wild and sightings cannot be guaranteed, which is why we plan four nights on the ridge.</p></div>
-                    </aside>
-                            </section>
-
-                        <section class="tour-section" id="leisure" aria-labelledby="leisure-h">
-                <h2 id="leisure-h">Tailored Leisure &amp; In-Lodge Experiences (Choose Your Activity)</h2>
-                <div class="tour-figures">
-                    <div class="ph ph--16x9" role="img" aria-label=""></div>                </div>
-                <ul class="leisure" role="list">
-                                            <li class="leisure__item">
-                            <h3 class="leisure__title">Tea Tasting at Glenburn</h3>
-                            <p>Learn how Darjeeling&#039;s famous flushes are plucked, rolled and graded, then taste the estate&#039;s finest teas.</p>
-                        </li>
-                                            <li class="leisure__item">
-                            <h3 class="leisure__title">The Darjeeling Himalayan Railway</h3>
-                            <p>Ride the UNESCO-listed &quot;toy train&quot; on its narrow-gauge track through the hills of Darjeeling.</p>
-                        </li>
-                                            <li class="leisure__item">
-                            <h3 class="leisure__title">A Picnic by the Rungeet</h3>
-                            <p>Walk down through the tea gardens to a riverside lunch beside the Rungeet.</p>
-                        </li>
-                                            <li class="leisure__item">
-                            <h3 class="leisure__title">Dawn Birding near the Outpost</h3>
-                            <p>Walk the forest trails around Red Panda Outpost at first light with a naturalist, listening for the calls of pheasants and laughingthrushes in the bamboo.</p>
-                        </li>
-                                    </ul>
-                                    <div class="asides">
-                                                    <div class="asides__item">
-                                <h3 class="asides__title">Something Else in Mind?</h3>
-                                <p>These experiences are only a starting point. Tell us what delights you, and we will arrange it around your destination and the character of each partner property. That might be an extra day with the trackers, a dawn birding walk for Himalayan pheasants, or a one-to-one wildlife photography session in the bamboo forest. Every moment of your journey can be curated to your liking.</p>
+    <div class="container ckb-body">
+                <section class="ckb-section" id="about" aria-labelledby="about-h">
+            <h2 id="about-h">About This Red Panda Safari</h2>
+            <div class="prose">
+                                    <p>This red panda safari in India takes you high into the Eastern Himalaya above Darjeeling, to the Singalila Ridge. Here, in forests of oak, magnolia, rhododendron and bamboo, lives one of the world&#039;s most enchanting animals: the red panda, with its russet coat and ringed tail. <a href="/indiatigersafari/national-parks/singalila-national-park/">Singalila National Park</a> is one of the best places on earth to see it in the wild, and on clear mornings the ridge looks out to the snows of Kangchenjunga.</p>
+                                    <p>You spend four nights on the ridge at Red Panda Outpost, a converted family teahouse high on the ridge, where local trackers search the bamboo each morning and guide you to the pandas on foot. Before and after, you stay at Glenburn Tea Estate, a planter&#039;s retreat founded in 1859 above the Rungeet river, with the vintage Land Rovers of Manebhanjan carrying you up the ridge between them. A VIP welcome at Delhi airport, chauffeur-driven private SUVs and domestic flights make every transfer effortless.</p>
+                                    <p>This is travel that gives back. Red Panda Outpost is run on a community-tourism model, with local trackers and villagers at its heart, and Darjeeling&#039;s zoo has returned captive-bred red pandas to Singalila to strengthen the wild population. Your journey also contributes to TOFTigers, winner of a Travel + Leisure Global Vision Award in 2025. The finest months are March to May and October to early December, and every departure is private and bespoke, curated around your dates and interests.</p>
                             </div>
-                                                                            <div class="asides__item">
-                                <h3 class="asides__title">Dining &amp; Reservations</h3>
-                                <p>In Delhi, our private concierge secures reservations at the finest restaurants the city has to offer, including tables that are famously hard to come by. Share your tastes, whether a celebrated tasting menu, classic Mughlai cuisine or a private dinner for a special occasion, and we will arrange every detail.</p>
-                            </div>
-                                            </div>
-                            </section>
-            
-                        <section class="tour-section" id="accommodation" aria-labelledby="accommodation-h">
-                <h2 id="accommodation-h">Your Accommodation</h2>
-                                    <p class="handpicked"><em>Every property on this journey has been handpicked by our team. They are lodges and hotels we have worked with and returned to over many years, chosen for their setting, the quality of their naturalists, the warmth of their service and their care for the forests and communities around them. We recommend only places we know intimately, so you can rest assured that each stay will be as exceptional as the wilderness beyond its doors. If you have something particular in mind, our safari specialists will gladly find the perfect stay for your needs, including properties beyond those listed here.</em></p>
-                                <ul class="stays" role="list">
-                                            <li class="stays__item">
-                                                        <picture class="media media--16x9"><img src="/indiatigersafari/assets/img/stays/roseate-house-bedroom.jpg?v=1791989054" alt="A bedroom at Roseate House, New Delhi, in soft neutral tones" data-fx="25" data-fy="50" width="1600" height="534" loading="lazy" decoding="async"></picture>                            <p><strong>New Delhi – Roseate House</strong> (Day 1): A stylish contemporary hotel in Aerocity, minutes from the airport for your flight east.</p>
-                        </li>
-                                            <li class="stays__item">
-                                                        <picture class="media media--16x9"><img src="/indiatigersafari/assets/img/stays/glenburn-bedroom.jpg?v=1791983493" alt="A four-poster bedroom opening onto a veranda at Glenburn Tea Estate" width="1600" height="781" loading="lazy" decoding="async"></picture>                            <p><strong>Darjeeling Hills – Glenburn Tea Estate</strong> (Days 2 &amp; 7): A planter&#039;s retreat founded in 1859 above the Rungeet river, with eight suites in two restored bungalows and views towards Kangchenjunga.</p>
-                        </li>
-                                            <li class="stays__item">
-                                                        <picture class="media media--16x9"><img src="/indiatigersafari/assets/img/stays/red-panda-outpost-double-room.jpg?v=1792007457" alt="Double bedroom with painted ceiling beams at Red Panda Outpost, Singalila" width="400" height="256" loading="lazy" decoding="async"></picture>                            <p><strong>Singalila – Red Panda Outpost</strong> (Days 3–6): A converted family teahouse of six rooms with private bathrooms high on the Singalila Ridge, warmed by a bukhari stove and guided by local trackers.</p>
-                        </li>
-                                    </ul>
-
-                                    <h3 class="sub-heading">Alternative Accommodation</h3>
-                    <div class="alternatives">
-                                                    <div class="alternatives__group">
-                                <h4 class="alternatives__place">New Delhi</h4>
-                                <picture class="media media--16x9"><img src="/indiatigersafari/assets/img/stays/oberoi-new-delhi-room.jpg?v=1791989054" alt="A luxury room at The Oberoi, New Delhi, looking out over the trees" data-fx="50" data-fy="50" width="1260" height="700" loading="lazy" decoding="async"></picture>                                <ul role="list">
-                                                                            <li><strong>The Oberoi New Delhi:</strong> A landmark of Indian hospitality, with polished service and views across the Delhi Golf Club.</li>
-                                                                    </ul>
-                            </div>
-                                                    <div class="alternatives__group">
-                                <h4 class="alternatives__place">Darjeeling</h4>
-                                <picture class="media media--16x9"><img src="/indiatigersafari/assets/img/stays/windamere-hotel-suite.jpg?v=1792007486" alt="Suite with a timber ceiling and bay windows at the Windamere Hotel, Darjeeling" width="1000" height="542" loading="lazy" decoding="async"></picture>                                <ul role="list">
-                                                                            <li><strong>Windamere Hotel:</strong> A colonial-era hotel on Observatory Hill in Darjeeling, full of old-world character and afternoon teas by the fire.</li>
-                                                                    </ul>
-                            </div>
-                                            </div>
-                            </section>
-            
-                        <section class="tour-section" id="fauna" aria-labelledby="fauna-h">
-                <h2 id="fauna-h">Popular Fauna</h2>
-                <ul class="fauna" role="list">
-                                            <li>Red Panda</li>
-                                            <li>Himalayan Black Bear</li>
-                                            <li>Yellow-throated Marten</li>
-                                            <li>Barking Deer</li>
-                                            <li>Leopard Cat</li>
-                                            <li>Himalayan Serow</li>
-                                            <li>Birdlife, including the Satyr Tragopan, Blood Pheasant, Himalayan Monal and Kalij Pheasant</li>
-                                    </ul>
-                <div class="tour-figures tour-figures--three">
-                    <div class="ph ph--4x3" role="img" aria-label=""></div>                    <div class="ph ph--4x3" role="img" aria-label=""></div>                    <div class="ph ph--4x3" role="img" aria-label=""></div>                </div>
-            </section>
-            
-                                                <section class="tour-section" id="birds" aria-labelledby="birds-h0">
-                <h2 id="birds-h0">Birds of Singalila National Park: Species Checklist</h2>
-                                    <div class="prose"><p>The Singalila Ridge is one of the finest places in India for Himalayan birds, from pheasants in the rhododendron to parrotbills in the bamboo. These are among the species our naturalists record most often; sightings vary with the season and altitude.</p></div>
-                                        <ul class="places" role="list">
-                                            <li><strong>Pheasants and partridges:</strong> Satyr Tragopan, Blood Pheasant, Himalayan Monal, Kalij Pheasant, Hill Partridge</li>
-                                            <li><strong>Parrotbills, fulvettas and babblers:</strong> Fire-tailed Myzornis, Brown Parrotbill, Great Parrotbill, Fulvous Parrotbill, Golden-breasted Fulvetta, White-browed Fulvetta, Rufous-winged Fulvetta, Stripe-throated Yuhina, Rufous-vented Yuhina, Whiskered Yuhina</li>
-                                            <li><strong>Laughingthrushes and sibias:</strong> Chestnut-crowned Laughingthrush, Black-faced Laughingthrush, Spotted Laughingthrush, Hoary-throated Barwing, Rufous Sibia, Chestnut-tailed Minla</li>
-                                            <li><strong>Tits and sunbirds:</strong> Rufous-vented Tit, Grey-crested Tit, Green-backed Tit, Black-throated Bushtit, Fire-tailed Sunbird, Green-tailed Sunbird, Mrs Gould&#039;s Sunbird</li>
-                                            <li><strong>Robins, flycatchers and fantails:</strong> White-browed Bush Robin, Golden Bush Robin, Himalayan Bluetail, Rufous-gorgeted Flycatcher, Ultramarine Flycatcher, Yellow-bellied Fantail, White-throated Fantail, Rufous-breasted Accentor</li>
-                                            <li><strong>Finches and thrushes:</strong> Dark-breasted Rosefinch, Scarlet Finch, Red-headed Bullfinch, Gold-naped Finch, White-collared Blackbird, Grey-winged Blackbird, Spotted Nutcracker</li>
-                                            <li><strong>Woodpeckers, pigeons and raptors:</strong> Darjeeling Woodpecker, Crimson-breasted Woodpecker, Ashy Wood Pigeon, Speckled Wood Pigeon, Himalayan Griffon, Mountain Hawk-Eagle</li>
-                                        </ul>
-                            </section>
-                        
-                        <section class="tour-section" id="parks" aria-labelledby="parks-h">
-                                    <h2 id="parks-h">National Parks &amp; Wildlife Reserves</h2>
-                    <ul class="places" role="list">
-                                                                                <li>
-                                                                    <strong><a href="/indiatigersafari/national-parks/singalila-national-park/">Singalila National Park</a>:</strong> A high-altitude park of about 78.6 sq km on the Singalila Ridge in Darjeeling district, West Bengal. Rising from about 2,300 metres to almost 4,000 metres through forests of oak, magnolia, rhododendron and bamboo, it is one of the best places in the world to see wild red pandas.                                                            </li>
-                                            </ul>
-                                                <div class="tour-figures">
-                    <div class="ph ph--16x9" role="img" aria-label=""></div>                </div>
-            </section>
-            
-                        <section class="tour-section" id="inclusions" aria-labelledby="inclusions-h">
-                <h2 id="inclusions-h">Inclusions &amp; Exclusions</h2>
-                <div class="inex">
-                    <div>
-                        <h3 class="sub-heading sub-heading--flush">Inclusions</h3>
-                        <ul class="marked marked--tick">
-                                                            <li>VIP Meet &amp; Greet on arrival at Delhi Airport</li>
-                                                            <li>All private transfers in comfortable, chauffeur-driven SUVs, with vintage Land Rovers on the Singalila Ridge</li>
-                                                            <li>Domestic flights: New Delhi – Bagdogra – New Delhi</li>
-                                                            <li>Expert local trackers and a naturalist throughout your time in Singalila</li>
-                                                            <li>Tea tasting at Glenburn Tea Estate</li>
-                                                            <li>Luxury accommodation, on full board at Glenburn and Red Panda Outpost and with breakfast in Delhi</li>
-                                                            <li>All park entry fees, permits and conservation levies</li>
-                                                    </ul>
-                    </div>
-                                            <div>
-                            <h3 class="sub-heading sub-heading--flush">Exclusions</h3>
-                            <p>International flights, visa fees, personal gratuities, travel insurance, premium alcoholic beverages, camera fees, and optional experiences marked &quot;on request.&quot;</p>
-                        </div>
-                                    </div>
-            </section>
-            
-                        <section class="tour-section" id="extensions" aria-labelledby="extensions-h">
-                <h2 id="extensions-h">Possible Extensions</h2>
-                <ul class="places" role="list">
-                                                                    <li>
-                                                            <strong><a href="/indiatigersafari/tours/golden-triangle-tour-extension">Golden Triangle</a>:</strong> Begin or end your journey with Delhi, the Taj Mahal at sunrise and the palaces of Jaipur.                                                    </li>
-                                                                    <li>
-                                                            <strong><a href="/indiatigersafari/tours/keoladeo-birding-extension">Keoladeo Birding</a>:</strong> From October, add the wetlands of <a href="/indiatigersafari/national-parks/keoladeo/">Keoladeo National Park</a>, alive with cranes, storks and migrant waterfowl.                                                    </li>
-                                    </ul>
-            </section>
-            
-                        <section class="tour-section" id="faqs" aria-labelledby="faqs-h">
-                <h2 id="faqs-h">Red Panda Safari in India FAQs</h2>
-                                <div class="faqs">
-                                            <details class="faq" open>
-                            <summary><h3 class="faq__q">When is the best time for a red panda safari in India?</h3></summary>
-                            <div class="faq__a prose"><p>March to May and October to early December. Spring brings rhododendrons into flower along the ridge, while autumn offers the clearest views of the Himalaya. Singalila National Park closes from mid-June to mid-September for the monsoon.</p></div>
-                        </details>
-                                            <details class="faq">
-                            <summary><h3 class="faq__q">What are my chances of seeing a red panda?</h3></summary>
-                            <div class="faq__a prose"><p>Red pandas are wild and can never be guaranteed, but Singalila is one of the most reliable places in the world to see them. With four nights on the ridge and experienced local trackers, your chances are excellent.</p></div>
-                        </details>
-                                            <details class="faq">
-                            <summary><h3 class="faq__q">How comfortable is Red Panda Outpost?</h3></summary>
-                            <div class="faq__a prose"><p>It is a simple, cosy lodge rather than a luxury hotel, chosen for its setting and its trackers. Each of the six rooms has its own bathroom, a bukhari stove warms the house, and home-cooked meals draw on the village recipes of the Darjeeling hills. Glenburn Tea Estate provides the luxury at either end of your stay.</p></div>
-                        </details>
-                                            <details class="faq">
-                            <summary><h3 class="faq__q">Is this red panda tour suitable for families?</h3></summary>
-                            <div class="faq__a prose"><p>Yes, for families who enjoy the outdoors. Walks to the pandas are usually an hour or two at a gentle pace, though the ridge lies at almost 3,000 metres and nights are cold. Our safari specialists will advise on the best timing and pace for your group.</p></div>
-                        </details>
-                                            <details class="faq">
-                            <summary><h3 class="faq__q">How do I book a private red panda tour in India?</h3></summary>
-                            <div class="faq__a prose"><p>Speak with our safari specialists, who will tailor this itinerary around your dates, interests and pace. Every journey is private, bespoke and curated for you, and we recommend booking six to nine months ahead, as Red Panda Outpost has only six rooms.</p></div>
-                        </details>
-                                    </div>
-            </section>
-            
-                        <section class="tour-section" id="related" aria-labelledby="related-h">
-                <h2 id="related-h">Other Related Experiences</h2>
-                <ul class="related" role="list">
-                                                                    <li class="related__item">
-                                                            <p class="card__meta">6 nights / 7 days</p>
-                                <h3 class="related__title"><a href="/indiatigersafari/tours/darjeeling-red-panda-safari-extension">Darjeeling Red Panda Safari Extension</a></h3>
-                                                        <p>A shorter red panda journey to add to any of our tiger safaris.</p>
-                        </li>
-                                                                    <li class="related__item">
-                                                            <p class="card__meta">13 nights / 14 days</p>
-                                <h3 class="related__title"><a href="/indiatigersafari/tours/tiger-rhino-safari-india">Tiger &amp; One-Horned Rhino Safari in India</a></h3>
-                                                        <p>Tigers in Central India and the one-horned rhinos of Kaziranga.</p>
-                        </li>
-                                                                    <li class="related__item">
-                                                            <p class="card__meta">8 nights / 9 days</p>
-                                <h3 class="related__title"><a href="/indiatigersafari/tours/snow-leopard-safari-ladakh">Snow Leopard Safari in Ladakh</a></h3>
-                                                        <p>Search for snow leopards with expert spotters in Ulley and Hemis National Park.</p>
-                        </li>
-                                    </ul>
-            </section>
-            
-        </div>
+        </section>
+        
+                <section class="ckb-section" id="testimonials" aria-labelledby="testimonials-h"><h2 id="testimonials-h">What Our Guests Say</h2><ul class="guest-quotes card-grid" role="list"><li class="visually-hidden">Guest testimonials will appear here.</li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li><li class="guest-quote guest-quote--placeholder" aria-hidden="true"><p class="guest-quote__soon">Guest testimonial to come</p></li></ul></section>
+                <section class="ckb-section" id="destinations" aria-labelledby="destinations-h">
+            <h2 id="destinations-h">Destinations Covered</h2>
+            <p>Delhi (1 night), Glenburn Tea Estate in the Darjeeling hills (2 nights) and Singalila National Park on the Singalila Ridge (4 nights), with Bagdogra as your gateway by air.</p>                            <div class="ckb-map"><figure class="route-map__frame" data-route-map data-route="route-data-route" data-geo="/indiatigersafari/assets/data/">
+    <div class="route-map__map" role="img" aria-label="Route map of the seven-night red panda safari, from Delhi by air to Bagdogra, then by road to Glenburn Tea Estate and Red Panda Outpost on the Singalila Ridge and back"></div>
+    <svg class="route-map__north" viewBox="0 0 20 28" aria-hidden="true" focusable="false"><path d="M10 0 L19 26 L10 20 L1 26 Z"/></svg>
+</figure>
+<script type="application/json" id="route-data-route">{"stops":[{"id":"delhi","name":"Delhi","nights":1,"lat":28.61,"lng":77.21,"callout":[-1,-0.3],"n":1},{"id":"glenburn","name":"Glenburn","nights":2,"lat":27,"lng":88.28,"callout":[1,0.6],"n":2},{"id":"singalila","name":"Singalila Ridge","nights":4,"lat":27.02,"lng":88.09,"callout":[-0.6,-1],"short":"Singalila","highlight":true,"n":3}],"waypoints":[{"id":"bagdogra","name":"Bagdogra","lat":26.68,"lng":88.33}],"legs":[{"path":["delhi","bagdogra","glenburn"]},{"path":["glenburn","singalila"]},{"path":["singalila","glenburn"],"return":true},{"path":["glenburn","bagdogra","delhi"],"return":true}],"seas":[{"name":"Arabian Sea","lat":15.5,"lng":69.6},{"name":"Bay of Bengal","lat":15.8,"lng":87.6}],"label":"Route map of the seven-night red panda safari, from Delhi by air to Bagdogra, then by road to Glenburn Tea Estate and Red Panda Outpost on the Singalila Ridge and back"}</script>
     </div>
+                    </section>
+        
+                <section class="ckb-section" id="experience" aria-labelledby="experience-h">
+            <h2 id="experience-h">What You Will Experience</h2>
+            <ul class="marked">
+                                    <li><strong>Wild red pandas in Singalila National Park</strong>, found each morning by local trackers who know the ridge intimately.</li>
+                                    <li><strong>Four nights on the Singalila Ridge</strong> at Red Panda Outpost, giving you the best chance of unhurried sightings.</li>
+                                    <li><strong>Himalayan birds</strong>, from the satyr tragopan to the blood pheasant, in forests of rhododendron and bamboo.</li>
+                                    <li><strong>Views of Kangchenjunga</strong>, the world&#039;s third-highest mountain, from the ridge.</li>
+                                    <li><strong>The vintage Land Rovers of Manebhanjan</strong>, which have carried travellers up the ridge for generations.</li>
+                                    <li><strong>Glenburn Tea Estate</strong>, a planter&#039;s retreat founded in 1859, with tea plucked on the slopes below your verandah.</li>
+                            </ul>
+                        <div class="tour-figures tour-figures--three ckb-photos">
+                <div class="ph ph--4x3" role="img" aria-label="vintage Land Rover on the Singalila Ridge above Manebhanjan"></div>                <div class="ph ph--4x3" role="img" aria-label="Red Panda Outpost teahouse lodge on the Singalila Ridge"></div>                <div class="ph ph--4x3" role="img" aria-label="Kangchenjunga at sunrise from the Singalila Ridge, Darjeeling"></div>            </div>
+        </section>
+        
+                <section class="ckb-enquire" id="ckb-enquire" aria-labelledby="ckb-enquire-h">
+            <h2 id="ckb-enquire-h">Design your journey with a safari specialist</h2>
+            <p class="ckb-enquire__lede">Every journey is private, bespoke and curated around you: share a few details and one of our safari specialists will be in touch within 24 hours.</p>
+            <form class="ckb-form" method="post" action="/indiatigersafari/enquire" novalidate data-inline-enquire>
+                <input type="hidden" name="token" value="1792163124.c2156510f31cd974d851359a9845afd55584e099d4c0cc56c2452f2f77501354">
+                <input type="hidden" name="interest" value="Experience: Red Panda Safari in India (7N/8D)" data-inline-interest>
+                <div class="form-trap" aria-hidden="true">
+                    <label for="ckb-website">Leave this field empty</label>
+                    <input id="ckb-website" type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="ckb-name">Name <span aria-hidden="true">*</span></label>
+                        <input id="ckb-name" name="name" type="text" required autocomplete="name" maxlength="120" aria-describedby="ckb-name-e">
+                        <p class="form-field__error" id="ckb-name-e" data-error-for="name" hidden></p>
+                    </div>
+                    <div class="form-field">
+                        <label for="ckb-email">Email <span aria-hidden="true">*</span></label>
+                        <input id="ckb-email" name="email" type="email" required autocomplete="email" maxlength="200" aria-describedby="ckb-email-e">
+                        <p class="form-field__error" id="ckb-email-e" data-error-for="email" hidden></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="ckb-dates">Preferred travel dates or month</label>
+                        <input id="ckb-dates" name="travelWindow" type="text" maxlength="120" placeholder="For example: February 2027">
+                    </div>
+                    <div class="form-field">
+                        <label for="ckb-people">Number of travellers</label>
+                        <input id="ckb-people" name="partySize" type="number" min="1" max="99" inputmode="numeric" aria-describedby="ckb-people-e">
+                        <p class="form-field__error" id="ckb-people-e" data-error-for="partySize" hidden></p>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="ckb-message">Tell us about the journey you have in mind</label>
+                    <textarea id="ckb-message" name="message" rows="3" maxlength="3000"></textarea>
+                </div>
+                <p class="form-field__error" role="alert" data-error-for="form" hidden></p>
+                <button class="btn btn--gold btn--large" type="submit">Send enquiry</button>
+                <p class="form-consent">By submitting this form, I agree to India Tiger Safari using my details to respond to my enquiry, as set out in the <a href="/indiatigersafari/privacy-policy">Privacy Policy</a>.</p>
+            </form>
+            <div class="ckb-sent" data-inline-sent tabindex="-1" hidden>
+                <h3>Thank you</h3>
+                <p>Your enquiry is with our safari specialists, who will be in touch within 24 hours to begin shaping your bespoke, curated journey.</p>
+            </div>
+        </section>
+
+        <section class="ckb-section" id="itinerary" aria-labelledby="itinerary-h">
+            <div class="ckb-days__head">
+                <h2 id="itinerary-h">Red Panda Safari in India Itinerary: Day by Day</h2>
+            </div>
+                            <p class="ckb-safaris"><strong>Time in the field included:</strong> four days of panda tracking on foot with local trackers and a naturalist: a morning on each of Days 4 and 5, a full day on Day 6, and a final morning on Day 7. If time allows during the day and park permits are available, we can add further tracking sessions at an additional cost.</p>
+                        <div class="ckb-days__tools"><button class="ckb-toggle-all" type="button" data-ckb-toggle-all hidden>Expand all</button></div>
+            <div class="ckb-days">
+                                                        <details class="ckb-day" id="day-1" open>
+                        <summary>
+                            <h3 class="ckb-day__title">Day 1: Arrival in New Delhi</h3>
+                                                    </summary>
+                        <div class="ckb-day__body">
+                                                            <p>A VIP representative meets you at the aircraft and guides you swiftly through immigration, baggage reclaim and customs. Your chauffeur drives you to your hotel, where you can rest and enjoy a quiet dinner before tomorrow&#039;s flight east.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-2">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 2: New Delhi to Glenburn Tea Estate</h3>
+                            <span class="ckb-day__drive"><span>Drive:</span> about 3 hours from Bagdogra, after a flight of about 2 hours</span>                        </summary>
+                        <div class="ckb-day__body">
+                                                            <p><strong>Drive:</strong> about 3 hours from Bagdogra, after a flight of about 2 hours. A morning flight takes you to Bagdogra, in the foothills of the Eastern Himalaya. Your chauffeur drives you up through the tea gardens to Glenburn Tea Estate, set above the Rungeet river. Settle into your suite in one of the restored planter&#039;s bungalows and take afternoon tea on the verandah as the hills fade into evening.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-3">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 3: Glenburn to Singalila National Park</h3>
+                            <span class="ckb-day__drive"><span>Drive:</span> about 2.5 hours to Manebhanjan, then about 2 hours by vintage Land Rover</span>                        </summary>
+                        <div class="ckb-day__body">
+                                                            <p><strong>Drive:</strong> about 2.5 hours to Manebhanjan, then about 2 hours by vintage Land Rover. After breakfast, drive through Darjeeling to Manebhanjan, the gateway to Singalila National Park. Here you board one of the vintage Land Rovers for the climb up the ridge through forests of oak, magnolia and rhododendron. Red Panda Outpost stands high on the Singalila Ridge, at about 2,865 metres (9,400 feet): a traditional wooden teahouse, lovingly converted, with six rooms, each with its own bathroom, around a warming bukhari stove.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-4">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 4: Singalila National Park</h3>
+                                                    </summary>
+                        <div class="ckb-day__body">
+                                                            <p>The trackers set out at first light to search the bamboo thickets where red pandas feed. When one is found, you walk out with your guide, usually for an hour or two, to watch it resting in the canopy or foraging quietly, often allowing long, unhurried views. The rest of the day is for birding along the ridge, where satyr tragopans and blood pheasants move through the undergrowth.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-5">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 5: Singalila National Park</h3>
+                                                    </summary>
+                        <div class="ckb-day__body">
+                                                            <p>Another morning with the trackers, perhaps finding a different panda in a new stretch of forest. Between sightings, walk the ridge trails with your naturalist in search of yellow-throated martens, barking deer and Himalayan black bears, and watch the light change on Kangchenjunga, the third-highest mountain on earth.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-6">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 6: Singalila National Park</h3>
+                                                    </summary>
+                        <div class="ckb-day__body">
+                                                            <p>A final full day on the ridge, based at Red Panda Outpost. Photographers may return to a favourite panda with the trackers, while others walk the forest trails around the lodge with a naturalist, looking for Himalayan monal and kalij pheasant among the rhododendrons. Evenings are spent by the stove, sharing stories of the day.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-7">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 7: Singalila to Glenburn Tea Estate</h3>
+                            <span class="ckb-day__drive"><span>Drive:</span> about 5 hours</span>                        </summary>
+                        <div class="ckb-day__body">
+                                                            <p><strong>Drive:</strong> about 5 hours. After a last morning with the trackers, descend by Land Rover to Manebhanjan and return to Glenburn. Arrive in time to walk among the tea bushes and join a tasting of the estate&#039;s own teas, followed by a candlelit farewell dinner.</p>
+                                                    </div>
+                    </details>
+                                                        <details class="ckb-day" id="day-8">
+                        <summary>
+                            <h3 class="ckb-day__title">Day 8: Glenburn to New Delhi</h3>
+                            <span class="ckb-day__drive"><span>Drive:</span> about 3 hours to Bagdogra, then a flight of about 2 hours to Delhi</span>                        </summary>
+                        <div class="ckb-day__body">
+                                                            <p><strong>Drive:</strong> about 3 hours to Bagdogra, then a flight of about 2 hours to Delhi. After a leisurely breakfast on the verandah, your chauffeur drives you to Bagdogra for your flight to Delhi and your onward journey.</p>
+                                                    </div>
+                    </details>
+                            </div>
+                            <p class="ckb-plan-note"><em>A note from our planners: Singalila National Park closes from mid-June to mid-September for the monsoon. Please carry your passport, which is needed for park permits. Nights are cold for much of the season, and power comes from solar panels and a generator. Red pandas are wild and sightings cannot be guaranteed, which is why we plan four nights on the ridge.</em></p>
+                    </section>
+
+                <section class="ckb-section" id="stays" aria-labelledby="stays-h">
+            <h2 id="stays-h">Where You Stay</h2>
+            <p>Every hotel and lodge for this journey is listed below by destination, each with a label that describes its style. In Delhi you may choose any hotel; on the ridge there is only one place to stay, and Glenburn Tea Estate is the finest at either end. Our safari specialists will gladly arrange a stay that is not on this list. Every property is handpicked and has been used by us over many years.</p>                            <h3 class="ckb-place">Delhi <span>(Day 1)</span></h3>
+                                <ul class="ckb-hotels" role="list">
+                                            <li class="ckb-hotel">
+                                                            <div class="ckb-hotel__ph" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span>Photograph to come</span></div>
+                                                        <p class="ckb-hotel__name"><strong>Colonel&#039;s Retreat</strong> <span class="ckb-hotel__label">(Boutique).</span></p>
+                            <p class="ckb-hotel__text">A family-run guest house in a townhouse in Defence Colony, on quiet, tree-lined avenues in central Delhi. It was begun some twenty years ago by a retired army colonel and is now run by his son and daughter-in-law, with dinner served on the roof terrace.</p>
+                        </li>
+                                            <li class="ckb-hotel">
+                                                            <div class="ckb-hotel__ph" aria-hidden="true"><div class="ph ph--3x2" role="img" aria-label=""></div><span>Photograph to come</span></div>
+                                                        <p class="ckb-hotel__name"><strong>ITC Maurya</strong> <span class="ckb-hotel__label">(Luxury).</span></p>
+                            <p class="ckb-hotel__text">A landmark of the Diplomatic Enclave, known for its restaurants, among them Bukhara, long celebrated for its north-west frontier cuisine, and Dum Pukht. It offers established comfort and polished service in the heart of the capital.</p>
+                        </li>
+                                            <li class="ckb-hotel">
+                                                            <picture class="media media--3x2"><img src="/indiatigersafari/assets/img/stays/oberoi-new-delhi-room.jpg?v=1791989054" alt="A luxury room at The Oberoi, New Delhi, looking out over the trees" data-fx="50" data-fy="50" width="1260" height="700" loading="lazy" decoding="async"></picture>                                                        <p class="ckb-hotel__name"><strong>The Oberoi, New Delhi</strong> <span class="ckb-hotel__label">(Luxury).</span></p>
+                            <p class="ckb-hotel__text">Opened in 1965 on Dr Zakir Hussain Marg, overlooking Humayun&#039;s Tomb on one side and the Delhi Golf Course on the other. Its interiors take their inspiration from Lutyens&#039; New Delhi, and it has a wellness sanctuary, indoor and outdoor pools and several restaurants.</p>
+                        </li>
+                                            <li class="ckb-hotel">
+                                                            <picture class="media media--3x2"><img src="/indiatigersafari/assets/img/stays/roseate-house-bedroom.jpg?v=1791989054" alt="A bedroom at Roseate House, New Delhi, in soft neutral tones" data-fx="25" data-fy="50" width="1600" height="534" loading="lazy" decoding="async"></picture>                                                        <p class="ckb-hotel__name"><strong>Roseate House</strong> <span class="ckb-hotel__label">(Luxury).</span></p>
+                            <p class="ckb-hotel__text">A contemporary hotel of 216 rooms in Aerocity, about 4.5 km from the international airport, which makes it a practical first or last night. It has a rooftop infinity pool, a spa and a fine dining restaurant, Kheer.</p>
+                        </li>
+                                    </ul>
+                            <h3 class="ckb-place">Darjeeling <span>(Days 2 and 7)</span></h3>
+                                <ul class="ckb-hotels" role="list">
+                                            <li class="ckb-hotel">
+                                                            <picture class="media media--3x2"><img src="/indiatigersafari/assets/img/stays/glenburn-bedroom.jpg?v=1791983493" alt="A four-poster bedroom opening onto a veranda at Glenburn Tea Estate" width="1600" height="781" loading="lazy" decoding="async"></picture>                                                        <p class="ckb-hotel__name"><strong>Glenburn Tea Estate</strong> <span class="ckb-hotel__label">(Luxury).</span></p>
+                            <p class="ckb-hotel__text">A working tea estate above the Rungeet river, run by a family of planters for more than a century. Two bungalows of four suites each have verandas facing the Kanchenjunga range, and guests can walk through the plantations and watch the tea being picked.</p>
+                        </li>
+                                    </ul>
+                            <h3 class="ckb-place">Singalila Ridge <span>(Days 3 to 6)</span></h3>
+                                <ul class="ckb-hotels" role="list">
+                                            <li class="ckb-hotel">
+                                                            <picture class="media media--3x2"><img src="/indiatigersafari/assets/img/stays/red-panda-outpost-double-room.jpg?v=1792007457" alt="Double bedroom with painted ceiling beams at Red Panda Outpost, Singalila" width="400" height="256" loading="lazy" decoding="async"></picture>                                                        <p class="ckb-hotel__name"><strong>Red Panda Outpost</strong> <span class="ckb-hotel__label">(Eco-Luxury).</span></p>
+                            <p class="ckb-hotel__text">A converted family teahouse of six rooms on the Singalila Ridge, within easy reach of Singalila National Park. It is a simple, warm base in the mountains, with a resident naturalist and trackers who know the bamboo forests well.</p>
+                        </li>
+                                    </ul>
+                    </section>
+        
+                <section class="ckb-section" id="leisure" aria-labelledby="leisure-h">
+            <h2 id="leisure-h">Tailored Leisure &amp; In-Lodge Experiences</h2>
+            <ul class="marked">
+                                    <li><strong>Tea Tasting at Glenburn:</strong> learn how Darjeeling&#039;s famous flushes are plucked, rolled and graded, then taste the estate&#039;s finest teas.</li>
+                                    <li><strong>The Darjeeling Himalayan Railway:</strong> ride the UNESCO-listed &quot;toy train&quot; on its narrow-gauge track through the hills of Darjeeling.</li>
+                                    <li><strong>A Picnic by the Rungeet:</strong> walk down through the tea gardens to a riverside lunch beside the Rungeet.</li>
+                                    <li><strong>Dawn Birding near the Outpost:</strong> walk the forest trails around Red Panda Outpost at first light with a naturalist, listening for the calls of pheasants and laughingthrushes in the bamboo.</li>
+                            </ul>
+            <div class="tour-figures tour-figures--three ckb-photos">
+                <div class="ph ph--4x3" role="img" aria-label="tea gardens of Glenburn Tea Estate above the Rungeet river"></div>                <div class="ph ph--4x3" role="img" aria-label=""></div>                <div class="ph ph--4x3" role="img" aria-label=""></div>            </div>
+                            <div class="ckb-asides">
+                                            <div><p><strong>Something Else in Mind?</strong> Our safari specialists can arrange any activity you would like, depending on the destination and your accommodation, such as an extra day with the trackers, a dawn birding walk for Himalayan pheasants, or a one-to-one wildlife photography session in the bamboo forest.</p></div>
+                                                                <div><p><strong>Dining &amp; Reservations:</strong> in Delhi, our private concierge secures reservations at the finest restaurants the city has to offer, including hard-to-book tables, and arranges private dinners for special occasions. Share your tastes, whether a celebrated tasting menu or classic Mughlai cuisine, and we will arrange every detail.</p></div>
+                                    </div>
+                    </section>
+        
+                <section class="ckb-section ckb-refs" aria-label="More about this journey">
+                        <details class="ckb-ref" id="fauna">
+                <summary><h2>Popular Fauna</h2></summary>
+                <div class="ckb-ref__body">
+                    <ul class="marked">
+                                                    <li><strong>Mammals:</strong> red panda, Himalayan black bear, yellow-throated marten, barking deer, leopard cat and Himalayan serow</li>
+                                                    <li><strong>Birds:</strong> satyr tragopan, blood pheasant, Himalayan monal and kalij pheasant</li>
+                                            </ul>
+                    <p>Sightings vary by season and are never guaranteed.</p>                </div>
+            </details>
+            
+                        <details class="ckb-ref" id="birds">
+                <summary><h2>Birds of Singalila National Park: Species Checklist</h2></summary>
+                <div class="ckb-ref__body">
+                                            <p>The Singalila Ridge is one of the finest places in India for Himalayan birds, from pheasants in the rhododendron to parrotbills in the bamboo. These are among the species our naturalists record most often; sightings vary with the season and altitude.</p>
+                                                <ul class="marked">
+                                                    <li><strong>Pheasants and partridges:</strong> Satyr Tragopan, Blood Pheasant, Himalayan Monal, Kalij Pheasant, Hill Partridge</li>
+                                                    <li><strong>Parrotbills, fulvettas and babblers:</strong> Fire-tailed Myzornis, Brown Parrotbill, Great Parrotbill, Fulvous Parrotbill, Golden-breasted Fulvetta, White-browed Fulvetta, Rufous-winged Fulvetta, Stripe-throated Yuhina, Rufous-vented Yuhina, Whiskered Yuhina</li>
+                                                    <li><strong>Laughingthrushes and sibias:</strong> Chestnut-crowned Laughingthrush, Black-faced Laughingthrush, Spotted Laughingthrush, Hoary-throated Barwing, Rufous Sibia, Chestnut-tailed Minla</li>
+                                                    <li><strong>Tits and sunbirds:</strong> Rufous-vented Tit, Grey-crested Tit, Green-backed Tit, Black-throated Bushtit, Fire-tailed Sunbird, Green-tailed Sunbird, Mrs Gould&#039;s Sunbird</li>
+                                                    <li><strong>Robins, flycatchers and fantails:</strong> White-browed Bush Robin, Golden Bush Robin, Himalayan Bluetail, Rufous-gorgeted Flycatcher, Ultramarine Flycatcher, Yellow-bellied Fantail, White-throated Fantail, Rufous-breasted Accentor</li>
+                                                    <li><strong>Finches and thrushes:</strong> Dark-breasted Rosefinch, Scarlet Finch, Red-headed Bullfinch, Gold-naped Finch, White-collared Blackbird, Grey-winged Blackbird, Spotted Nutcracker</li>
+                                                    <li><strong>Woodpeckers, pigeons and raptors:</strong> Darjeeling Woodpecker, Crimson-breasted Woodpecker, Ashy Wood Pigeon, Speckled Wood Pigeon, Himalayan Griffon, Mountain Hawk-Eagle</li>
+                                                </ul>
+                                    </div>
+            </details>
+            
+                        <details class="ckb-ref" id="parks">
+                <summary><h2>National Parks &amp; Wildlife Reserves</h2></summary>
+                <div class="ckb-ref__body">
+                    <ul class="marked">
+                                                                                <li>
+                                                                    <a href="/indiatigersafari/national-parks/singalila-national-park/"><strong>Singalila National Park:</strong></a> a high-altitude park of about 78.6 sq km on the Singalila Ridge in Darjeeling district, West Bengal. Rising from about 2,300 metres to almost 4,000 metres through forests of oak, magnolia, rhododendron and bamboo, it is one of the best places in the world to see wild red pandas.                                                            </li>
+                                            </ul>
+                </div>
+            </details>
+            
+                        <details class="ckb-ref" id="unesco">
+                <summary><h2>UNESCO World Heritage Sites</h2></summary>
+                <div class="ckb-ref__body">
+                    <ul class="marked">
+                                                    <li><strong>Darjeeling Himalayan Railway:</strong> the narrow-gauge &quot;toy train&quot; of the Darjeeling hills, inscribed as a World Heritage Site in 1999 and now part of the Mountain Railways of India.</li>
+                                            </ul>
+                </div>
+            </details>
+            
+                        <details class="ckb-ref" id="inclusions">
+                <summary><h2>Inclusions &amp; Exclusions</h2></summary>
+                <div class="ckb-ref__body">
+                    <p><strong>Included</strong></p>
+                    <ul class="marked marked--tick">
+                                                    <li>Seven nights of handpicked accommodation, with breakfast in Delhi and full board at Glenburn and Red Panda Outpost</li>
+                                                    <li>VIP meet and greet on arrival at Delhi Airport</li>
+                                                    <li>All transfers in comfortable, chauffeur-driven private SUVs, with vintage Land Rovers on the Singalila Ridge</li>
+                                                    <li>Domestic flights: New Delhi to Bagdogra and Bagdogra to New Delhi</li>
+                                                    <li>Four days of panda tracking with expert local trackers and a naturalist in Singalila</li>
+                                                    <li>Tea tasting at Glenburn Tea Estate</li>
+                                                    <li>All park entry fees, permits and conservation levies</li>
+                                            </ul>
+                                            <p><strong>Not included:</strong> international flights, visa fees, travel insurance, personal gratuities, premium alcoholic beverages, camera fees, additional tracking sessions beyond those listed (arranged on request, subject to permit availability), and experiences marked “on request”.</p>
+                                    </div>
+            </details>
+                    </section>
+        
+                <section class="ckb-section" id="extensions" aria-labelledby="extensions-h">
+            <h2 id="extensions-h">Possible Extensions</h2>
+            <ul class="ckb-cards" role="list">
+                                                        <li class="ckb-card"><p>
+                                                    <a href="/indiatigersafari/tours/golden-triangle-tour-extension"><strong>Golden Triangle:</strong></a> begin or end your journey with Delhi, the Taj Mahal at sunrise and the palaces of Jaipur.                                            </p></li>
+                                                        <li class="ckb-card"><p>
+                                                    <a href="/indiatigersafari/tours/keoladeo-birding-extension"><strong>Keoladeo Birding:</strong></a> from October, add the wetlands of <a href="/indiatigersafari/national-parks/keoladeo/">Keoladeo National Park</a>, alive with cranes, storks and migrant waterfowl.                                            </p></li>
+                            </ul>
+        </section>
+        
+                <section class="ckb-section" id="faqs" aria-labelledby="faqs-h">
+            <h2 id="faqs-h">Red Panda Safari in India FAQs</h2>
+                        <div class="faqs">
+                                    <details class="faq" open>
+                        <summary><h3 class="faq__q">When is the best time for a red panda safari in India?</h3></summary>
+                        <div class="faq__a"><p>March to May and October to early December. Spring brings rhododendrons into flower along the ridge, while autumn offers the clearest views of the Himalaya. Singalila National Park closes from mid-June to mid-September for the monsoon.</p></div>
+                    </details>
+                                    <details class="faq">
+                        <summary><h3 class="faq__q">What are my chances of seeing a red panda?</h3></summary>
+                        <div class="faq__a"><p>Red pandas are wild and can never be guaranteed, but Singalila is one of the most reliable places in the world to see them. With four nights on the ridge and experienced local trackers, your chances are excellent.</p></div>
+                    </details>
+                                    <details class="faq">
+                        <summary><h3 class="faq__q">How comfortable is Red Panda Outpost?</h3></summary>
+                        <div class="faq__a"><p>It is a simple, cosy lodge rather than a luxury hotel, chosen for its setting and its trackers. Each of the six rooms has its own bathroom, a bukhari stove warms the house, and home-cooked meals draw on the village recipes of the Darjeeling hills. Glenburn Tea Estate provides the luxury at either end of your stay.</p></div>
+                    </details>
+                                    <details class="faq">
+                        <summary><h3 class="faq__q">Is this red panda tour suitable for families?</h3></summary>
+                        <div class="faq__a"><p>Yes, for families who enjoy the outdoors. Walks to the pandas are usually an hour or two at a gentle pace, though the ridge lies at almost 3,000 metres and nights are cold. Our safari specialists will advise on the best timing and pace for your group.</p></div>
+                    </details>
+                                    <details class="faq">
+                        <summary><h3 class="faq__q">How do I book a private red panda tour in India?</h3></summary>
+                        <div class="faq__a"><p>Speak with our safari specialists, who will curate this itinerary around your dates, interests and pace. Every journey is private and bespoke, and we recommend booking six to nine months ahead, as Red Panda Outpost has only six rooms.</p></div>
+                    </details>
+                            </div>
+        </section>
+        
+                <section class="ckb-section" id="related" aria-labelledby="related-h">
+            <h2 id="related-h">Other Related Experiences</h2>
+            <ul class="ckb-cards ckb-cards--three" role="list">
+                                                        <li class="ckb-card"><p>
+                                                    <a href="/indiatigersafari/tours/darjeeling-red-panda-safari-extension"><strong>Darjeeling Red Panda Safari Extension (6N/7D):</strong></a>
+                                                a shorter red panda journey to add to any of our tiger safaris.                    </p></li>
+                                                        <li class="ckb-card"><p>
+                                                    <a href="/indiatigersafari/tours/tiger-rhino-safari-india"><strong>Tiger &amp; One-Horned Rhino Safari in India (13N/14D):</strong></a>
+                                                tigers in Central India and the one-horned rhinos of Kaziranga.                    </p></li>
+                                                        <li class="ckb-card"><p>
+                                                    <a href="/indiatigersafari/tours/snow-leopard-safari-ladakh"><strong>Snow Leopard Safari in Ladakh (8N/9D):</strong></a>
+                                                search for snow leopards with expert spotters in Ulley and Hemis National Park.                    </p></li>
+                            </ul>
+        </section>
+            </div>
 </article>
 
-<div class="tour-bar">
-    <a class="btn btn--gold" href="/indiatigersafari/contact?tour=red-panda-safari-india">Talk to a safari specialist</a>
-</div>
-
-<section class="foot-enquire" aria-labelledby="foot-enquire-h">
-    <div class="container foot-enquire__inner">
-        <div class="foot-enquire__intro">
-            <h2 id="foot-enquire-h">Design your journey with a safari specialist</h2>
-            <p>Every journey is private, bespoke and curated around you: share a few details and one of our safari specialists will be in touch within 24 hours.</p>
-        </div>
-        <form class="foot-enquire__form" method="post" action="/indiatigersafari/enquire" novalidate data-inline-enquire>
-            <input type="hidden" name="token" value="1792161348.4c4ada61a5fdf3da434fcabb8921ff7345bd77bd8994dfda0b3ddabeba561545">
-            <input type="hidden" name="interest" value="Red Panda Safari in India | 8-Day Darjeeling Tour" data-inline-interest>
-            <div class="form-trap" aria-hidden="true">
-                <label for="fe-website">Leave this field empty</label>
-                <input id="fe-website" type="text" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="form-row">
-                <div class="form-field">
-                    <label for="fe-name">Name <span aria-hidden="true">*</span></label>
-                    <input id="fe-name" name="name" type="text" required autocomplete="name" maxlength="120" aria-describedby="fe-name-e">
-                    <p class="form-field__error" id="fe-name-e" data-error-for="name" hidden></p>
-                </div>
-                <div class="form-field">
-                    <label for="fe-email">Email <span aria-hidden="true">*</span></label>
-                    <input id="fe-email" name="email" type="email" required autocomplete="email" maxlength="200" aria-describedby="fe-email-e">
-                    <p class="form-field__error" id="fe-email-e" data-error-for="email" hidden></p>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-field">
-                    <label for="fe-dates">Preferred travel dates or month</label>
-                    <input id="fe-dates" name="travelWindow" type="text" maxlength="120" placeholder="For example: February 2027">
-                </div>
-                <div class="form-field">
-                    <label for="fe-people">Number of travellers</label>
-                    <input id="fe-people" name="partySize" type="number" min="1" max="99" inputmode="numeric" aria-describedby="fe-people-e">
-                    <p class="form-field__error" id="fe-people-e" data-error-for="partySize" hidden></p>
-                </div>
-            </div>
-            <div class="form-field">
-                <label for="fe-message">Tell us about the journey you have in mind</label>
-                <textarea id="fe-message" name="message" rows="3" maxlength="3000"></textarea>
-            </div>
-            <p class="form-field__error" role="alert" data-error-for="form" hidden></p>
-            <button class="btn btn--gold btn--large" type="submit">Send enquiry</button>
-            <p class="form-consent">By submitting this form, I agree to India Tiger Safari using my details to respond to my enquiry, as set out in the <a href="/indiatigersafari/privacy-policy">Privacy Policy</a>.</p>
-        </form>
-        <div class="foot-enquire__sent" data-inline-sent tabindex="-1" hidden>
-            <h3>Thank you</h3>
-            <p>Your enquiry is with our safari specialists, who will be in touch within 24 hours to begin shaping your bespoke, curated journey.</p>
-        </div>
-    </div>
-</section>
+    <script src="/indiatigersafari/assets/vendor/leaflet/leaflet.min.js"></script>
+<script src="/indiatigersafari/assets/js/route-map.js?v=1792162684"></script>
+<script src="/indiatigersafari/assets/js/tour-page.js?v=1792162718" defer></script>
 </main>
 
 <footer class="foot">
@@ -760,7 +716,7 @@ New Delhi, Delhi, India</p>
                 <h2 class="foot__heading">Subscribe</h2>
                                     <p>Subscribe to our newsletter for notes from the forest and news of the season.</p>
                                         <form method="post" action="/indiatigersafari/subscribe" class="foot__form">
-                        <input type="hidden" name="token" value="1792161348.4c4ada61a5fdf3da434fcabb8921ff7345bd77bd8994dfda0b3ddabeba561545">
+                        <input type="hidden" name="token" value="1792163124.c2156510f31cd974d851359a9845afd55584e099d4c0cc56c2452f2f77501354">
                         <input type="hidden" name="from" value="/tours/red-panda-safari-india">
                                                 <div class="form-trap" aria-hidden="true">
                             <label for="sub-website">Leave this field empty</label>
@@ -799,7 +755,7 @@ New Delhi, Delhi, India</p>
             <p class="enquire__lede">Tell us a little about the journey you have in mind, and we will curate a bespoke itinerary around you.</p>
 
             <form method="post" action="/indiatigersafari/enquire" novalidate data-enquire-form>
-                <input type="hidden" name="token" value="1792161348.4c4ada61a5fdf3da434fcabb8921ff7345bd77bd8994dfda0b3ddabeba561545">
+                <input type="hidden" name="token" value="1792163124.c2156510f31cd974d851359a9845afd55584e099d4c0cc56c2452f2f77501354">
                 <input type="hidden" name="interest" value="" data-enquire-interest>
                 <div class="form-trap" aria-hidden="true">
                     <label for="enq-website">Leave this field empty</label>

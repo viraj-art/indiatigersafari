@@ -75,9 +75,10 @@
         var callouts = route.stops.map(function (s) {
             var d = s.callout || [1, 0];
             var side = Math.abs(d[0]) >= Math.abs(d[1]) ? (d[0] < 0 ? 'left' : 'right') : (d[1] < 0 ? 'top' : 'bottom');
-            var html = '<span><b class="route-callout__n">' + s.n + '</b>'
+            // A gateway (no nights, no number) is labelled by name alone.
+            var html = '<span>' + (s.n ? '<b class="route-callout__n">' + s.n + '</b>' : '')
                 + '<span class="route-callout__name" data-short="' + (s.short || s.name) + '">' + s.name + '</span>'
-                + '<span class="route-callout__nights">' + nightsText(s.nights) + '</span></span>';
+                + (s.nights ? '<span class="route-callout__nights">' + nightsText(s.nights) + '</span>' : '') + '</span>';
             var label = L.marker(at[s.id], { interactive: false, keyboard: false, icon: L.divIcon({ className: 'route-callout route-callout--' + side + (s.highlight ? ' route-callout--park' : ''), html: html, iconSize: [0, 0], iconAnchor: [0, 0] }) }).addTo(map);
             var leader = L.polyline([at[s.id], at[s.id]], { pane: 'leaders', color: s.highlight ? '#4D6FD1' : '#6B6862', weight: 1, interactive: false }).addTo(map);
             return { stop: s, dir: d, label: label, leader: leader };
