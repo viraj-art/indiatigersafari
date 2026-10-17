@@ -85,3 +85,9 @@
     .xp-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; }
     .xp-group__title { margin-bottom: 1.5rem; }
 }
+
+/* ---- Google reviews, after the journeys ----------------------------------------------------------- */
+.xp-guests { padding-bottom: var(--section); }
+.xp-guests__inner { padding-top: 2.5rem; border-top: 1px solid var(--line); }
+.xp-guests__inner h2 { margin: 0 0 1.25rem; font-size: clamp(1.5rem, 1.3rem + 1vw, 2.125rem); }
+.xp-group:last-of-type { padding-bottom: 2.5rem; }
