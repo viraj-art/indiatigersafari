@@ -65,6 +65,13 @@
 .ckb-hotel { flex: 0 0 84%; scroll-snap-align: start; padding: 0 0 1rem; background: #FFFFFF; border: 1px solid var(--line); }
 .ckb-hotel .ph, .ckb-hotel .media { border-radius: 0; }
 .ckb-hotel__ph { position: relative; }
+/* A hotel with more than one room photograph: frames slide sideways; a small label says how many. */
+.ckb-hotel__gallery { position: relative; }
+.ckb-hotel__count { position: absolute; right: 0.5rem; bottom: 0.5rem; padding: 0.2rem 0.5rem; background: rgba(27, 59, 43, 0.85); color: #FFFFFF; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; }
+.ckb-hotel__slides { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 0.25rem; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+.ckb-hotel__slides::-webkit-scrollbar { display: none; }
+.ckb-hotel__slides > * { scroll-snap-align: start; }
+.ckb-hotel__slides:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .ckb-hotel__ph span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 0.2rem 0.5rem; background: rgba(250, 248, 245, 0.92);
     color: var(--charcoal-soft); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
 .ckb-hotel__name { margin: 0.85rem 1rem 0.35rem; line-height: 1.4; }

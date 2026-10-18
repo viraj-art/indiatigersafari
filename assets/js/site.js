@@ -6,6 +6,12 @@
     'use strict';
 
     const root = document.documentElement;
+
+    // Words written by this script, in the page's language (from the JSON block in the head).
+    let words = {};
+    try { words = JSON.parse(document.getElementById('its-i18n')?.textContent || '{}'); } catch (e) { words = {}; }
+    const tr = (text, vars = {}) => Object.keys(vars).reduce((s, k) => s.split(`{${k}}`).join(vars[k]), words[text] || text);
+
     const header = document.querySelector('[data-site-header]');
     const toggle = document.querySelector('[data-nav-toggle]');
     const nav = document.querySelector('[data-nav]');
@@ -40,7 +46,7 @@
             toggle.setAttribute('aria-expanded', String(open));
             root.classList.toggle('menu-open', open);
             if (label) {
-                label.textContent = open ? 'Close' : 'Menu';
+                label.textContent = open ? tr('Close') : tr('Menu');
             }
         };
 
@@ -132,7 +138,7 @@
                     film.play();
                 }
                 // The control is an icon; its name for screen readers says what it will do.
-                pause.setAttribute('aria-label', paused ? 'Play film' : 'Pause film');
+                pause.setAttribute('aria-label', paused ? tr('Play film') : tr('Pause film'));
                 pause.classList.toggle('is-paused', paused);
             });
         }
@@ -182,14 +188,14 @@
             form.querySelectorAll('.has-error').forEach((el) => el.classList.remove('has-error'));
             form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
             send.disabled = true;
-            send.textContent = 'Sending…';
-            let result = { ok: false, errors: { form: 'Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.' } };
+            send.textContent = tr('Sending…');
+            let result = { ok: false, errors: { form: tr('Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.') } };
             try {
                 const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'X-Requested-With': 'fetch', Accept: 'application/json' } });
                 result = await response.json();
             } catch (error) { /* the message above is shown */ }
             send.disabled = false;
-            send.textContent = 'Send enquiry';
+            send.textContent = tr('Send enquiry');
             if (result.ok) {
                 form.hidden = true;
                 sent.hidden = false;
@@ -211,9 +217,11 @@
         });
     });
 
-    // Our Team on phones: long biographies fold to five lines behind "Read more".
-    const phone = window.matchMedia('(max-width: 767.98px)');
+    // Our Team: long biographies fold to five lines behind "Read more" (the founder's only on phones).
+    const phoneOnly = window.matchMedia('(max-width: 767.98px)');
     document.querySelectorAll('.page-team .team__bio').forEach((bio, i) => {
+        const lead = !!bio.closest('.team__member--lead');
+        const phone = lead ? phoneOnly : { matches: true, addEventListener: (e, f) => phoneOnly.addEventListener('change', f) };
         const more = document.createElement('button');
         more.type = 'button';
         more.className = 'team__more';
@@ -226,7 +234,7 @@
             // Only offer the button where the text is actually longer than five lines.
             const overflowing = phone.matches && (open || bio.scrollHeight > bio.clientHeight + 4);
             more.hidden = !overflowing;
-            more.textContent = open ? 'Read less' : 'Read more';
+            more.textContent = open ? tr('Read less') : tr('Read more');
             more.setAttribute('aria-expanded', String(open));
         };
         more.addEventListener('click', () => {
@@ -252,8 +260,8 @@
         controls.className = 'strip-controls strip-controls--after';
         controls.dataset.stripControls = row.id;
         controls.hidden = true;
-        controls.innerHTML = `<button type="button" class="strip-controls__btn" data-strip-prev aria-controls="${row.id}" aria-label="Scroll back">${arrow('M15 5l-7 7 7 7')}</button>`
-            + `<button type="button" class="strip-controls__btn" data-strip-next aria-controls="${row.id}" aria-label="Scroll for more">${arrow('M9 5l7 7-7 7')}</button>`;
+        controls.innerHTML = `<button type="button" class="strip-controls__btn" data-strip-prev aria-controls="${row.id}" aria-label="${tr('Scroll back')}">${arrow('M15 5l-7 7 7 7')}</button>`
+            + `<button type="button" class="strip-controls__btn" data-strip-next aria-controls="${row.id}" aria-label="${tr('Scroll for more')}">${arrow('M9 5l7 7-7 7')}</button>`;
         row.after(controls);
     });
 
@@ -375,9 +383,9 @@
             if (words.length === 0) {
                 blogStatus.textContent = '';
             } else if (shown === 0) {
-                blogStatus.textContent = `No posts match “${typed}”. Try a park, a season or a single word.`;
+                blogStatus.textContent = tr('No posts match “{q}”. Try a park, a season or a single word.', { q: typed });
             } else {
-                blogStatus.textContent = `${shown} ${shown === 1 ? 'post matches' : 'posts match'} “${typed}”.`;
+                blogStatus.textContent = tr(shown === 1 ? '{n} post matches “{q}”.' : '{n} posts match “{q}”.', { n: shown, q: typed });
             }
         };
 
@@ -433,8 +441,8 @@
             event.preventDefault();
             clearErrors();
             send.disabled = true;
-            send.textContent = 'Sending…';
-            let result = { ok: false, errors: { form: 'Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.' } };
+            send.textContent = tr('Sending…');
+            let result = { ok: false, errors: { form: tr('Your enquiry could not be sent just now. Please try again, or reach us on WhatsApp.') } };
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
@@ -444,7 +452,7 @@
                 result = await response.json();
             } catch (error) { /* the message above is shown */ }
             send.disabled = false;
-            send.textContent = 'Send enquiry';
+            send.textContent = tr('Send enquiry');
 
             if (result.ok) {
                 form.reset();
@@ -501,5 +509,32 @@
             });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
         reveals.forEach((el) => observer.observe(el));
+    }
+
+    // Guest Gallery: a tap opens the photograph larger in a dialog; Escape, the button or the backdrop closes it.
+    const lightboxLinks = document.querySelectorAll('[data-lightbox]');
+    if (lightboxLinks.length && typeof HTMLDialogElement === 'function') {
+        const box = document.createElement('dialog');
+        box.className = 'lightbox';
+        box.innerHTML = '<img alt=""><button type="button" class="lightbox__close"></button>';
+        const big = box.querySelector('img');
+        const close = box.querySelector('button');
+        close.textContent = tr('Close');
+        document.body.appendChild(box);
+        let opener = null;
+        close.addEventListener('click', () => box.close());
+        box.addEventListener('click', (event) => { if (event.target === box) box.close(); });
+        box.addEventListener('close', () => { big.removeAttribute('src'); opener?.focus(); });
+        lightboxLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                opener = link;
+                const thumb = link.querySelector('img');
+                big.src = link.href;
+                big.alt = thumb ? thumb.alt : '';
+                box.showModal();
+                close.focus();
+            });
+        });
     }
 })();

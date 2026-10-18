@@ -2,6 +2,9 @@
    day opened for printing. Without this file each day still opens on its own. */
 (function () {
     'use strict';
+    var words = {};
+    try { words = JSON.parse((document.getElementById('its-i18n') || {}).textContent || '{}'); } catch (e) { words = {}; }
+    function tr(text) { return words[text] || text; }
     var days = document.querySelectorAll('.ckb-day');
     var button = document.querySelector('[data-ckb-toggle-all]');
     if (!days.length || !button) return;
@@ -9,7 +12,7 @@
     function allOpen() { return Array.prototype.every.call(days, function (d) { return d.open; }); }
     function sync() {
         var open = allOpen();
-        button.textContent = open ? 'Collapse all' : 'Expand all';
+        button.textContent = open ? tr('Collapse all') : tr('Expand all');
         button.setAttribute('aria-expanded', String(open));
     }
     button.hidden = false;

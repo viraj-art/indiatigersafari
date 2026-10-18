@@ -4999,9 +4999,118 @@ main {
     }
 }
 
+/* ---- Our Team: a grid of matching portrait cards (18 Oct 2026) -------------------------
+   All portraits share one crop and colour grade (assets/img/team). The founder leads in a wide
+   row; everyone else is a card, two to a row on tablets and three on desktops. Biographies fold
+   to five lines behind "Read more" at every width (the founder's stays open on larger screens). */
+.page-team .team__initials {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--gold);
+    font: 400 clamp(2.5rem, 2rem + 2vw, 3.5rem) var(--font-heading);
+    letter-spacing: 0.06em;
+    box-shadow: 0 0 0 6px var(--cream), 0 0 0 7px var(--gold);
+}
+
+.page-team .team__photo .media {
+    box-shadow: 0 0 0 1px var(--line), 0 0 0 6px var(--cream), 0 0 0 7px var(--gold);
+}
+
+.page-team .team__bio.is-folded {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+}
+
+.page-team .team__bio.is-folded > p {
+    display: inline;
+}
+
+.page-team .team__more {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin-top: 0.25rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--green);
+    font: 700 0.875rem var(--font-body);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 0.25em;
+    cursor: pointer;
+}
+
+.page-team .team__more[hidden] {
+    display: none;
+}
+
 @media (min-width: 768px) {
-    .page-team .team__more {
-        display: none;
+    .page-team .team {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2.5rem;
+    }
+
+    .page-team .team__member,
+    .page-team .team__member:nth-child(even) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-content: start;
+        gap: 1.25rem;
+        padding-block: 2rem 1.75rem;
+    }
+
+    .page-team .team__member .team__photo,
+    .page-team .team__member:nth-child(even) .team__photo {
+        order: 0;
+        width: 10.5rem;
+    }
+
+    .page-team .team__text,
+    .page-team .team__member:nth-child(even) .team__text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-team .team__bio,
+    .page-team .team__member:nth-child(even) .team__bio {
+        max-width: none;
+        margin: 0;
+        text-align: left;
+    }
+
+    /* The founder: portrait beside the full biography, across the whole grid. */
+    .page-team .team__member--lead {
+        grid-column: 1 / -1;
+        grid-template-columns: 13.5rem minmax(0, 1fr);
+        justify-items: start;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .page-team .team__member--lead .team__photo {
+        width: 100%;
+    }
+
+    .page-team .team__member--lead .team__text {
+        text-align: left;
+    }
+
+    .page-team .team__member--lead .team__bio {
+        max-width: 42rem;
+    }
+}
+
+@media (min-width: 1100px) {
+    .page-team .team {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -5369,3 +5478,107 @@ main {
 .gr-all { margin: 1.25rem 0 0; }
 .gr-all .btn { width: 100%; }
 @media (min-width: 40rem) { .gr-all .btn { width: auto; } }
+/* ---- Language switch (EN | ES) in the header --------------------------------------------------- */
+.lang-switch { position: relative; z-index: 2; display: inline-flex; align-items: center; order: 1; margin-left: auto; }
+.lang-switch a { display: inline-flex; align-items: center; justify-content: center; min-width: 2.5rem; min-height: 2.75rem; padding: 0 0.35rem;
+    color: var(--header-ink); font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-decoration: none; opacity: 0.7; }
+.lang-switch a + a { border-left: 1px solid currentColor; min-height: 1rem; padding-block: 0; }
+.lang-switch a + a { border-left-color: var(--header-rule, rgba(27, 59, 43, 0.25)); }
+.lang-switch a[aria-current] { opacity: 1; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
+.lang-switch a:hover { opacity: 1; }
+.lang-switch a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.site-header__inner .wordmark { order: 0; }
+.site-header__inner .nav-toggle { order: 2; }
+.site-header__inner .site-nav { order: 3; }
+@media (max-width: 1023.98px) {
+    .lang-switch { margin-right: 0.25rem; }
+    .menu-open .lang-switch a { color: var(--header-ink); }
+}
+@media (min-width: 1024px) {
+    .lang-switch { grid-row: 1; grid-column: 1; justify-self: start; margin-left: 0; }
+    .site-header.is-condensed .lang-switch { display: none; }
+}
+/* ---- Guest Gallery (18 Oct 2026) ---------------------------------------------------------
+   Whole photographs in columns (never cropped, so no face is cut); a tap opens one larger.
+   The home page shows a short sliding row of the landscape ones, linking here. */
+.guest-gallery {
+    columns: 1;
+    column-gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.guest-gallery > li {
+    break-inside: avoid;
+    margin: 0 0 1rem;
+}
+
+.guest-gallery__link {
+    display: block;
+    border: 1px solid var(--line);
+    background: #FFFFFF;
+}
+
+.guest-gallery__link img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.guest-gallery__link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+@media (min-width: 40rem) {
+    .guest-gallery { columns: 2; }
+}
+
+@media (min-width: 64rem) {
+    .guest-gallery { columns: 3; column-gap: 1.25rem; }
+    .guest-gallery > li { margin-bottom: 1.25rem; }
+}
+
+.lightbox {
+    width: min(96vw, 80rem);
+    max-height: 94vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.lightbox::backdrop {
+    background: rgba(12, 20, 15, 0.88);
+}
+
+.lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 88vh;
+    margin: 0 auto;
+}
+
+.lightbox__close {
+    display: block;
+    margin: 0.5rem auto 0;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: #FFFFFF;
+    font: 700 0.8125rem var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.home-gallery__title {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.home-gallery__more {
+    margin-top: 1.5rem;
+    text-align: center;
+}
