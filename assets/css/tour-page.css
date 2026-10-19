@@ -109,8 +109,8 @@
     .ckb-hero .ph, .ckb-hero .media { aspect-ratio: auto; height: clamp(24rem, 66vh, 46rem); }
     .ckb-hero .media img { height: 100%; }
     .ckb-head .container { padding-top: 2rem; }
-    /* Three photographs side by side, not sliding. */
-    .ckb-photos { overflow: visible !important; }
+    /* Three photographs side by side, not sliding; a row of four or more keeps sliding. */
+    .ckb-photos:not(:has(> :nth-child(4))) { overflow: visible !important; }
     .ckb-hotels { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
     .ckb-hotels:has(> :nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
     .ckb-cards--three { grid-template-columns: repeat(3, 1fr); }

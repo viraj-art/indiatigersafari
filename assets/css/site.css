@@ -5582,3 +5582,133 @@ main {
     margin-top: 1.5rem;
     text-align: center;
 }
+/* ---- Park guides: the experiences that visit the park, as clickable cards (18 Oct 2026) ----
+   Photo on top, words below, a "View itinerary" cue; the title link stretches over the whole card. */
+.related__item--card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    background: #FFFFFF;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.related__item--card .media,
+.related__item--card .ph {
+    border-radius: 0;
+}
+
+.related__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1rem 1.125rem 1.125rem;
+}
+
+.related__item--card .related__title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.related__item--card .related__title a:focus-visible {
+    outline: none;
+}
+
+.related__item--card:has(a:focus-visible) {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.related__cta {
+    margin: auto 0 0;
+    padding-top: 0.75rem;
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.related__item--card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 24px rgba(27, 59, 43, 0.12);
+    transform: translateY(-2px);
+}
+
+.related__item--card:hover .related__title a {
+    color: var(--gold-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .related__item--card { transition: none; }
+    .related__item--card:hover { transform: none; }
+}
+/* ---- Conservation: press card linking to the Sanctuary Asia article (18 Oct 2026) ---------- */
+.cons-press__card {
+    position: relative;
+    max-width: 46rem;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    background: #FFFFFF;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.cons-press__title {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+}
+
+.cons-press__title a {
+    text-decoration: none;
+}
+
+.cons-press__title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.cons-press__meta {
+    margin: 0 0 0.85rem;
+    color: var(--gold-deep);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.cons-press__more {
+    margin: 0.75rem 0 0;
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.cons-press__card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 24px rgba(27, 59, 43, 0.12);
+}
+
+.cons-press__card:has(a:focus-visible) {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+/* ---- Tall photographs in wide frames are shown whole (19 Oct 2026) -----------------------
+   The photo sits in the middle, uncropped, with plain cream sides (see picture() in helpers.php). */
+.media--fit {
+    background: var(--cream-deep);
+}
+
+.media--fit img.media__main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
+}
