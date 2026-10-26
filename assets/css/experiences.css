@@ -19,11 +19,7 @@
 .xp-chip__n { font-weight: 400; letter-spacing: 0; opacity: 0.75; }
 .xp-chip:focus-visible, .xp-currency__btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
-.xp-currency { display: inline-flex; align-items: center; gap: 0.25rem; }
-.xp-currency__label { margin-right: 0.35rem; color: var(--charcoal-soft); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.xp-currency__btn { min-width: 2.75rem; min-height: 2.75rem; padding: 0 0.5rem; border: 0; border-bottom: 2px solid transparent; background: none;
-    color: var(--charcoal-soft); font: 700 0.8125rem var(--font-body); letter-spacing: 0.06em; cursor: pointer; }
-.xp-currency__btn[aria-pressed="true"] { border-bottom-color: var(--gold); color: var(--green); }
+/* The currency switch's own styles are in site.css (also used on tour pages). */
 
 /* ---- Groups ------------------------------------------------------------------------------------- */
 .xp-group { padding-block: 1.5rem 0.5rem; }
@@ -56,13 +52,7 @@
 .xp-card__more, .xp-card__soon { display: none; margin: 0; }
 .xp-card--soon { opacity: 0.8; }
 
-/* One currency at a time once the switch is running; without it all four show. */
-.xp[data-cur] .xp-card__sep { display: none; }
-.xp[data-cur="USD"] .xp-card__amount:not([data-cur="USD"]),
-.xp[data-cur="CAD"] .xp-card__amount:not([data-cur="CAD"]),
-.xp[data-cur="EUR"] .xp-card__amount:not([data-cur="EUR"]),
-.xp[data-cur="GBP"] .xp-card__amount:not([data-cur="GBP"]) { display: none; }
-.xp[data-cur] .xp-card__price { font-size: 1rem; }
+.xp-card__price .price-set.is-one { font-size: 1rem; }
 
 /* ---- Cards, two then three across ------------------------------------------------------------------ */
 @media (min-width: 40rem) {

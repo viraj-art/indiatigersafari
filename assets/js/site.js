@@ -537,4 +537,31 @@
             });
         });
     }
+
+    /* ---- "From" prices: one currency at a time ----------------------------------------
+       price_spans() prints every currency; this shows the visitor's choice (default USD) on every page
+       and remembers it in this browser only. Without JavaScript all currencies simply show. */
+    const priceSets = document.querySelectorAll('.price-set');
+    const currencySwitches = document.querySelectorAll('[data-currency]');
+    if (priceSets.length) {
+        const showCurrency = (cur) => {
+            priceSets.forEach((set) => {
+                set.classList.add('is-one');
+                set.querySelectorAll('[data-price-cur]').forEach((amount) => { amount.hidden = amount.dataset.priceCur !== cur; });
+            });
+            currencySwitches.forEach((group) => {
+                group.hidden = false;
+                group.querySelectorAll('[data-cur]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.cur === cur)));
+            });
+        };
+        let saved = null;
+        try { saved = localStorage.getItem('its-currency'); } catch (e) { saved = null; }
+        showCurrency(/^(USD|GBP|EUR|AUD|CAD)$/.test(saved || '') ? saved : 'USD');
+        currencySwitches.forEach((group) => group.addEventListener('click', (event) => {
+            const chosen = event.target.closest('[data-cur]');
+            if (!chosen) return;
+            try { localStorage.setItem('its-currency', chosen.dataset.cur); } catch (e) { /* private mode: not remembered */ }
+            showCurrency(chosen.dataset.cur);
+        }));
+    }
 })();
